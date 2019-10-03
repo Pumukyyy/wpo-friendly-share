@@ -1,0 +1,168 @@
+.postbox{
+	padding: 20px;
+}
+
+.postbox h2{
+  text-align: center;
+  padding: 0px 0 17px 0;
+  margin: 0;
+  font-size: 2em;
+}
+
+.postbox h3{
+	color: #7b7979;
+}
+
+.content_input {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.content_label {
+  width: -moz-calc(50% - 30px);
+  width: -webkit-calc(50% - 30px);
+  width: -o-calc(50% - 30px);
+  width: calc(50% - 30px);
+  margin: 15px;
+
+}
+
+label.label_share,
+.border {
+	position: relative;
+	padding: 20px;
+	border: 1px solid #699;
+	border-radius: 18px;
+	width: -moz-calc(100% - 42px);
+  width: -webkit-calc(100% - 42px);
+  width: -o-calc(100% - 42px);
+  width: calc(100% - 42px);
+	display: inline-block;
+}
+
+.label_p{
+	font-size: 1.25em;
+	font-weight: bold;
+	top: -15px !important;
+}
+
+label.label_share p,
+.border p{
+  position: absolute;
+  margin: 0;
+  top: -10px;
+  background: #fff;
+  color: #699;
+  padding: 0 10px;
+}
+
+label.label_share input {
+  width: 100%;
+  padding: 5px;
+  display: block;
+  margin: 0 auto;
+	border: none;
+	box-shadow: none;
+	border-bottom: 1px solid lightgrey;
+}
+
+label.checkbox_share {
+  width: 75px;
+  margin: 10px 0 0;
+}
+
+label.label_checkbox_follow {
+  display: inline-block;
+  width: 75px;
+}
+
+.label_url{
+  width: -moz-calc(100% - 82px);
+  width: -webkit-calc(100% - 82px);
+  width: -o-calc(100% - 82px);
+  width: calc(100% - 82px);
+}
+
+.label_url input{
+  width: 100%;
+  padding: 5px;
+  display: inline-block;
+  margin: 0 auto;
+  border: none;
+  box-shadow: none;
+  border-bottom: 1px solid lightgrey;
+}
+
+.content_input label{
+  display: inline-block;
+}
+
+.checkbox_ajustes,
+.content-radio {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.wfs-icon-pmk,
+.wfs-icon-social {
+	background:url(../img/spriters_admin_wfs.svg) no-repeat;
+  display: inline-block;
+}
+
+.wfs-icon-pmk {
+	position: absolute;
+	top: 2px;
+  width: 72px;
+  height: 46px;
+  margin-left: 5px;
+  background-size: 70px auto;
+  background-position: 1px -991px;
+}
+
+.wfs-icon-social {
+  width: 32px;
+  height: 32px;
+	margin-right: 8px;
+  background-size: 59px auto;
+}
+
+.wfs-icon-email {
+  background-position: -14px -15px;
+}
+
+.wfs-icon-pinterest {
+  background-position: -14px -74px;
+}
+
+.wfs-icon-twitter {
+  background-position: -14px -133px;
+}
+
+ .wfs-icon-linkedin {
+  background-position: -14px -192px;
+}
+
+.wfs-icon-whatsapp {
+  background-position: -14px -251px;
+}
+
+.wfs-icon-facebook {
+  background-position: -14px -310px;
+}
+
+.wfs-icon-instagram {
+  background-position: -14px -369px;
+}
+
+.wfs-icon-youtube {
+  background-position: -14px -428px;
+}
+
+.wfs-icon-buffer {
+  background-position: -14px -487px;
+}
+
+.wfs-icon-mybusiness{
+	background-position: -14px -546px;
+}

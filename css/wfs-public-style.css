@@ -1,0 +1,159 @@
+.wfs-link:hover a,
+.wfs-link:active a {
+  color: white;
+}
+
+.wfs-link-follow,
+.wfs-link-share {
+	text-align: center;
+	margin-right: 8px;
+	background:url(../img/spriters_wfs.svg) no-repeat;
+  display: inline-block;
+}
+
+/****************** BOTONES SHARE ********************/
+
+.wfs-share {
+  margin: 20px 0 25px 0;
+  display: inline-block;
+}
+
+.wfs-link-share {
+  width: 27px;
+  height: 27px;
+  background-size: 49px auto;
+}
+
+.wfs-share-email {
+  background-position: -11px -12px;
+}
+
+.wfs-share-email:hover {
+  background-position: -10px -11px;
+}
+
+.wfs-share-pinterest {
+  background-position: -11px -61px;
+}
+
+.wfs-share-pinterest:hover {
+  background-position: -10px -60px;
+}
+
+.wfs-share-twitter {
+  background-position: -11px -110px;
+}
+
+.wfs-share-twitter:hover {
+  background-position: -10px -109px;
+}
+
+ .wfs-share-linkedin {
+  background-position: -11px -159px;
+}
+
+.wfs-share-linkedin:hover {
+  background-position: -10px -158px;
+}
+
+.wfs-share-whatsapp {
+  background-position: -11px -208px;
+}
+
+.wfs-share-whatsapp:hover {
+  background-position: -10px -207px;
+}
+
+.wfs-share-facebook {
+  background-position: -11px -257px;
+}
+
+.wfs-share-facebook:hover {
+  background-position: -10px -256px;
+}
+
+.wfs-share-instagram {
+  background-position: -11px -306px;
+}
+
+.wfs-share-instagram:hover {
+  background-position: -10px -305px;
+}
+
+.wfs-share-buffer {
+  background-position: -11px -404px;
+}
+
+.wfs-share-buffer:hover {
+  background-position: -10px -403px;
+}
+
+
+/****************** BOTONES FOLLOW ********************/
+
+.wfs-follow {
+  margin: 20px 0 25px 0;
+  display: inline-block;
+}
+
+.wfs-link-follow {
+  width: 37px;
+  height: 37px;
+  background-size: 68px auto;
+}
+
+.wfs-follow-facebook {
+  background-position: -16px -359px;
+}
+
+.wfs-follow-facebook:hover {
+  background-position: -15px -358px;
+}
+
+.wfs-follow-twitter {
+  background-position: -16px -155px;
+}
+
+.wfs-follow-twitter:hover {
+  background-position: -15px -154px;
+}
+
+.wfs-follow-linkedin {
+  background-position: -16px -223px;
+}
+
+.wfs-follow-linkedin:hover {
+  background-position: -15px -222px;
+}
+
+.wfs-follow-pinterest {
+  background-position: -16px -87px;
+}
+
+.wfs-follow-pinterest:hover {
+  background-position: -15px -86px;
+}
+
+.wfs-follow-instagram {
+  background-position: -16px -427px;
+}
+
+.wfs-follow-instagram:hover {
+  background-position: -15px -426px;
+}
+
+.wfs-follow-youtube {
+  background-position: -16px -495px;
+}
+
+.wfs-follow-youtube:hover {
+  background-position: -15px -494px;
+}
+
+.wfs-follow-mybusiness{
+	background-position: -16px -631px;
+}
+
+.wfs-follow-mybusiness:hover{
+	background-position: -15px -630px;
+}
