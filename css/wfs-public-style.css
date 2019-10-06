@@ -1,22 +1,36 @@
-.wfs-link:hover a,
-.wfs-link:active a {
-  color: white;
+.titulo {
+  font-size:1em;
+  font-weight:700;
+  margin:8px 0;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.content-button {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
 
 .wfs-link-follow,
 .wfs-link-share {
 	text-align: center;
-	margin-right: 8px;
-	background:url(../img/spriters_wfs.svg) no-repeat;
+	margin:0 4px;
+	background:url(../img/spriters-wfs.svg) no-repeat;
   display: inline-block;
 }
 
-/****************** BOTONES SHARE ********************/
-
-.wfs-share {
+.wfs-share,
+.wfs-follow {
   margin: 20px 0 25px 0;
   display: inline-block;
 }
+
+/**
+* Botones share
+*
+* Estilo para los botones sahre
+*/
 
 .wfs-link-share {
   width: 27px;
@@ -88,13 +102,11 @@
   background-position: -10px -403px;
 }
 
-
-/****************** BOTONES FOLLOW ********************/
-
-.wfs-follow {
-  margin: 20px 0 25px 0;
-  display: inline-block;
-}
+/**
+* Botones follow
+*
+* Estilo para los botones follow
+*/
 
 .wfs-link-follow {
   width: 37px;

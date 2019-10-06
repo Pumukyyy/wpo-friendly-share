@@ -1,25 +1,25 @@
-.postbox{
+.postbox {
 	padding: 20px;
 }
 
-.postbox h2{
+.postbox-h2 {
   text-align: center;
   padding: 0px 0 17px 0;
   margin: 0;
   font-size: 2em;
 }
 
-.postbox h3{
+.postbox-h3 {
 	color: #7b7979;
 }
 
-.content_input {
+.content-input {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
 }
 
-.content_label {
+.content-label {
   width: -moz-calc(50% - 30px);
   width: -webkit-calc(50% - 30px);
   width: -o-calc(50% - 30px);
@@ -28,7 +28,7 @@
 
 }
 
-label.label_share,
+.label-share,
 .border {
 	position: relative;
 	padding: 20px;
@@ -41,14 +41,9 @@ label.label_share,
 	display: inline-block;
 }
 
-.label_p{
-	font-size: 1.25em;
-	font-weight: bold;
-	top: -15px !important;
-}
-
-label.label_share p,
-.border p{
+.label-p,
+.border-p,
+.label-share-p {
   position: absolute;
   margin: 0;
   top: -10px;
@@ -57,7 +52,13 @@ label.label_share p,
   padding: 0 10px;
 }
 
-label.label_share input {
+.label-p {
+	font-size: 1.25em;
+	font-weight: 700;
+	top: -15px;
+}
+
+.input-share {
   width: 100%;
   padding: 5px;
   display: block;
@@ -67,24 +68,24 @@ label.label_share input {
 	border-bottom: 1px solid lightgrey;
 }
 
-label.checkbox_share {
+.checkbox-share {
   width: 75px;
   margin: 10px 0 0;
 }
 
-label.label_checkbox_follow {
+.checkbox-follow {
   display: inline-block;
   width: 75px;
 }
 
-.label_url{
+.label-url {
   width: -moz-calc(100% - 82px);
   width: -webkit-calc(100% - 82px);
   width: -o-calc(100% - 82px);
   width: calc(100% - 82px);
 }
 
-.label_url input{
+.input-url {
   width: 100%;
   padding: 5px;
   display: inline-block;
@@ -94,11 +95,14 @@ label.label_checkbox_follow {
   border-bottom: 1px solid lightgrey;
 }
 
-.content_input label{
+.label-url,
+.label-share,
+.checkbox-share,
+.checkbox-follow {
   display: inline-block;
 }
 
-.checkbox_ajustes,
+.checkbox-ajustes,
 .content-radio {
     width: 100%;
     margin: 10px 0;
@@ -106,7 +110,7 @@ label.label_checkbox_follow {
 
 .wfs-icon-pmk,
 .wfs-icon-social {
-	background:url(../img/spriters_admin_wfs.svg) no-repeat;
+	background:url(../img/spriters-admin-wfs.svg) no-repeat;
   display: inline-block;
 }
 
@@ -163,6 +167,6 @@ label.label_checkbox_follow {
   background-position: -14px -487px;
 }
 
-.wfs-icon-mybusiness{
+.wfs-icon-mybusiness {
 	background-position: -14px -546px;
 }
