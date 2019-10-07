@@ -1,5 +1,5 @@
 ![Pmk Web Dev](https://pmkchapaypintura.com/wp-content/uploads/2019/10/pmkWebDevLogo-e1570485919571.png "Pmk Web Dev")      **By Pmk Web Dev**
-# WPO Friendly Share  V 1.0.2
+ <h1 style="color:#3f51b5">WPO Friendly Share  V 1.0.2</h1>
 ## Descripción
 
 - Botones que generan el enlace para compartir o ser seguidos en las principales redes sociales sin usar javascript muy ligero y realmente veloz
@@ -8,7 +8,7 @@
 
 - Para que enlace a tus redes tienes que poner la url de tus perfiles en la configuracion del complemento 
 
-## instalacion
+<h2 style="color:#3f51b5"> instalacion </h2>
 
 **1** Cargue los archivos del complemento en el directorio '/ wp-content / plugins /wpo-friendly-share/', o instale el complemento a través de la pantalla de complementos de WordPress directamente.
 
@@ -18,7 +18,7 @@
 
 
 
-## Preguntas frecuentes
+<h2 style="color:#3f51b5"> Preguntas frecuentes </h2>
 - ¿Como añado los botones share en la plantilla del tema? 
 Añade este codigo en el lugar de la plantilla que quieres que aparectan los botones
 `<?php if ( function_exists('wfs_share') ) {echo do_shortcode('[wfs_share]'); ?>`
@@ -37,4 +37,4 @@ Añade este short code `[wfs_follow]` donde quieras que aparezca
 Primero tiene que haber algun boton seleccionado para que aparezcan
 
 
-##Imagenes
+<h2 style="color:#3f51b5">Imagenes </h2>
