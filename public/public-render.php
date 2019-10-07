@@ -251,9 +251,23 @@ function wfs_follow_gtag( $red_social ) {
 }
 
 /*
-* creo el contenido con los botones follow
+* creo el contenido con los botones follow compruebo si hay algo selecciona y creo un sortcode
 */
+$seleccionados = array(
+                  get_option( 'wfs-follow-checkbox-twitter' ),
+                  get_option( 'wfs-follow-checkbox-facebook' ),
+                  get_option( 'wfs-follow-checkbox-linkedin' ),
+                  get_option( 'wfs-follow-checkbox-pinterest' ),
+                  get_option( 'wfs-follow-checkbox-instagram' ),
+                  get_option( 'wfs-follow-checkbox-youtube' ),
+                  get_option( 'wfs-follow-checkbox-myBusiness' ),
+                );
+if ( 0 < array_sum( $seleccionados ) ) {
 
+  add_shortcode( 'wfs_follow', 'wfs_follow' );
+
+}
+  
 function wfs_follow( $content ) {
 
   $custom_label   = get_option( 'wfs-follow-custom-label' );
@@ -273,15 +287,6 @@ function wfs_follow( $content ) {
   $youtube_checkbox     = get_option( 'wfs-follow-checkbox-youtube' );
   $miBusiness_checkbox  = get_option( 'wfs-follow-checkbox-myBusiness' ); 
 
-  $seleccionados = array(
-        $facebook_checkbox,
-        $twitter_checkbox, 
-        $linkedin_checkbox,
-        $instagram_checkbox,
-        $pinterest_checkbox,
-        $youtube_checkbox,
-        $miBusiness_checkbox,
-  );
 
   $wfs_content  = '<div class="wfs-follow" itemscope itemtype="http://schema.org/Organization"><!-- WPO friendly share - START-->';
   $wfs_content .= '<link itemprop="url" href="'. esc_url( get_home_url() ) .'">';
@@ -344,15 +349,7 @@ function wfs_follow( $content ) {
 
   $wfs_content .= '</div></div><!-- WPO friendly share - END-->';
 
-  if ( 0 < array_sum( $seleccionados ) ) {
-
-    add_shortcode( 'wfs_follow', 'wfs_follow' );
-
     return $wfs_content;
-
-  } else {
-
-      return;
-
-    }
 }
+
+
