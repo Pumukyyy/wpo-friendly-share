@@ -2,18 +2,6 @@
 // Si se llama directamente a este archivo, aborta.
 defined( 'ABSPATH' ) or die( '¡Sin trampas!' );
 
-
-/*
-* regitro los fallos que pueda haber en la activacion del pluguin
-*/
-register_activation_hook( __FILE__, 'wfs_activation_log' ); 
-function wfs_activation_log() { 
-
-	file_put_contents( __DIR__ . '/wfs_activation_log.txt', ob_get_contents() ); 
-
-} 
-
-
 /*
 * Añado un menu en la pestaña de opciones
 */
@@ -35,7 +23,7 @@ function wfs_settings_init() {
 	add_settings_section(
 		'wfs_config_section', //$id, requerido
 		__( 'Configuracion de WPO Friendly Share ', 'wpo-friendly-share' ), //$title, requerido
-		'wfs_admin_render',  //$callback, requerido  (funcion que haga eccho del contenido)
+		'wfs_admin_render',  //$callback, requerido  (funcion que haga echo del contenido)
 		'wfs_config_section'//$page requerido
 	);
 
@@ -91,24 +79,6 @@ function wfs_sanitize_checkbox( $value ) {
       return 0;
     }
 }
-
-/*function wpppmk_sanitize_text_or_array_field($array_or_string) {
-    if( is_string($array_or_string) ){
-        $array_or_string = sanitize_text_field($array_or_string);
-    }elseif( is_array($array_or_string) ){
-        foreach ( $array_or_string as $key => &$value ) {
-            if ( is_array( $value ) ) {
-                $value = wpppmk_sanitize_text_or_array_field($value);
-            }
-            else {
-                $value = sanitize_text_field( $value );
-            }
-        }
-    }
-
-    return $array_or_string;
-}*/
-
 
 
 /*

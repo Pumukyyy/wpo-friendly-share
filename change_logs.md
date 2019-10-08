@@ -3,7 +3,8 @@
 ********************************
 - arreglo un fallo por el que nunca se mostraba los botones de follow en la plantilla public-render.php
 - añado logo pmk web dev
-
+- cambio la funcion wfs_add_options() a admin
+- elimino el registro de fallo al activar
 
 
 
