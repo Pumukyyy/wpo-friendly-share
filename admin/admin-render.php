@@ -114,7 +114,7 @@ function wfs_admin_render() {
         </div>
         <div class="aside-postbox">
           <p>-<?php  _e( 'El titulo aparecera justo encima de los botones', 'wpo-friendly-share' ); ?></p>
-          <p>-<?php  _e( 'El nombre de usuario de twitter se usara para indicar quien comparte en la url', 'wpo-friendly-share' ); ?></p>
+          <p>-<?php  _e( 'El nombre de usuario de twitter se usara para mencionarte al compartir', 'wpo-friendly-share' ); ?></p>
           <p>-<?php  _e( 'El texto para compartir en whatsapp se mostrará como texto predifinido al enviar el mensaje', 'wpo-friendly-share' ); ?></p>
           <p>-<?php  _e( 'Hay que marcar las redes que quieres que aparezcan', 'wpo-friendly-share' ); ?></p>
           <p>-<?php  _e( 'Marca si quieres que aparezca antes del post, despues del post o ambos si no se marca ninguno no apareceran', 'wpo-friendly-share' ); ?></p>

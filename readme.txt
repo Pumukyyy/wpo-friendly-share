@@ -56,6 +56,22 @@ Primero tiene que haber algun boton seleccionado para que aparezcan
 4. Ajustes de desactivacion
 
 == Changelog ==
+1.0.3
+* - Añadido opcion para agregar texto predefinido en negrita al conpartir en whatsapp 
+
+* - Añadido nuevas traducciones a ingles es_US y español es_ES
+
+* - compruebo si es movil o web para whatsapp 
+
+* - añadido filtro wfs_share_end_filter para los botos share
+
+* - corrijo css para movil en el administrador
+
+* - añadido columnas con explicacion en cada seccion de la configuracion del plugin
+
+* - pongo mas orden en public render
+
+
 1.0.2
 * - Arreglo un fallo por el que nunca se mostraba los botones de follow en la plantilla public-render.php
 
