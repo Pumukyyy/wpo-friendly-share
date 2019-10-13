@@ -18,7 +18,7 @@
 * Plugin Name: WPO friendly Share
 * Plugin URI: https://github.com/Pumukyyy/wpo-friendly-share
 * Description: Simples botones para compartir o ser seguidos en las redes sin usar javascript!!.
-* Version:  1.0.2
+* Version:  1.0.3
 * Author: Pumukyyy
 * Author URI: https://github.com/Pumukyyy
 * License: GNU General Public License v2 or later
@@ -33,7 +33,7 @@
 defined( 'ABSPATH' ) or die( '¡Sin trampas!' );
 
 //version actual
-define( 'WFS_VERSION', '1.0.2' );
+define( 'WFS_VERSION', '1.0.3' );
 define( 'WFS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'WFS_URI', plugin_dir_url( __FILE__ ) );
 

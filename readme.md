@@ -30,7 +30,7 @@ Añade este short code `[wfs_share]` donde quieras que aparezca
 Añade este codigo en el lugar de la plantilla que quieres que aparectan los botones
 `<?php if ( function_exists('wfs_follow') ) {echo do_shortcode('[wfs_follow]'); ?>`
 
-- ¿Como puedo añadirlos botones share con un short code? 
+- ¿Como puedo añadirlos botones follow con un short code? 
 Añade este short code `[wfs_follow]` donde quieras que aparezca 
 
 - ¿Porque no me aparece nada si ya lo añadi con short code o en la plantilla? 

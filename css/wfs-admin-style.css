@@ -13,18 +13,54 @@
 	color: #7b7979;
 }
 
-.content-input {
+.contenido-postbox {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
 }
 
-.content-label {
-  width: -moz-calc(50% - 30px);
-  width: -webkit-calc(50% - 30px);
-  width: -o-calc(50% - 30px);
-  width: calc(50% - 30px);
-  margin: 15px;
+.aside-postbox {
+  width: 20%;
+  background-color: #f2f5f5;
+  border: 2px solid #699;
+  border-radius: 7px;
+  padding: 8px;
+}
+
+.content-input {
+  width: 77%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.content-label-follow,
+.content-label-share {
+  width: 100%;
+  margin: 15px 0;
+}
+
+@media only screen and (min-width: 920px) {
+
+  .content-label-share {
+    width: -moz-calc(33.3333% - 30px);
+    width: -webkit-calc(33.3333% - 30px);
+    width: -o-calc(33.3333% - 30px);
+    width: calc(33.3333% - 30px);
+    margin: 15px;
+  }
+
+}
+
+@media only screen and (min-width: 920px) {
+
+  .content-label-follow {
+    width: -moz-calc(50% - 30px);
+    width: -webkit-calc(50% - 30px);
+    width: -o-calc(50% - 30px);
+    width: calc(50% - 30px);
+    margin: 15px;
+  }
 
 }
 
@@ -47,16 +83,17 @@
   position: absolute;
   margin: 0;
   top: -10px;
+  left: 15px;
   background: #fff;
   color: #699;
   padding: 0 10px;
 }
 
 .label-p {
-	font-size: 1.25em;
 	font-weight: 700;
 	top: -15px;
 }
+
 
 .input-share {
   width: 100%;
@@ -70,7 +107,15 @@
 
 .checkbox-share {
   width: 75px;
-  margin: 10px 0 0;
+  margin: 10px;
+}
+
+@media only screen and (min-width: 920px) {
+
+  .checkbox-share {
+    margin: 10px 0 0;
+  }
+
 }
 
 .checkbox-follow {
@@ -115,8 +160,9 @@
 }
 
 .wfs-icon-pmk {
-	position: absolute;
-	top: 2px;
+  position: absolute;
+  bottom: -9px;
+  right: 12px;
   width: 72px;
   height: 46px;
   margin-left: 5px;

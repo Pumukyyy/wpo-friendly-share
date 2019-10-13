@@ -22,7 +22,7 @@ function wfs_settings_init() {
 
 	add_settings_section(
 		'wfs_config_section', //$id, requerido
-		__( 'Configuracion de WPO Friendly Share ', 'wpo-friendly-share' ), //$title, requerido
+		__( 'Configuracion de WPO Friendly Share', 'wpo-friendly-share' ), //$title, requerido
 		'wfs_admin_render',  //$callback, requerido  (funcion que haga echo del contenido)
 		'wfs_config_section'//$page requerido
 	);
@@ -36,6 +36,7 @@ function wfs_settings_init() {
   register_setting( 'wfs_config_section', 'wfs-share-buffer', 'wfs_sanitize_checkbox' );
   register_setting( 'wfs_config_section', 'wfs-share-pinterest', 'wfs_sanitize_checkbox' );
   register_setting( 'wfs_config_section', 'wfs-share-whatsapp', 'wfs_sanitize_checkbox' );
+  register_setting( 'wfs_config_section', 'wfs-share-whatsapp-txt', 'sanitize_text_field' );
   register_setting( 'wfs_config_section', 'wfs-share-email', 'wfs_sanitize_checkbox' );
   register_setting( 'wfs_config_section', 'wfs-share-instagram', 'wfs_sanitize_checkbox' );
 
@@ -82,7 +83,7 @@ function wfs_sanitize_checkbox( $value ) {
 
 
 /*
-* Formulario para guardad las opciones
+* Formulario para guardar las opciones
 */
 function wfs_options_page() {
    if ( !current_user_can( 'manage_options' ) ) {
@@ -90,8 +91,8 @@ function wfs_options_page() {
     }
   ?>
     <div class="wrap">
-        <h1 style="position: relative;">
-        	<?php  _e( 'Botones sociales optimizados en velocidad de carga por ', 'wpo-friendly-share' ); ?>
+        <h1 style="position:relative;padding-right:88px;display:inline-block;">
+        	<?php  _e( 'Botones sociales optimizados en velocidad de carga por', 'wpo-friendly-share' ); ?>
         	<a target="_blank" rel="noopener noreferrer" href="https://pmkchapaypintura.com/">
             	<span class= "wfs-icon-pmk"></span> 
             </a>
