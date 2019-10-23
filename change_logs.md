@@ -16,7 +16,7 @@
  proximas incorporaciones
 ********************************
 - guardar en un array las opcionos y sanearlas antes
-- añadir telegram
+- añadir telegram https://t.me/user_profile 
 - añadir a bookmarks url parcial http://www.google.com/bookmarks/mark?op=edit&bkmk=http://www.example.com/
 
 ********************************
