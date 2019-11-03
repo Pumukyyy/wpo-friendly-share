@@ -9,7 +9,7 @@
 .content-button {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .wfs-link-follow,
@@ -102,6 +102,14 @@
   background-position: -10px -403px;
 }
 
+.wfs-share-telegram {
+  background-position: -11px -502px;
+}
+
+.wfs-share-telegram:hover {
+  background-position: -10px -501px;
+}
+
 /**
 * Botones follow
 *
@@ -162,10 +170,18 @@
   background-position: -15px -494px;
 }
 
-.wfs-follow-mybusiness{
+.wfs-follow-myBusiness{
 	background-position: -16px -631px;
 }
 
-.wfs-follow-mybusiness:hover{
+.wfs-follow-myBusiness:hover{
 	background-position: -15px -630px;
+}
+
+.wfs-follow-telegram{
+  background-position: -16px -699px;
+}
+
+.wfs-follow-telegram:hover{
+  background-position: -15px -698px;
 }

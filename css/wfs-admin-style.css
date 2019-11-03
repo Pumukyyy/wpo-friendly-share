@@ -43,10 +43,10 @@
 @media only screen and (min-width: 920px) {
 
   .content-label-share {
-    width: -moz-calc(33.3333% - 30px);
-    width: -webkit-calc(33.3333% - 30px);
-    width: -o-calc(33.3333% - 30px);
-    width: calc(33.3333% - 30px);
+    width: -moz-calc(50% - 30px);
+    width: -webkit-calc(50% - 30px);
+    width: -o-calc(50% - 30px);
+    width: calc(50% - 30px);
     margin: 15px;
   }
 
@@ -215,4 +215,8 @@
 
 .wfs-icon-mybusiness {
 	background-position: -14px -546px;
+}
+
+.wfs-icon-telegram {
+  background-position: -14px -605px;
 }

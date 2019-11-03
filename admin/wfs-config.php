@@ -39,6 +39,10 @@ function wfs_settings_init() {
   register_setting( 'wfs_config_section', 'wfs-share-whatsapp-txt', 'sanitize_text_field' );
   register_setting( 'wfs_config_section', 'wfs-share-email', 'wfs_sanitize_checkbox' );
   register_setting( 'wfs_config_section', 'wfs-share-instagram', 'wfs_sanitize_checkbox' );
+  register_setting( 'wfs_config_section', 'wfs-share-telegram-txt', 'sanitize_text_field' );
+  register_setting( 'wfs_config_section', 'wfs-share-telegram', 'wfs_sanitize_checkbox' );
+
+
 
   register_setting( 'wfs_config_section', 'wfs-follow-custom-label', 'sanitize_text_field' );
   register_setting( 'wfs_config_section', 'wfs-follow-checkbox-facebook', 'wfs_sanitize_checkbox' );
@@ -55,6 +59,8 @@ function wfs_settings_init() {
   register_setting( 'wfs_config_section', 'wfs-follow-url-pinterest', 'esc_url_raw' );
   register_setting( 'wfs_config_section', 'wfs-follow-checkbox-myBusiness', 'wfs_sanitize_checkbox' );
   register_setting( 'wfs_config_section', 'wfs-follow-url-myBusiness', 'esc_url_raw' );
+  register_setting( 'wfs_config_section', 'wfs-follow-checkbox-telegram', 'wfs_sanitize_checkbox' );
+  register_setting( 'wfs_config_section', 'wfs-follow-url-telegram', 'esc_url_raw' );
 
   register_setting( 'wfs_config_section', 'wfs-options-before-post', 'wfs_sanitize_checkbox' );
   register_setting( 'wfs_config_section', 'wfs-options-after-post', 'wfs_sanitize_checkbox' );
@@ -108,4 +114,17 @@ function wfs_options_page() {
     </div>
   <?php
 
+}
+
+/*
+* Link a la configuracion del plugin
+*/
+add_filter( 'plugin_action_links_'.WFS_BASE, 'wfs_add_settings_link' );
+
+function wfs_add_settings_link( $links ) {
+
+  $settings_link = '<a href="' . esc_url( admin_url( 'admin.php?page=wpo-friendly-share') ) . '">' . __( 'Ajustes', 'wpo-friendly-share' ) . '</a>';
+  $links[] =  $settings_link;
+
+  return $links;
 }

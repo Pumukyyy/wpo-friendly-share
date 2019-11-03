@@ -1,4 +1,34 @@
 ********************************
+ 1.0.4 28/10/2019--03/11/2019 
+********************************
+- añado icono de telegram al spriter
+- añado telegram a la lista de compartir
+- añado telegram a la lista de seguir 
+- añado link a los ajustes del plugin
+- uso la funcion urlencode en el titulo y thumbnail
+- uso funcion esc_url() en url de follow
+- creo un array con las url de las redes sociales para compartir
+- Creo un filtro para el array de las redes sociales follow con las url y los select 'wsf_array_share_filter'
+- Creo un filtro con el contenedor y contenido de las redes sociales share 'wfs_content_share_filter'
+- añado texto para compartir en telegran cargando uno por defecto si no hay ninguno definido
+- creo un array con las url de las redes sociales follow
+- Creo un filtro para el array de las redes sociales follow con las url y los select 'wsf_array_follow_filter'
+- Creo un filtro con el contenedor y contenido de las redes sociales follow 'wfs_content_follow_filter'
+- Arreglo un fallo por el que se mostraba el titulo sin nada marcado al aññadirlo mediante la funcion
+- Unifico la funcion de eventos de google analytics
+
+
+********************************
+ proximas incorporaciones
+********************************
+- guardar en un array las opciones y sanearlas antes manteniendo la configuracion
+
+
+
+
+
+
+********************************
  1.0.3 10/10/2019 - 13/10/2019
 ********************************
 - Añadido opcion para agregar texto predefinido en negrita al conpartir en whatsapp 
@@ -11,13 +41,6 @@
 
 
 
-
-********************************
- proximas incorporaciones
-********************************
-- guardar en un array las opcionos y sanearlas antes
-- añadir telegram
-- añadir a bookmarks url parcial http://www.google.com/bookmarks/mark?op=edit&bkmk=http://www.example.com/
 
 ********************************
  1.0.2 07/10/2019

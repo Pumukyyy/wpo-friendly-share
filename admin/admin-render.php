@@ -36,7 +36,6 @@ function wfs_admin_render() {
               <input type="text" class="input-share" name="wfs-share-custom-label" value="<?php echo esc_attr( get_option( 'wfs-share-custom-label' ) ); ?>" />
             </label>
           </div>
-
           <!-- Twitter -->
           <div class="content-label-share">
             <label class="label-share">
@@ -50,6 +49,14 @@ function wfs_admin_render() {
             <label class="label-share">
               <p class="label-share-p"><?php  _e( 'Texto para compartir a traves de whatsapp', 'wpo-friendly-share' ); ?></p>
               <input class="input-share" type="text" name="wfs-share-whatsapp-txt" value="<?php echo esc_attr( get_option( 'wfs-share-whatsapp-txt' ) ); ?>" />
+            </label>
+          </div>
+
+          <!-- texto para compartir en telegram -->
+          <div class="content-label-share">
+            <label class="label-share">
+              <p class="label-share-p"><?php  _e( 'Texto para compartir a traves de telegram', 'wpo-friendly-share' ); ?></p>
+              <input class="input-share" type="text" name="wfs-share-telegram-txt" value="<?php echo esc_attr( get_option( 'wfs-share-telegram-txt' ) ); ?>" />
             </label>
           </div>
 
@@ -92,6 +99,13 @@ function wfs_admin_render() {
             <span class="wfs-icon-social wfs-icon-whatsapp"></span>
             <input type="checkbox" name="wfs-share-whatsapp" value="1" <?php checked( 1, get_option( 'wfs-share-whatsapp' ), true ); ?> />
             Whatsapp
+          </label>
+
+          <!-- Telegram -->
+          <label class="checkbox-share">
+            <span class="wfs-icon-social wfs-icon-telegram"></span>
+            <input type="checkbox" name="wfs-share-telegram" value="1" <?php checked( 1, get_option( 'wfs-share-telegram' ), true ); ?> />
+            Telegram
           </label>
 
           <!-- Antes del post -->
@@ -236,10 +250,24 @@ function wfs_admin_render() {
                 <input type="checkbox" name="wfs-follow-checkbox-myBusiness" value="1" <?php checked( 1, get_option( 'wfs-follow-checkbox-myBusiness' ), true ); ?> />
                 My Business
               </label>
-
               <label class="label-url">
                 <p class="border-p"><?php  _e( 'Url completa de tu pagina de My Business', 'wpo-friendly-share' ); ?></p>
                 <input type="url" class="input-url" name="wfs-follow-url-myBusiness" placeholder="https://g.page/tu perfil"  value="<?php echo esc_url( get_option( 'wfs-follow-url-myBusiness' ) ); ?>" />
+              </label>
+            </div>
+          </div>
+
+          <!-- Telegram -->
+          <div class="content-label-follow">
+            <div class="border">
+              <label class="checkbox-follow">
+                <span class="wfs-icon-social wfs-icon-telegram"></span>
+                <input type="checkbox" name="wfs-follow-checkbox-telegram" value="1" <?php checked( 1, get_option( 'wfs-follow-checkbox-telegram' ), true ); ?> />
+                Telegram
+              </label>
+              <label class="label-url">
+                <p class="border-p"><?php  _e( 'Url completa de tu usuario', 'wpo-friendly-share' ); ?></p>
+                <input type="url" class="input-url" name="wfs-follow-url-telegram" placeholder="https://t.me/tuUsuario"  value="<?php echo esc_url( get_option( 'wfs-follow-url-telegram' ) ); ?>" />
               </label>
             </div>
           </div>
