@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wop friendly share 1.0.3\n"
-"POT-Creation-Date: 2019-10-12 14:06+0200\n"
-"PO-Revision-Date: 2019-10-12 14:07+0200\n"
+"POT-Creation-Date: 2019-11-03 23:12+0100\n"
+"PO-Revision-Date: 2019-11-03 23:14+0100\n"
 "Last-Translator: \n"
 "Language-Team: pumukyyy\n"
 "Language: es\n"
@@ -23,7 +23,7 @@ msgstr "Botones para compartir en las redes sociales"
 msgid "Selecciona  que redes mostrar para compartir"
 msgstr "Selecciona  que redes mostrar para compartir"
 
-#: admin-render.php:34
+#: admin-render.php:35
 msgid "Titulo de botones share personalizado"
 msgstr "Titulo de botones share personalizado"
 
@@ -32,105 +32,203 @@ msgid "Nombre de usuario de Twitter (sin @)"
 msgstr "Nombre de usuario de Twitter (sin @)"
 
 #: admin-render.php:50
-msgid "Texto para compartir a traves de whatsapp"
-msgstr "Texto para compartir a traves de whatsapp"
+msgid "Texto para compartir a traves de Whatsapp"
+msgstr "Texto para compartir a traves de Whatsapp"
 
-#: admin-render.php:100
-msgid "Botones buscanos en las redes sociales"
-msgstr "Botones buscanos en las redes sociales"
+#: admin-render.php:58
+msgid "Texto para compartir a traves de Telegram"
+msgstr "Texto para compartir a traves de Telegram"
 
-#: admin-render.php:101
-msgid ""
-"Escribe la url completa de tu perfil o pagina y selecciona  que redes "
-"mostrar para que te sigan"
-msgstr ""
-"Escribe la url completa de tu perfil o pagina y selecciona  que redes "
-"mostrar para que te sigan"
-
-#: admin-render.php:107
-msgid "Titulo de botones follow personalizado"
-msgstr "Titulo de botones follow personalizado"
-
-#: admin-render.php:121
-msgid "Url completa de tu fan page o perfil"
-msgstr "Url completa de tu fan page o perfil"
-
-#: admin-render.php:136
-msgid "Url completa de tu pagina o perfil de twitter"
-msgstr "Url completa de tu pagina o perfil de twitter"
-
-#: admin-render.php:151
-msgid "Url completa de tu pagina de Linkedin"
-msgstr "Url completa de tu pagina de Linkedin"
-
-#: admin-render.php:166
-msgid "Url completa de tu pagina de Pinterest"
-msgstr "Url completa de tu pagina de Pinterest"
-
-#: admin-render.php:181
-msgid "Url completa de tu pagina de Instagram"
-msgstr "Url completa de tu pagina de Instagram"
-
-#: admin-render.php:196
-msgid "Url completa de tu pagina de Youtube"
-msgstr "Url completa de tu pagina de Youtube"
-
-#: admin-render.php:212
-msgid "Url completa de tu pagina de My Business"
-msgstr "Url completa de tu pagina de My Business"
-
-#: admin-render.php:222
-msgid "Ajustes avanzados"
-msgstr "Ajustes avanzados"
-
-#: admin-render.php:223
-msgid "Usa esta sección para optimizar mas este plugin"
-msgstr "Usa esta sección para optimizar mas este plugin"
-
-#: admin-render.php:230
+#: admin-render.php:114
 msgid "Quiero que aparezca al principio de cada post"
 msgstr "Quiero que aparezca al principio de cada post"
 
-#: admin-render.php:239
+#: admin-render.php:123
 msgid "Quiero que aparezca al final de cada post"
 msgstr "Quiero que aparezca al final de cada post"
 
-#: admin-render.php:248
+#: admin-render.php:130 admin-render.php:276
+msgid "El titulo aparecera justo encima de los botones"
+msgstr ""
+
+#: admin-render.php:131
+msgid "El nombre de usuario de twitter se usara para mencionarte al compartir"
+msgstr ""
+
+#: admin-render.php:132
+msgid ""
+"El texto para compartir en whatsapp se mostrará como texto predifinido al "
+"enviar el mensaje"
+msgstr ""
+
+#: admin-render.php:133
+msgid "Hay que marcar las redes que quieres que aparezcan"
+msgstr ""
+
+#: admin-render.php:134
+msgid ""
+"Marca si quieres que aparezca antes del post, despues del post o ambos si no "
+"se marca ninguno no apareceran"
+msgstr ""
+
+#: admin-render.php:135
+msgid ""
+"Si prefieres añadirlo con shortcode añade este codigo donde queras que "
+"aparezca dentro del post"
+msgstr ""
+
+#: admin-render.php:135
+msgid "O este otro si lo prefieres añadir desde la plantilla"
+msgstr ""
+
+#: admin-render.php:142
+msgid "Botones buscanos en las redes sociales"
+msgstr "Botones buscanos en las redes sociales"
+
+#: admin-render.php:143
+msgid ""
+"Escribe la url completa de tu perfil o pagina y selecciona  que redes "
+"mostrar para que te sigan"
+msgstr ""
+"Escribe la url completa de tu perfil o pagina y selecciona  que redes "
+"mostrar para que te sigan"
+
+#: admin-render.php:150
+msgid "Titulo de botones follow personalizado"
+msgstr "Titulo de botones follow personalizado"
+
+#: admin-render.php:164
+msgid "Url completa de tu fan page o perfil"
+msgstr "Url completa de tu fan page o perfil"
+
+#: admin-render.php:179
+msgid "Url completa de tu pagina o perfil de twitter"
+msgstr "Url completa de tu pagina o perfil de twitter"
+
+#: admin-render.php:194
+msgid "Url completa de tu pagina de Linkedin"
+msgstr "Url completa de tu pagina de Linkedin"
+
+#: admin-render.php:209
+msgid "Url completa de tu pagina de Pinterest"
+msgstr "Url completa de tu pagina de Pinterest"
+
+#: admin-render.php:224
+msgid "Url completa de tu pagina de Instagram"
+msgstr "Url completa de tu pagina de Instagram"
+
+#: admin-render.php:239
+msgid "Url completa de tu pagina de Youtube"
+msgstr "Url completa de tu pagina de Youtube"
+
+#: admin-render.php:254
+msgid "Url completa de tu pagina de My Business"
+msgstr "Url completa de tu pagina de My Business"
+
+#: admin-render.php:269
+msgid "Url completa de tu usuario"
+msgstr "Url completa de tu usuario"
+
+#: admin-render.php:277
+msgid ""
+"Tienes que poner la url completa de tu red social ejemplo https://www.red-"
+"social/tu-pagina-o-tu-perfil"
+msgstr ""
+
+#: admin-render.php:278
+msgid ""
+"Hay que marcar las redes que quieres que aparezcan si no estan marcadas no "
+"apareceran"
+msgstr ""
+
+#: admin-render.php:279
+msgid "¿Como puedo añadir los botones follow con un shortcode?"
+msgstr ""
+
+#: admin-render.php:279
+msgid " Añade este short code donde quieras que aparezca:"
+msgstr ""
+
+#: admin-render.php:280
+msgid "¿Como añado los botones follow en la plantilla del tema?"
+msgstr ""
+
+#: admin-render.php:280
+msgid ""
+"Añade este codigo en el lugar de la plantilla que quieres que aparectan los "
+"botones:"
+msgstr ""
+
+#: admin-render.php:287
+msgid "Ajustes avanzados"
+msgstr "Ajustes avanzados"
+
+#: admin-render.php:288
+msgid "Usa esta sección para optimizar mas este plugin"
+msgstr "Usa esta sección para optimizar mas este plugin"
+
+#: admin-render.php:296
 msgid "Desactivar css"
 msgstr "Desactivar css"
 
-#: admin-render.php:257
+#: admin-render.php:305
 msgid "Añadir rel=\"nofollow\" a todos los enlaces"
 msgstr "Añadir rel=\"nofollow\" a todos los enlaces"
 
-#: admin-render.php:267
+#: admin-render.php:315
 msgid "Añadir evento Analytics"
 msgstr "Añadir evento Analytics"
 
-#: admin-render.php:272
+#: admin-render.php:320
 msgid "Selecciona si usas las etiqueta ga o gtag"
 msgstr "Selecciona si usas las etiqueta ga o gtag"
 
-#: admin-render.php:292
+#: admin-render.php:338
+msgid ""
+"Si desactivas el el css asegurate de incluirlo en la hoja de estilos de tu "
+"tema de lo contrario e complemento puede romper su estilo "
+msgstr ""
+
+#: admin-render.php:339
+msgid "Si esta activada, todo los enlaces tendran rel=\"nofollow\""
+msgstr ""
+
+#: admin-render.php:340
+msgid ""
+"Activa el evento analytics y selecciona que etiquetas usas en tu web ( para "
+"que esto funcione tienes que tener insertado el codigo de analytics )"
+msgstr ""
+
+#: admin-render.php:346
 msgid "Ajustes para la desactivacion del plugin"
 msgstr "Ajustes para la desactivacion del plugin"
 
-#: admin-render.php:293
+#: admin-render.php:347
 msgid "Usa esta sección SOLO si sabes lo que haces"
 msgstr "Usa esta sección SOLO si sabes lo que haces"
 
-#: admin-render.php:299
+#: admin-render.php:354
 msgid ""
 "Quiero eliminar toda la configuarion de WPO Friendly Share al desactivar el "
 "plugin"
 msgstr ""
 "Quiero eliminar toda la configuarion de WPO Friendly Share al desactivar el "
 "plugin"
+
+#: admin-render.php:360
+msgid ""
+"Si esta marcada esta opcion, al desactivar el plugin se eliminara toda la "
+"conficuracion"
+msgstr ""
 
 #: wfs-config.php:25
 msgid "Configuracion de WPO Friendly Share"
 msgstr "Configuracion de WPO Friendly Share"
 
-#: wfs-config.php:95
+#: wfs-config.php:101
 msgid "Botones sociales optimizados en velocidad de carga por"
 msgstr "Botones sociales optimizados en velocidad de carga por"
+
+#: wfs-config.php:126
+msgid "Ajustes"
+msgstr ""

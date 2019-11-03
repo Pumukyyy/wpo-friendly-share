@@ -47,7 +47,7 @@ function wfs_admin_render() {
           <!-- texto para compartir en whatsapp -->
           <div class="content-label-share">
             <label class="label-share">
-              <p class="label-share-p"><?php  _e( 'Texto para compartir a traves de whatsapp', 'wpo-friendly-share' ); ?></p>
+              <p class="label-share-p"><?php  _e( 'Texto para compartir a traves de Whatsapp', 'wpo-friendly-share' ); ?></p>
               <input class="input-share" type="text" name="wfs-share-whatsapp-txt" value="<?php echo esc_attr( get_option( 'wfs-share-whatsapp-txt' ) ); ?>" />
             </label>
           </div>
@@ -55,7 +55,7 @@ function wfs_admin_render() {
           <!-- texto para compartir en telegram -->
           <div class="content-label-share">
             <label class="label-share">
-              <p class="label-share-p"><?php  _e( 'Texto para compartir a traves de telegram', 'wpo-friendly-share' ); ?></p>
+              <p class="label-share-p"><?php  _e( 'Texto para compartir a traves de Telegram', 'wpo-friendly-share' ); ?></p>
               <input class="input-share" type="text" name="wfs-share-telegram-txt" value="<?php echo esc_attr( get_option( 'wfs-share-telegram-txt' ) ); ?>" />
             </label>
           </div>
