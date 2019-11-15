@@ -1,58 +1,60 @@
 === WPO friendly Share ===
 Contributors: pumukyyy
-Tags: translation ready, botones para compartir, share, follow, share button, follow button, seguir en las redes sociales, social buttons, Facebook, Linkedin, Instagram, Google My Business, Twitter, Pinterest, Youtube, Telegram, Whatsapp, Buffer
+TTags: translation ready, botones para compartir, share, follow, share button, follow button, social buttons, Share on Facebook, Share on Linkedin, Share on Instagram, Share on Google My Business, Share on Twitter, Share on Pinterest, Share on Youtube, Share on Telegram, Share on Whatsapp, Share on Buffer
 Requires at least: 4.0
-Tested up to: 5.2.3
-Stable tag: 1.0.4
+Tested up to: 5.3
+Stable tag: 1.1.0
 Requires PHP: 5.2.4 or later
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Simples botones para compartir o ser seguidos en las redes, lijero amigable para WPO y SEO
+Simple buttons to share or be followed on social networks, lightweight and friendly for WPO and SEO
 
 == Description ==
 # WPO Friendly Share 
-- La opcion mas simple y mas ligera de tener unos bonitos botones de las principales redes sociales
 
-- Actualmente estan disponibles Facebook, Linkedin, Instagram, Google My Business, Twitter, Pinterest, Youtube, Telegram, Whatsapp y Buffer pero seguimos trabajando para incorporar nuesvas redes, si tiene alguna sujerencia escribenos en el foro de soporte 
+- The simplest and lightest option of having beautiful buttons from the main social networks to share content from your website or to direct your readers to the profiles or pages of your social networks.
+  
+- The following social networks are currently available: Facebook, Linkedin, Instagram, Google My Business, Twitter, Pinterest, YouTube, Telegram, Whatsapp and Buffer but we are still working to incorporate our networks, if you have any suggestion write us in the support forum.
 
-- Botones que generan el enlace para compartir o ser seguidos en las principales redes sociales sin usar javascript muy ligero y realmente veloz
+- Buttons that generate the link to share or be followed in the main social networks without using very light and really fast javascript
 
-- Sin complicaciones no necesita apenas configuracion, para mostrar botones follow solo selecciona con que redes compartir y listo!
+- Without complications, you do not need just configuration, to show follow buttons just select which social networks to share and go!
 
-- Para que enlace a tus redes tienes que poner la url de tus perfiles en la configuracion del complemento 
+- SEO friendly, use Schema.org structured data marking to put Google, Bing, etc. into context ...
 
-- Usa datos estructurados schema.org buenos para el seo
+- If you whant it links to your social networks you have to put the url of your profiles in the configuration of the complement
 
-- Translation ready, totalmente traducible a tu idioma preferido
+- Translation ready, fully translatable to your preferred language, feel free to translate this plugin into your language at https://translate.wordpress.org/projects/wp-plugins/wpo-friendly-share
 
-- Si te gusta el plugin dejanos una reseña para ayudarnos a seguir creciendo
+## - If you like the plugin leave us a review to help us keep growing
 
 
 == Installation ==
 
-**1** Cargue los archivos del complemento en el directorio '/ wp-content / plugins /wpo-friendly-share/', o instale el complemento a través de la pantalla de complementos de WordPress directamente.
+**1** Upload the add-in files to the '/ wp-content / plugins / wpo-friendly-share /' directory, or install the add-in via the WordPress add-ons screen directly.
 
-**2**  Active el complemento a través de la pantalla \'Complementos\' en WordPress
+**2** Activate the plugin through the \ 'Add-ons \' screen in WordPress
 
-**1** Use la pantalla Configuración -> Ajustes ->WPO friendly share para configurar el complemento
+**3** Use the Settings screen -> Settings -> WPO friendly share to configure the plug-in
 
 == Frequently Asked Questions ==
 
-= - ¿Como añado los botones share en la plantilla del tema? =
-Añade este codigo en el lugar de la plantilla que quieres que aparectan los botones `<?php if ( function_exists('wfs_share') ) {echo do_shortcode('[wfs_share]'); ?>`
+= - How do I add the buttons to share on social networks in the theme template? =
+Add this code in the place of the template that you want the buttons to appear `<? Php if (function_exists ('wfs_share')) {echo do_shortcode ('[wfs_share]') ; ?> `
 
-= - ¿Como puedo añadirlos botones share con un short code? =
-Añade este short code `[wfs_share]` donde quieras que aparezca 
+= - How can I add the buttons to share on social networks with a short code? =
+Add this short code `[wfs_share]` wherever you want it to appear
 
-= - ¿Como añado los botones follow en la plantilla del tema? =
-Añade este codigo en el lugar de la plantilla que quieres que aparectan los botones`<?php if ( function_exists('wfs_follow') ) {echo do_shortcode('[wfs_follow]'); ?>`
+= - How do I add the buttons to follow me on social media in the theme template? =
+Add this code in the place of the template that you want the buttons <<? Php if (function_exists ('wfs_follow')) {echo do_shortcode ('[wfs_follow]'); ?> `
 
-= - ¿Como puedo añadirlos botones share con un short code? =
-Añade este short code `[wfs_follow]` donde quieras que aparezca 
+= - How can I add the buttons to follow me on the networks with a short code? =
+Add this short code `[wfs_follow]` wherever you want it to appear
 
-= - ¿Porque no me aparece nada si ya lo añadi con short code o en la plantilla? =
-Primero tiene que haber algun boton seleccionado para que aparezcan
+= - Why does nothing appear if I already added it with short code or in the template? =
+First there must be some button selected to appear
+
 
 == Screenshots ==
 1. Ajustes share
@@ -61,55 +63,61 @@ Primero tiene que haber algun boton seleccionado para que aparezcan
 4. Ajustes de desactivacion
 
 == Changelog ==
+1.0.5
+
+- Updated translations
 
 1.0.4
 
-* - Añado telegram a la lista de compartir
+- Added telegram to the share list
 
-* - Añado telegram a la lista de seguir 
+- Added telegram to the list to follow
 
-* - Añado link a los ajustes del plugin
+- Added link to plugin settings
 
-* - Mejoras de codificacion
+- Coding improvements
 
-* - Creo un filtro para el array de las redes sociales follow con las url y los select 'wsf_array_share_filter'
+- Added a filter for the social network array follow with the url and select 'wsf_array_share_filter'
 
-* - Creo un filtro con el contenedor y contenido de las redes sociales share 'wfs_content_share_filter'
+- Added a filter with the container and social media content share 'wfs_content_share_filter'
 
-* - Añado texto para compartir en telegran cargando uno por defecto si no hay ninguno definido
+- Added default text option to share on telegram by loading one by default if none is defined
 
-* - Creo un array con las url de las redes sociales follow
+- Added a filter for the social media array follow with the url and select 'wsf_array_follow_filter'
 
-* - Creo un filtro para el array de las redes sociales follow con las url y los select 'wsf_array_follow_filter'
+- Added a filter with the container and social media content follow 'wfs_content_follow_filter'
 
-* - Creo un filtro con el contenedor y contenido de las redes sociales follow 'wfs_content_follow_filter'
-
-* - Arreglo un fallo por el que se mostraba el titulo sin nada marcado al añadirlo mediante la funcion
+- Fixed a bug showing the title with nothing marked when added by function
 
 1.0.3
-* - Añadido opcion para agregar texto predefinido en negrita al conpartir en whatsapp 
 
-* - Añadido nuevas traducciones a ingles es_US y español es_ES
+- Added option to add predefined text in bold when speaking on whatsapp
 
-* - Compruebo si es movil o web para whatsapp 
+- Added new translations to English es_US and Spanish es_ES
 
-* - Añadido filtro wfs_share_end_filter para los botos share
+- Check if it is mobile or web for whatsapp
 
-* - Corrijo css para movil en el administrador
+- Added wfs_share_end_filter filter for share buttons
 
-* - Añadido columnas con explicacion en cada seccion de la configuracion del plugin
+- I correct css for mobile in the administrator
+
+- Added columns with explanation in each section of the plugin configuration
 
 1.0.2
-* - Arreglo un fallo por el que nunca se mostraba los botones de follow en la plantilla public-render.php
+
+- Fixed a bug where the follow buttons were never shown in the public-render.php template
 
 1.0.1
-* - Adapto el codigo php html y css a los estandares de WordPress
 
-* - Añado funcion para eliminar las opciones creadas al desactivar el pluguin
+- Added function to eliminate the options created when deactivating the pluguin
 
 1.0.0
-* - Primera version 
+
+- First version
 
 == Upgrade Notice ==
-= 1.0.2 =
-Nuevo! ahora Telegram tambien esta disponible para compartir y seguir y mas mejoras!!!
+= 1.1.0=
+
+- Fixed bug when getting url from page to share
+
+- Improvements for translations

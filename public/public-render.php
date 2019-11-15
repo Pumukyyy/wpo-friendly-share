@@ -67,17 +67,13 @@ function wfs_share() {
   global $post;
 
   $current_url = get_permalink();
-  /********************borrar esto************/
-  $current_url = str_replace( 'http://localhost/tallerespmkgutenberg', 'https://pmkchapaypintura.com', $current_url );
-   /********************borrar esto************/
-
   $current_url            = urlencode( $current_url );
   $current_title          = urlencode( get_the_title() );
   $current_thumbnail      = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' );
   $current_thumbnail_code = urlencode($current_thumbnail[0]);
-  $default_txt            = rawurlencode( strip_tags( __( 'Mira esto, creo que te va a interesar:', 'wpo-friendly-share' ) ) );
+  $default_txt            = rawurlencode( strip_tags( __( 'Look at this, I think it will interest you', 'wpo-friendly-share' ) ) );
 
-  //Compruebo si hay texto y si no muestro texto por defecto  %252A%252A
+  //Compruebo si hay texto y si no muestro texto por defecto
   $whatsapp_txt = urlencode( strip_tags( get_option( 'wfs-share-whatsapp-txt' ) ) );
   if ( empty( $whatsapp_txt ) ) {
     $whatsapp_txt = $default_txt;
@@ -107,7 +103,7 @@ function wfs_share() {
   $custom_label = get_option( 'wfs-share-custom-label' );
   if ( empty( $custom_label ) ) {
 
-    $custom_label = esc_attr( __( 'Compartelo con un amigo', 'wpo-friendly-share' ) );
+    $custom_label = esc_attr( __( 'Share it with a friend', 'wpo-friendly-share' ) );
    
   }
 
@@ -313,7 +309,7 @@ function wfs_follow() {
 
   if ( empty( $custom_label ) ) {
 
-    $custom_label = esc_attr( __( 'Siguenos en las redes', 'wpo-friendly-share' ) );
+    $custom_label = esc_attr( __( 'Follow us on the social networks', 'wpo-friendly-share' ) );
 
   }
 

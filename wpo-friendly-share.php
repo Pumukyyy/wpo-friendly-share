@@ -3,7 +3,7 @@
 /**
 * WPO friendly Share
 **
-* @since             1.0.0
+* @since             1.0.0 9-10-19
 *
 * @package           wpo_friendly_share
 *
@@ -18,14 +18,14 @@
 * Plugin Name: WPO friendly Share
 * Plugin URI: https://github.com/Pumukyyy/wpo-friendly-share
 * Description: Simples botones para compartir o ser seguidos en las redes sin usar javascript!!.
-* Version:  1.0.4
+* Version:  1.1.0
 * Author: Pumukyyy
 * Author URI: https://github.com/Pumukyyy
 * License: GNU General Public License v2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
-* Requires at least: 4.0
+* Requires at least: 4.6
 * Tested up to: 5.2.3
-* Text Domain: wpo-friendly-share
+* Text Domain: wpo-friendly-share 
 * Domain Path: /languages
 **/
 
@@ -33,7 +33,7 @@
 defined( 'ABSPATH' ) or die( '¡Sin trampas!' );
 
 //version actual
-define( 'WFS_VERSION', '1.0.4' );
+define( 'WFS_VERSION', '1.1.0' );
 define( 'WFS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'WFS_URI', plugin_dir_url( __FILE__ ) );
 
@@ -66,3 +66,8 @@ if ( is_admin() ) {
 
 	require_once( WFS_PATH . 'public/public-render.php' );
 }
+
+function wfs_load_textdomain() {
+    load_plugin_textdomain( 'wpo-friendly-share', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
+}
+add_action( 'plugins_loaded', 'wfs_load_textdomain' );

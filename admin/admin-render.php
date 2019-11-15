@@ -24,22 +24,22 @@ function wfs_admin_style($hook) {
 function wfs_admin_render() {
   ?>
     <div class="postbox">
-      <h2 class="postbox-h2"><?php  _e( 'Botones para compartir en las redes sociales', 'wpo-friendly-share' ); ?></h2>
-      <h3 class="postbox-h3"><?php _e( 'Selecciona  que redes mostrar para compartir', 'wpo-friendly-share' ) ?></h3>
+      <h2 class="postbox-h2"><?php  _e( 'Buttons to share on social networks', 'wpo-friendly-share' ); ?></h2>
+      <h3 class="postbox-h3"><?php _e( 'Select which social networks to show to share', 'wpo-friendly-share' ) ?></h3>
 
       <div class="contenido-postbox">
         <div class="content-input">
           <!-- titulo share -->
           <div class="content-label-share">
             <label class="label-share">
-              <p class="label-p"><?php  _e( 'Titulo de botones share personalizado', 'wpo-friendly-share' ); ?></p>
+              <p class="label-p"><?php  _e( 'Custom share button title', 'wpo-friendly-share' ); ?></p>
               <input type="text" class="input-share" name="wfs-share-custom-label" value="<?php echo esc_attr( get_option( 'wfs-share-custom-label' ) ); ?>" />
             </label>
           </div>
           <!-- Twitter -->
           <div class="content-label-share">
             <label class="label-share">
-              <p class="label-share-p"><?php  _e( 'Nombre de usuario de Twitter (sin @)', 'wpo-friendly-share' ); ?></p>
+              <p class="label-share-p"><?php  _e( 'Twitter username (without @)', 'wpo-friendly-share' ); ?></p>
               <input class="input-share" type="text" name="wfs-share-twitter-name" value="<?php echo esc_attr( get_option( 'wfs-share-twitter-name' ) ); ?>" />
             </label>
           </div>
@@ -47,7 +47,7 @@ function wfs_admin_render() {
           <!-- texto para compartir en whatsapp -->
           <div class="content-label-share">
             <label class="label-share">
-              <p class="label-share-p"><?php  _e( 'Texto para compartir a traves de Whatsapp', 'wpo-friendly-share' ); ?></p>
+              <p class="label-share-p"><?php  _e( 'Tex to share through Whatsapp', 'wpo-friendly-share' ); ?></p>
               <input class="input-share" type="text" name="wfs-share-whatsapp-txt" value="<?php echo esc_attr( get_option( 'wfs-share-whatsapp-txt' ) ); ?>" />
             </label>
           </div>
@@ -55,7 +55,7 @@ function wfs_admin_render() {
           <!-- texto para compartir en telegram -->
           <div class="content-label-share">
             <label class="label-share">
-              <p class="label-share-p"><?php  _e( 'Texto para compartir a traves de Telegram', 'wpo-friendly-share' ); ?></p>
+              <p class="label-share-p"><?php  _e( 'Tex to share through Telegram', 'wpo-friendly-share' ); ?></p>
               <input class="input-share" type="text" name="wfs-share-telegram-txt" value="<?php echo esc_attr( get_option( 'wfs-share-telegram-txt' ) ); ?>" />
             </label>
           </div>
@@ -111,7 +111,7 @@ function wfs_admin_render() {
           <!-- Antes del post -->
           <span class="checkbox-ajustes">
             <label>
-                <?php  _e( 'Quiero que aparezca al principio de cada post', 'wpo-friendly-share' ); ?>
+                <?php  _e( 'I want it to appear at the beinning of each post', 'wpo-friendly-share' ); ?>
                 <input type="checkbox" name="wfs-options-before-post" value="1" <?php checked( 1, get_option( 'wfs-options-before-post' ), true ); ?> />
             </label>
           </span>
@@ -120,34 +120,34 @@ function wfs_admin_render() {
           <!-- Despues del post -->
           <span class="checkbox-ajustes">
             <label>
-                <?php  _e( 'Quiero que aparezca al final de cada post', 'wpo-friendly-share' ); ?>
+                <?php  _e( 'I want it to appear at the end of each post', 'wpo-friendly-share' ); ?>
                 <input type="checkbox" name="wfs-options-after-post" value="1" <?php checked( 1, get_option( 'wfs-options-after-post' ), true ); ?> />
             </label>
           </span>
           <br />        
         </div>
         <div class="aside-postbox">
-          <p>-<?php  _e( 'El titulo aparecera justo encima de los botones', 'wpo-friendly-share' ); ?></p>
-          <p>-<?php  _e( 'El nombre de usuario de twitter se usara para mencionarte al compartir', 'wpo-friendly-share' ); ?></p>
-          <p>-<?php  _e( 'El texto para compartir en whatsapp se mostrará como texto predifinido al enviar el mensaje', 'wpo-friendly-share' ); ?></p>
-          <p>-<?php  _e( 'Hay que marcar las redes que quieres que aparezcan', 'wpo-friendly-share' ); ?></p>
-          <p>-<?php  _e( 'Marca si quieres que aparezca antes del post, despues del post o ambos si no se marca ninguno no apareceran', 'wpo-friendly-share' ); ?></p>
-          <p>-<?php  _e( 'Si prefieres añadirlo con shortcode añade este codigo donde queras que aparezca dentro del post', 'wpo-friendly-share' );echo '<b><br /> &#91;wfs_share&#93;</b><br />'; _e( 'O este otro si lo prefieres añadir desde la plantilla', 'wpo-friendly-share' ); echo '<br /><b>' . htmlentities("<?php if ( function_exists('wfs_share') ) {echo wfs_share();}?>", ENT_QUOTES)?></b></p>
+          <p>-<?php  _e( 'The title will appear just above the buttons' ); ?></p>
+          <p>-<?php  _e( 'The twitter username will be used to mention you when sharing', 'wpo-friendly-share' ); ?></p>
+          <p>-<?php  _e( 'The text to share on whatsapp will be shown as predefined text when sending the message', 'wpo-friendly-share' ); ?></p>
+          <p>-<?php  _e( 'You have to mark the social networks you want to appear', 'wpo-friendly-share' ); ?></p>
+          <p>-<?php  _e( '"Mark if you want it to appear before the post, after the post or both if it is not marked none will appear', 'wpo-friendly-share' ); ?></p>
+          <p>-<?php  _e( 'If you prefer to add it with shortcode add this code where you want it to appear inside the post', 'wpo-friendly-share' );echo '<b><br /> &#91;wfs_share&#93;</b><br />'; _e( 'Or this one if you prefer to add it from the template', 'wpo-friendly-share' ); echo '<br /><b>' . htmlentities("<?php if ( function_exists('wfs_share') ) {echo wfs_share();}?>", ENT_QUOTES)?></b></p>
         </div>
       </div>
     </div>
 
   <!-- BOTONES FOLLOW -->
     <div class="postbox">
-      <h2 class="postbox-h2"><?php  _e( 'Botones buscanos en las redes sociales', 'wpo-friendly-share' ); ?></h2>
-      <h3 class="postbox-h3"><?php _e( 'Escribe la url completa de tu perfil o pagina y selecciona  que redes mostrar para que te sigan', 'wpo-friendly-share' ) ?></h3>
+      <h2 class="postbox-h2"><?php  _e( 'Buttons follow me on social networks', 'wpo-friendly-share' ); ?></h2>
+      <h3 class="postbox-h3"><?php _e( 'Type the complete url of your profile or page and select which social networks to display to follow you', 'wpo-friendly-share' ) ?></h3>
 
       <div class="contenido-postbox">        
         <div class="content-input">
           <!-- Titulo follow-->
           <div class="content-label-follow">
             <label class="label-share follow">
-              <p class="label-p"><?php  _e( 'Titulo de botones follow personalizado', 'wpo-friendly-share' ); ?></p>
+              <p class="label-p"><?php  _e( 'Custom follow button title', 'wpo-friendly-share' ); ?></p>
               <input class="input-share" type="text" name="wfs-follow-custom-label" value="<?php echo esc_attr( get_option( 'wfs-follow-custom-label' ) ); ?>" />
             </label>
           </div>
@@ -161,7 +161,7 @@ function wfs_admin_render() {
                 Facebook
               </label>
               <label class="label-url">
-                <p class="border-p"><?php  _e( 'Url completa de tu fan page o perfil', 'wpo-friendly-share' ); ?></p>
+                <p class="border-p"><?php  _e( 'Complete url of your fan page or prifile', 'wpo-friendly-share' ); ?></p>
                 <input type="url" class="input-url" name="wfs-follow-url-facebook" placeholder="https://facebook.com/tu perfil"  value="<?php echo esc_url( get_option( 'wfs-follow-url-facebook' ) ); ?>" />
             </label>
             </div>
@@ -176,7 +176,7 @@ function wfs_admin_render() {
                 Twitter
               </label>
               <label class="label-url">
-                <p class="border-p"><?php  _e( 'Url completa de tu pagina o perfil de twitter', 'wpo-friendly-share' ); ?></p>
+                <p class="border-p"><?php  _e( 'Complete url of your page or Twitter profile', 'wpo-friendly-share' ); ?></p>
                 <input type="url" class="input-url" name="wfs-follow-url-twitter" placeholder="https://twitter.com/tu perfil"  value="<?php echo esc_url( get_option( 'wfs-follow-url-twitter' ) ); ?>" />
               </label>
             </div>
@@ -191,7 +191,7 @@ function wfs_admin_render() {
                 Linkedin
               </label>
               <label class="label-url">
-                <p class="border-p"><?php  _e( 'Url completa de tu pagina de Linkedin', 'wpo-friendly-share' ); ?></p>
+                <p class="border-p"><?php  _e( 'Complete url of your Likedin page', 'wpo-friendly-share' ); ?></p>
                 <input type="url" class="input-url" name="wfs-follow-url-linkedin" placeholder="https://Linkedin.com/tu perfil"  value="<?php  echo esc_url( get_option( 'wfs-follow-url-linkedin' ) );?>" />
               </label>
             </div>
@@ -206,7 +206,7 @@ function wfs_admin_render() {
                 Pinterest
               </label>
               <label class="label-url">
-                <p class="border-p"><?php  _e( 'Url completa de tu pagina de Pinterest', 'wpo-friendly-share' ); ?></p>
+                <p class="border-p"><?php  _e( 'Complete url of your Pinterest page', 'wpo-friendly-share' ); ?></p>
                 <input type="url" class="input-url" name="wfs-follow-url-pinterest" placeholder="https://pinterest.com/tu perfil"  value="<?php echo esc_url( get_option( 'wfs-follow-url-pinterest' ) ); ?>" />
               </label>
             </div>
@@ -221,7 +221,7 @@ function wfs_admin_render() {
                 Instagram
               </label>
               <label class="label-url">
-                <p class="border-p"><?php  _e( 'Url completa de tu pagina de Instagram', 'wpo-friendly-share' ); ?></p>
+                <p class="border-p"><?php  _e( 'Complete url of your Instagram page', 'wpo-friendly-share' ); ?></p>
                 <input type="url" class="input-url" name="wfs-follow-url-instagram" placeholder="https://instagram.com/tu perfil"  value="<?php echo esc_url( get_option( 'wfs-follow-url-instagram' ) ); ?>" />
               </label>
             </div>
@@ -236,7 +236,7 @@ function wfs_admin_render() {
                 Youtube
               </label>
               <label class="label-url">
-                  <p class="border-p"><?php  _e( 'Url completa de tu pagina de Youtube', 'wpo-friendly-share' ); ?></p>
+                  <p class="border-p"><?php  _e( 'Complete url of your Youtube page', 'wpo-friendly-share' ); ?></p>
               <input type="url" class="input-url" name="wfs-follow-url-youtube" placeholder="https://youtube.com/tu perfil"  value="<?php echo esc_url( get_option( 'wfs-follow-url-youtube' ) ); ?>" />
               </label>
             </div>
@@ -251,7 +251,7 @@ function wfs_admin_render() {
                 My Business
               </label>
               <label class="label-url">
-                <p class="border-p"><?php  _e( 'Url completa de tu pagina de My Business', 'wpo-friendly-share' ); ?></p>
+                <p class="border-p"><?php  _e( 'Complete url of your My Business page', 'wpo-friendly-share' ); ?></p>
                 <input type="url" class="input-url" name="wfs-follow-url-myBusiness" placeholder="https://g.page/tu perfil"  value="<?php echo esc_url( get_option( 'wfs-follow-url-myBusiness' ) ); ?>" />
               </label>
             </div>
@@ -266,26 +266,26 @@ function wfs_admin_render() {
                 Telegram
               </label>
               <label class="label-url">
-                <p class="border-p"><?php  _e( 'Url completa de tu usuario', 'wpo-friendly-share' ); ?></p>
+                <p class="border-p"><?php  _e( 'Complete url of your user', 'wpo-friendly-share' ); ?></p>
                 <input type="url" class="input-url" name="wfs-follow-url-telegram" placeholder="https://t.me/tuUsuario"  value="<?php echo esc_url( get_option( 'wfs-follow-url-telegram' ) ); ?>" />
               </label>
             </div>
           </div>
         </div>
         <div class="aside-postbox">
-          <p>-<?php  _e( 'El titulo aparecera justo encima de los botones', 'wpo-friendly-share' ); ?></p>
-          <p>-<?php  _e( 'Tienes que poner la url completa de tu red social ejemplo https://www.red-social/tu-pagina-o-tu-perfil', 'wpo-friendly-share' ); ?></p>
-          <p>-<?php  _e( 'Hay que marcar las redes que quieres que aparezcan si no estan marcadas no apareceran', 'wpo-friendly-share' ); ?></p>
-          <p>-<?php  _e( '¿Como puedo añadir los botones follow con un shortcode?', 'wpo-friendly-share' ); echo '<br />';  _e( ' Añade este short code donde quieras que aparezca:', 'wpo-friendly-share' ); echo '<b><br /> &#91;wfs_follow&#93;</b>';?></p>
-          <p>-<?php  _e( '¿Como añado los botones follow en la plantilla del tema?', 'wpo-friendly-share' ); echo '<br />'; _e( 'Añade este codigo en el lugar de la plantilla que quieres que aparectan los botones:', 'wpo-friendly-share' ); echo '<br /><b>' . htmlentities("<?php if ( function_exists('wfs_follow') ) {echo wfs_follow();}?>", ENT_QUOTES)?></b></p>
+          <p>-<?php  _e( 'The title will appear just above the buttons', 'wpo-friendly-share' ); ?></p>
+          <p>-<?php  _e( 'You have to put the complete url of your social network example https: //www.social-network/your-page-or-profile', 'wpo-friendly-share' ); ?></p>
+          <p>-<?php  _e( 'You have to mark the social networks you want to appear if they are not marked will not appear', 'wpo-friendly-share' ); ?></p>
+          <p>-<?php  _e( 'How can I add the follow buttons with a shortcode?', 'wpo-friendly-share' ); echo '<br />';  _e( 'Add this short code where you want it to appear:', 'wpo-friendly-share' ); echo '<b><br /> &#91;wfs_follow&#93;</b>';?></p>
+          <p>-<?php  _e( 'How do I add the follow buttons in the theme template?', 'wpo-friendly-share' ); echo '<br />'; _e( 'Add this code in the place of the template that you want the buttons to appear:', 'wpo-friendly-share' ); echo '<br /><b>' . htmlentities("<?php if ( function_exists('wfs_follow') ) {echo wfs_follow();}?>", ENT_QUOTES)?></b></p>
         </div>
       </div>
     </div>
 
     <!-- OPCIONES -->
     <div class="postbox">
-      <h2 class="postbox-h2"><?php  _e( 'Ajustes avanzados', 'wpo-friendly-share' ); ?></h2>
-      <h3 class="postbox-h3"><?php _e( 'Usa esta sección para optimizar mas este plugin', 'wpo-friendly-share' ) ?></h3>
+      <h2 class="postbox-h2"><?php  _e( 'Advanced settings', 'wpo-friendly-share' ); ?></h2>
+      <h3 class="postbox-h3"><?php _e( 'Use this section to further optimize this plugin', 'wpo-friendly-share' ) ?></h3>
 
       <div class="contenido-postbox">
         <div class="content-input">
@@ -293,7 +293,7 @@ function wfs_admin_render() {
           <!-- Style -->
           <span class="checkbox-ajustes">
             <label>
-                <?php  _e( 'Desactivar css', 'wpo-friendly-share' );?>
+                <?php  _e( 'Disable css', 'wpo-friendly-share' );?>
                 <input type="checkbox" name="wfs-options-css" value="1" <?php checked( 1, get_option( 'wfs-options-css' ), true );?> />
             </label>
           </span>
@@ -302,7 +302,7 @@ function wfs_admin_render() {
           <!-- rel="nofollow" -->
           <span class="checkbox-ajustes">
             <label>
-                <?php  _e( 'Añadir rel="nofollow" a todos los enlaces', 'wpo-friendly-share' ); ?>
+                <?php  _e( 'Add rel="nofollow" to all links', 'wpo-friendly-share' ); ?>
                 <input type="checkbox" name="wfs-options-rel-nofollow" value="1" <?php checked( 1, get_option( 'wfs-options-rel-nofollow' ), true ); ?> />
             </label>
           </span>
@@ -312,12 +312,12 @@ function wfs_admin_render() {
           <div class="content-radio">
             <span class="checkbox-ajustes">
               <label>
-                  <h3><?php  _e( 'Añadir evento Analytics', 'wpo-friendly-share' ); ?>
+                  <h3><?php  _e( 'Add Analytics event', 'wpo-friendly-share' ); ?>
                   <input type="checkbox" name="wfs-options-analytics" value="1" <?php checked( 1, get_option( 'wfs-options-analytics' ), true ); ?> /></h3>
               </label>
             </span>
             <br />
-            <?php  _e( 'Selecciona si usas las etiqueta ga o gtag', 'wpo-friendly-share' ); ?>
+            <?php  _e( 'Select if you use the ga or gtag tags', 'wpo-friendly-share' ); ?>
             <span class="checkbox-ajustes">
               <label>
                 &nbsp;&nbsp;&nbsp;
@@ -335,29 +335,29 @@ function wfs_admin_render() {
           </div>
         </div>
         <div class="aside-postbox">
-          <p>-<?php  _e( 'Si desactivas el el css asegurate de incluirlo en la hoja de estilos de tu tema de lo contrario e complemento puede romper su estilo ', 'wpo-friendly-share' ); ?></p>
-          <p>-<?php  _e( 'Si esta activada, todo los enlaces tendran rel="nofollow"', 'wpo-friendly-share' ); ?></p>
-          <p>-<?php  _e( 'Activa el evento analytics y selecciona que etiquetas usas en tu web ( para que esto funcione tienes que tener insertado el codigo de analytics )', 'wpo-friendly-share' ); ?></p>          
+          <p>-<?php  _e( 'If you disable the css make sure to include it in the style sheet of your theme otherwise and complement can break your style', 'wpo-friendly-share' ); ?></p>
+          <p>-<?php  _e( 'If activated, all links will have rel = "nofollow"', 'wpo-friendly-share' ); ?></p>
+          <p>-<?php  _e( 'Activate the analytics event and select which tags you use on your website ( for this to work you have to have the analytics code inserted )', 'wpo-friendly-share' ); ?></p>          
         </div>
       </div>
     </div>
 
   <div class="postbox">
-    <h2 class="postbox-h2"><?php  _e( 'Ajustes para la desactivacion del plugin', 'wpo-friendly-share' ); ?></h2>
-    <h3 class="postbox-h3"><?php _e( 'Usa esta sección SOLO si sabes lo que haces', 'wpo-friendly-share' ) ?></h3>
+    <h2 class="postbox-h2"><?php  _e( 'Setting for plugin deactivation', 'wpo-friendly-share' ); ?></h2>
+    <h3 class="postbox-h3"><?php _e( 'Use this section ONLY if you know what you do', 'wpo-friendly-share' ) ?></h3>
 
     <div class="contenido-postbox">
       <div class="content-input">
         <!-- Antes de desactivacion -->
         <span class="checkbox-ajustes">
           <label>
-              <?php  _e( 'Quiero eliminar toda la configuarion de WPO Friendly Share al desactivar el plugin', 'wpo-friendly-share' ); ?>
+              <?php  _e( 'I want to remove all WPO Friendly Share setting by deactivating the plugin', 'wpo-friendly-share' ); ?>
               <input type="checkbox" name="wfs-options-delete-all" value="1" <?php checked( 1, get_option( 'wfs-options-delete-all' ), true ); ?> />
           </label>
         </span>
       </div>
       <div class="aside-postbox">
-         <p><?php  _e( 'Si esta marcada esta opcion, al desactivar el plugin se eliminara toda la conficuracion', 'wpo-friendly-share' ); ?></p>
+         <p><?php  _e( 'If this option is checked, deactivating the plugin will eliminate all conficuracion', 'wpo-friendly-share' ); ?></p>
       </div>
     </div>
   </div>

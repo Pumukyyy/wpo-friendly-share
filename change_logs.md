@@ -1,4 +1,22 @@
 ********************************
+ 1.0.5 y 1.1.0
+********************************
+-traduzco el plugin al ingles y corrijo un fallo de depuracion de la antigua  version 
+
+
+
+********************************
+ proximas incorporaciones
+********************************
+- guardar en un array las opciones y sanearlas antes manteniendo la configuracion
+
+
+
+
+
+
+
+********************************
  1.0.4 28/10/2019--03/11/2019 
 ********************************
 - añado icono de telegram al spriter
@@ -16,13 +34,6 @@
 - Creo un filtro con el contenedor y contenido de las redes sociales follow 'wfs_content_follow_filter'
 - Arreglo un fallo por el que se mostraba el titulo sin nada marcado al aññadirlo mediante la funcion
 - Unifico la funcion de eventos de google analytics
-
-
-********************************
- proximas incorporaciones
-********************************
-- guardar en un array las opciones y sanearlas antes manteniendo la configuracion
-
 
 
 

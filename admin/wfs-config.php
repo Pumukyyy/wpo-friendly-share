@@ -22,7 +22,7 @@ function wfs_settings_init() {
 
 	add_settings_section(
 		'wfs_config_section', //$id, requerido
-		__( 'Configuracion de WPO Friendly Share', 'wpo-friendly-share' ), //$title, requerido
+		__( 'WPO Friendly Share setting', 'wpo-friendly-share' ), //$title, requerido
 		'wfs_admin_render',  //$callback, requerido  (funcion que haga echo del contenido)
 		'wfs_config_section'//$page requerido
 	);
@@ -98,7 +98,7 @@ function wfs_options_page() {
   ?>
     <div class="wrap">
         <h1 style="position:relative;padding-right:88px;display:inline-block;">
-        	<?php  _e( 'Botones sociales optimizados en velocidad de carga por', 'wpo-friendly-share' ); ?>
+        	<?php  _e( 'Social buttons optimized in loading speed by', 'wpo-friendly-share' ); ?>
         	<a target="_blank" rel="noopener noreferrer" href="https://pmkchapaypintura.com/">
             	<span class= "wfs-icon-pmk"></span> 
             </a>
@@ -123,7 +123,7 @@ add_filter( 'plugin_action_links_'.WFS_BASE, 'wfs_add_settings_link' );
 
 function wfs_add_settings_link( $links ) {
 
-  $settings_link = '<a href="' . esc_url( admin_url( 'admin.php?page=wpo-friendly-share') ) . '">' . __( 'Ajustes', 'wpo-friendly-share' ) . '</a>';
+  $settings_link = '<a href="' . esc_url( admin_url( 'admin.php?page=wpo-friendly-share') ) . '">' . __( 'Setting', 'wpo-friendly-share' ) . '</a>';
   $links[] =  $settings_link;
 
   return $links;
