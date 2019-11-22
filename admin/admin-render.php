@@ -18,6 +18,7 @@ function wfs_admin_style($hook) {
 
   wp_register_style( 'wfs-admin-style', WFS_URI . '/css/wfs-admin-style.css' );
   wp_enqueue_style( 'wfs-admin-style' );
+  wp_enqueue_script( 'wfs-admin-js', WFS_URI .'js/wfs_admin_js.js');
 
 }
 
@@ -33,7 +34,7 @@ function wfs_admin_render() {
           <div class="content-label-share">
             <label class="label-share">
               <p class="label-p"><?php  _e( 'Custom share button title', 'wpo-friendly-share' ); ?></p>
-              <input type="text" class="input-share" name="wfs-share-custom-label" value="<?php echo esc_attr( get_option( 'wfs-share-custom-label' ) ); ?>" />
+              <input type="text" id="titleShare" class="input-share" name="wfs-share-custom-label" oninput="customShare();" value="<?php echo esc_attr( get_option( 'wfs-share-custom-label' ) ); ?>" />
             </label>
           </div>
           <!-- Twitter -->
@@ -60,53 +61,56 @@ function wfs_admin_render() {
             </label>
           </div>
 
-          <label class="checkbox-share">
-            <span class="wfs-icon-social wfs-icon-twitter"></span>
-            <input type="checkbox" name="wfs-share-twitter" value="1" <?php checked( 1, get_option( 'wfs-share-twitter' ), true ); ?> />
-            Twitter
-          </label>
+          <div class="content-iconos">
+            <label class="checkbox-share">
+              <span class="wfs-icon-social wfs-icon-twitter"></span>
+              <input type="checkbox" name="wfs-share-twitter" value="1" <?php checked( 1, get_option( 'wfs-share-twitter' ), true ); ?> />
+              Twitter
+            </label>
 
-          <!-- Facebook -->
-          <label class="checkbox-share">
-            <span class="wfs-icon-social wfs-icon-facebook"></span>
-            <input type="checkbox" name="wfs-share-facebook" value="1" <?php checked( 1, get_option( 'wfs-share-facebook' ), true ); ?> />
-            Facebook
-          </label>
+            <!-- Facebook -->
+            <label class="checkbox-share">
+              <span class="wfs-icon-social wfs-icon-facebook"></span>
+              <input type="checkbox" name="wfs-share-facebook" value="1" <?php checked( 1, get_option( 'wfs-share-facebook' ), true ); ?> />
+              Facebook
+            </label>
 
-          <!-- Linkedin -->
-          <label class="checkbox-share">
-            <span class="wfs-icon-social wfs-icon-linkedin"></span> 
-            <input type="checkbox" name="wfs-share-linkedin" value="1" <?php checked( 1, get_option( 'wfs-share-linkedin' ), true ); ?> />
-            Linkedin
-          </label>
+            <!-- Linkedin -->
+            <label class="checkbox-share">
+              <span class="wfs-icon-social wfs-icon-linkedin"></span> 
+              <input type="checkbox" name="wfs-share-linkedin" value="1" <?php checked( 1, get_option( 'wfs-share-linkedin' ), true ); ?> />
+              Linkedin
+            </label>
 
-          <!-- Buffer -->
-          <label class="checkbox-share">
-            <span class="wfs-icon-social wfs-icon-buffer"></span>
-            <input type="checkbox" name="wfs-share-buffer" value="1" <?php checked( 1, get_option( 'wfs-share-buffer' ), true ); ?> /> 
-            Buffer    
-          </label>
+            <!-- Buffer -->
+            <label class="checkbox-share">
+              <span class="wfs-icon-social wfs-icon-buffer"></span>
+              <input type="checkbox" name="wfs-share-buffer" value="1" <?php checked( 1, get_option( 'wfs-share-buffer' ), true ); ?> /> 
+              Buffer    
+            </label>
 
-          <!-- Pinterest -->
-          <label class="checkbox-share">
-            <span class="wfs-icon-social wfs-icon-pinterest"></span>
-            <input type="checkbox" name="wfs-share-pinterest" value="1" <?php checked( 1, get_option( 'wfs-share-pinterest' ), true ); ?> />
-            Pinterest
-          </label>
+            <!-- Pinterest -->
+            <label class="checkbox-share">
+              <span class="wfs-icon-social wfs-icon-pinterest"></span>
+              <input type="checkbox" name="wfs-share-pinterest" value="1" <?php checked( 1, get_option( 'wfs-share-pinterest' ), true ); ?> />
+              Pinterest
+            </label>
 
-          <!-- Whatsapp -->
-          <label class="checkbox-share">
-            <span class="wfs-icon-social wfs-icon-whatsapp"></span>
-            <input type="checkbox" name="wfs-share-whatsapp" value="1" <?php checked( 1, get_option( 'wfs-share-whatsapp' ), true ); ?> />
-            Whatsapp
-          </label>
+            <!-- Whatsapp -->
+            <label class="checkbox-share">
+              <span class="wfs-icon-social wfs-icon-whatsapp"></span>
+              <input type="checkbox" name="wfs-share-whatsapp" value="1" <?php checked( 1, get_option( 'wfs-share-whatsapp' ), true ); ?> />
+              Whatsapp
+            </label>
 
-          <!-- Telegram -->
-          <label class="checkbox-share">
-            <span class="wfs-icon-social wfs-icon-telegram"></span>
-            <input type="checkbox" name="wfs-share-telegram" value="1" <?php checked( 1, get_option( 'wfs-share-telegram' ), true ); ?> />
-            Telegram
-          </label>
+            <!-- Telegram -->
+            <label class="checkbox-share">
+              <span class="wfs-icon-social wfs-icon-telegram"></span>
+              <input type="checkbox" name="wfs-share-telegram" value="1" <?php checked( 1, get_option( 'wfs-share-telegram' ), true ); ?> />
+              Telegram
+            </label>
+          </div>
+
 
           <!-- Antes del post -->
           <span class="checkbox-ajustes">
@@ -115,7 +119,6 @@ function wfs_admin_render() {
                 <input type="checkbox" name="wfs-options-before-post" value="1" <?php checked( 1, get_option( 'wfs-options-before-post' ), true ); ?> />
             </label>
           </span>
-          <br />
           
           <!-- Despues del post -->
           <span class="checkbox-ajustes">
@@ -124,7 +127,87 @@ function wfs_admin_render() {
                 <input type="checkbox" name="wfs-options-after-post" value="1" <?php checked( 1, get_option( 'wfs-options-after-post' ), true ); ?> />
             </label>
           </span>
-          <br />        
+
+          <div class="content-config-iconos">
+            <label class="label-share content-custom">
+              <p class="label-share-p"><?php  _e( 'Personaliza tus iconos', 'wpo-friendly-share' ) ?></p>
+              
+              <div class="config-iconos">
+                <!-- sin color de fondo follow -->
+                 <span class="checkbox-custom">
+                  <label>
+                      <?php  _e( 'No quiero color de fondo', 'wpo-friendly-share' );?>
+                      <input type="checkbox" id="sinBgShare" name="wfs-share-background-none" oninput="customShare();" value="1" <?php checked( 1, get_option( 'wfs-share-background-none' ), true ); ?> />
+                  </label>
+                </span>
+
+                <!-- color de fondo follow -->
+                <span class="checkbox-custom">
+                  <label>
+                      <?php  _e( 'Elige un color de fondo', 'wpo-friendly-share' );?>
+                      <input type="color" id="bgColorShare" name="wfs-share-background" oninput="customShare();" value="<?php echo esc_attr( get_option( 'wfs-share-background' ) ); ?>"/>
+                  </label>
+                </span>
+
+                <!-- color iconos follow -->
+                <span class="checkbox-custom">
+                  <label>
+                      <?php  _e( 'Elige un color para los iconos', 'wpo-friendly-share' );?>
+                      <input type="color" id="colorShare" name="wfs-share-color" oninput="customShare();" value="<?php echo esc_attr( get_option( 'wfs-share-color' ) ); ?>"/>
+                  </label>
+                </span>
+
+                <!-- border radius iconos follow -->
+                <span class="checkbox-custom">
+                  <label>
+                      <?php  _e( 'Bordes redondeados', 'wpo-friendly-share' );?>
+                      <input type="range" id="bdRadiusShare" name="wfs-share-border-radius" min="0" max="50" oninput="customShare();" value="<?php echo esc_attr( get_option( 'wfs-share-border-radius' ) ); ?>">                    
+                  </label>
+                </span>
+                
+                 <!-- tamaño iconos follow -->
+                 <span class="checkbox-custom">
+                  <label>
+                      <?php  _e( 'Tamaño del icono', 'wpo-friendly-share' );?>
+                      <input type="range" id="widthShare" name="wfs-share-width" min="20" max="100" oninput="customShare();" value="<?php echo esc_attr( get_option( 'wfs-share-width' ) ); ?>" step="1">
+                  </label>
+                </span>
+              </div>
+              <?php 
+                global $social_icons;
+                // Obtengo la personalización para share
+                $bg_none_s = get_option( 'wfs-share-background-none' );
+                $bg_color_s = esc_attr( get_option( 'wfs-share-background' ) );
+                $bg_color_s = 'background-color:'.$bg_color_s.';';
+                $color_s = esc_attr( get_option( 'wfs-share-color' ) );
+                echo '<style>.result-share .social-icon {fill:'.$color_s.';}</style>';
+
+                $width_s = esc_attr( get_option( 'wfs-share-width' ) );
+                $height_s = ' height:'.$width_s.'px;';
+                $width_s =' width:'.$width_s.'px;';
+
+                $b_radius_s = esc_attr( get_option( 'wfs-share-border-radius' ) );
+                $b_radius_s =' border-radius:'.$b_radius_s.'%;';
+
+                if( 1 == $bg_none_s ) {
+                 $bg_color_s = 'background-color:transparent;';
+                }      
+                // echo '<div class="content-custom-iconos">';
+                echo '<label class="label-share content-custom-iconos">';
+                echo '<p class="label-share-p">'. __( 'Asi quedaran tus iconos', 'wpo-friendly-share' ). '</p>';
+                
+                echo '<h3 id="reshare" class="reshare" >' . esc_attr( get_option( 'wfs-share-custom-label' ) ) .'</h3>';
+
+                echo '<div style="width:100%;">';
+                echo'<span id="reshare1" class="result-share" style="'.$bg_color_s.$b_radius_s.$width_s.$height_s.'"><span class="screen-reader-text">facebook</span>'.$social_icons['facebook'].'</span >';
+                echo'<span id="reshare2" class="result-share" style="'.$bg_color_s.$b_radius_s.$width_s.$height_s.'"><span class="screen-reader-text">facebook</span>'.$social_icons['linkedin'].'</span >';
+                echo'<span id="reshare3" class="result-share" style="'.$bg_color_s.$b_radius_s.$width_s.$height_s.'"><span class="screen-reader-text">facebook</span>'.$social_icons['instagram'].'</span >';
+                echo '</div>';
+              
+                echo '</label>';//</div>
+               ?>
+            </label>
+          </div>
         </div>
         <div class="aside-postbox">
           <p>-<?php  _e( 'The title will appear just above the buttons' ); ?></p>
@@ -271,6 +354,85 @@ function wfs_admin_render() {
               </label>
             </div>
           </div>
+
+          <!-- sin color de fondo follow -->
+           <span class="checkbox-ajustes">
+            <label>
+                <?php  _e( 'No quiero color de fondo', 'wpo-friendly-share' );?>
+                <input type="checkbox" id="sinBgFollow" name="wfs-follow-background-none" oninput="customFollow();" value="1" <?php checked( 1, get_option( 'wfs-follow-background-none' ), true ); ?> />
+            </label>
+          </span>
+          <br /> 
+
+          <!-- color de fondo follow -->
+          <span class="checkbox-ajustes">
+            <label>
+                <?php  _e( 'Elige un color de fondo', 'wpo-friendly-share' );?>
+                <input type="color" id="bgColorFollow" name="wfs-follow-background" oninput="customFollow();" value="<?php echo esc_attr( get_option( 'wfs-follow-background' ) ); ?>"/>
+            </label>
+          </span>
+          <br />         
+
+          <!-- color iconos follow -->
+          <span class="checkbox-ajustes">
+            <label>
+                <?php  _e( 'Elige un color para los iconos', 'wpo-friendly-share' );?>
+                <input type="color" id="colorFollow"  name="wfs-follow-color" oninput="customFollow();" value="<?php echo esc_attr( get_option( 'wfs-follow-color' ) ); ?>"/>
+            </label>
+          </span>
+          <br /> 
+
+          <!-- border radius iconos follow -->
+          <span class="checkbox-ajustes">
+            <label>
+                <?php  _e( 'Bordes redondeados', 'wpo-friendly-share' );?>
+                <input type="range"  id="bdRadiusFollow" name="wfs-follow-border-radius" min="0" max="50" oninput="customFollow();" value="<?php echo esc_attr( get_option( 'wfs-follow-border-radius' ) ); ?>" step="1">
+            </label>
+          </span>
+          <br /> 
+          
+           <!-- tamaño iconos follow -->
+           <span class="checkbox-ajustes">
+            <label>
+                <?php  _e( 'Tamaño del icono', 'wpo-friendly-share' );?>
+                <input type="range" id="widthFollow" name="wfs-follow-width" min="25" max="100" oninput="customFollow();" value="<?php echo esc_attr( get_option( 'wfs-follow-width' ) ); ?>" step="1">
+            </label>
+          </span>
+          <br /> 
+            <?php 
+              global $social_icons;
+              // Obtengo la personalización para share
+              $bg_none_f = get_option( 'wfs-follow-background-none' );
+              $bg_color_f = esc_attr( get_option( 'wfs-follow-background' ) );
+              $bg_color_f = 'background-color:'.$bg_color_f.';';
+              $color_f = esc_attr( get_option( 'wfs-follow-color' ) );
+              echo '<style>.result-follow .social-icon {fill:'.$color_f.';}</style>';
+
+              $width_f = esc_attr( get_option( 'wfs-follow-width' ) );
+              $height_f = ' height:'.$width_f.'px;';
+              $width_f =' width:'.$width_f.'px;';
+
+              $b_radius_f = esc_attr( get_option( 'wfs-follow-border-radius' ) );
+              $b_radius_f =' border-radius:'.$b_radius_f.'%;';
+
+              if( 1 == $bg_none_f ) {
+               $bg_color_f = 'background-color:transparent;';
+              }      
+              echo '<div class="content-custom-iconos">';
+              echo '<label class="label-share">';
+              echo '<p class="label-share-p">'. __( 'Asi quedaran tus iconos', 'wpo-friendly-share' ). '</p>';
+               
+
+              echo'<span id="refollow1" class="result-follow" style="'.$bg_color_f.$b_radius_f.$width_f.$height_f.'"><span class="screen-reader-text">facebook</span>'.$social_icons['twitter'].'</span >';
+              echo'<span id="refollow2" class="result-follow" style="'.$bg_color_f.$b_radius_f.$width_f.$height_f.'"><span class="screen-reader-text">facebook</span>'.$social_icons['pinterest'].'</span >';
+              echo'<span id="refollow3" class="result-follow" style="'.$bg_color_f.$b_radius_f.$width_f.$height_f.'"><span class="screen-reader-text">facebook</span>'.$social_icons['whatsapp'].'</span >';
+            
+              echo '</label></div>';
+            ?>
+
+            <!-- <script>
+             customShare();
+            </script> -->
         </div>
         <div class="aside-postbox">
           <p>-<?php  _e( 'The title will appear just above the buttons', 'wpo-friendly-share' ); ?></p>
@@ -361,5 +523,6 @@ function wfs_admin_render() {
       </div>
     </div>
   </div>
+
  <?php
 }

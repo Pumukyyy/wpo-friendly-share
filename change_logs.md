@@ -1,17 +1,31 @@
 ********************************
- 1.0.5 y 1.1.0
+ 2.0.0 18/11/2019
 ********************************
--traduzco el plugin al ingles y corrijo un fallo de depuracion de la antigua  version 
-
+- añadido los con svg incrustrados
+- añadido opciones de personalización
+- añado javascript solo en admin para mostrar resultado en tiempo real
+- añado tambien opcion para personalizar el titulo
 
 
 ********************************
  proximas incorporaciones
 ********************************
 - guardar en un array las opciones y sanearlas antes manteniendo la configuracion
+- añadir opcion para los iconos antiguos
+
+- me falta hacerlo para todos los botones 
+- me falta aplicar los estilos mediante un tag en comun para todos
+- tengo que mejorar css para movil en el admin
 
 
 
+
+
+
+********************************
+ 1.0.5 y 1.1.0
+********************************
+-traduzco el plugin al ingles y corrijo un fallo de depuracion de la antigua  version 
 
 
 

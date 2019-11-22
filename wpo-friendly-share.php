@@ -67,6 +67,8 @@ if ( is_admin() ) {
 	require_once( WFS_PATH . 'public/public-render.php' );
 }
 
+require_once( WFS_PATH . 'assets/social-icons.php' );
+
 function wfs_load_textdomain() {
     load_plugin_textdomain( 'wpo-friendly-share', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 }

@@ -64,12 +64,11 @@ function wfs_gtag( $red_social, $event, $titulo = false ) {
 */
 function wfs_share() {
 
-  global $post;
-
+  global $social_icons;
   $current_url = get_permalink();
   $current_url            = urlencode( $current_url );
   $current_title          = urlencode( get_the_title() );
-  $current_thumbnail      = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' );
+  $current_thumbnail      = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
   $current_thumbnail_code = urlencode($current_thumbnail[0]);
   $default_txt            = rawurlencode( strip_tags( __( 'Look at this, I think it will interest you', 'wpo-friendly-share' ) ) );
 
@@ -150,6 +149,25 @@ function wfs_share() {
   if (has_filter('wsf_array_share_filter')) {
       $redes_share = apply_filters( 'wsf_array_share_filter', $redes_share );
   }   
+
+  // Obtengo la personalización para share
+  $bg_none = get_option( 'wfs-share-background-none' );
+  $bg_color = esc_attr( get_option( 'wfs-share-background' ) );
+  $bg_color = 'background-color:'.$bg_color.';';
+  $color = esc_attr( get_option( 'wfs-share-color' ) );
+  echo '<style>.wfs-share .social-icon {fill:'.$color.';}</style>';
+
+  $width = esc_attr( get_option( 'wfs-share-width' ) );
+  $width =' width:'.$width.'px;';
+
+  $b_radius = esc_attr( get_option( 'wfs-share-border-radius' ) );
+  $b_radius =' border-radius:'.$b_radius.'%;';
+
+  if( 1 == $bg_none ) {
+   $bg_color = 'background-color:transparent;';
+  }
+
+
   //comienzo el contenido 
   $wfs_content  = '<div class="wfs-share"><!-- WPO friendly share - START-->';
   $wfs_content .= '<p class="titulo">';
@@ -167,10 +185,11 @@ function wfs_share() {
 
     if( 1 == $seleccionado ) {
 
-      $wfs_content .= '<a class="wfs-link-share wfs-share-' . $red . '" href="' . esc_url( $url . $parametro) . '" target="_blank" '. wfs_rel_nofollow() .' '. wfs_gtag( $red, 'share', esc_attr( get_the_title() ) ) .'"></a>';
+      $wfs_content .= '<a class="wfs-link-share wfs-share-' . $red . '" style="'.$bg_color.$b_radius.$width.'" href="' . esc_url( $url . $parametro) . '" target="_blank" '. wfs_rel_nofollow() .' '. wfs_gtag( $red, 'share', esc_attr( get_the_title() ) ) .'"><span class="screen-reader-text">'.$red.'</span>'.$social_icons[$red].'</a>';
 
     }
   }
+
 
   $wfs_content .= '</div></div><!-- WPO friendly share - END-->';
   //fin del contenido 
@@ -255,6 +274,7 @@ function wfs_add_share_content() {
 add_shortcode( 'wfs_follow', 'wfs_follow' );
   
 function wfs_follow() {
+  global $social_icons;
 
   $redes_follow = array(
     'facebook'    => array(
@@ -296,6 +316,24 @@ function wfs_follow() {
       $redes_follow = apply_filters( 'wsf_array_follow_filter', $redes_follow );
   }  
 
+  // Obtengo la personalización para follow
+  $bg_none = get_option( 'wfs-follow-background-none' );
+  $bg_color = esc_attr( get_option( 'wfs-follow-background' ) );
+  $bg_color = 'background-color:'.$bg_color.';';
+  $color = esc_attr( get_option( 'wfs-follow-color' ) );
+  echo '<style>.wfs-follow .social-icon {fill:'.$color.';}</style>';
+
+  $width = esc_attr( get_option( 'wfs-follow-width' ) );
+  $width ='width:'.$width.'px;';
+
+  $b_radius = esc_attr( get_option( 'wfs-follow-border-radius' ) );
+  $b_radius ='border-radius:'.$b_radius.'%;';
+
+  if( 1 == $bg_none ) {
+   $bg_color = 'background-color:transparent;';
+  }
+
+
   $wfs_content  = '<div class="wfs-follow" itemscope itemtype="http://schema.org/Organization"><!-- WPO friendly share - START-->';
   $wfs_content .= '<link itemprop="url" href="'. esc_url( get_home_url() ) .'">';
   $wfs_content .= '<meta itemprop="name" href="'. esc_attr( get_bloginfo() ) .'">';
@@ -327,7 +365,7 @@ function wfs_follow() {
 
     if( 1 == $seleccionado ) {
 
-      $wfs_content .= '<a itemprop="sameAs" class="wfs-link-follow wfs-follow-' . $red . '" href="'. esc_url( $url ) .'" target="_blank" '. wfs_rel_nofollow() .' '. wfs_gtag( $red, 'follow', '+1 Follow' ) .'></a>';
+      $wfs_content .= '<a itemprop="sameAs" class="wfs-link-follow wfs-follow-' . $red . '" style="'.$bg_color.$b_radius.$width.'" href="'. esc_url( $url ) .'" target="_blank" '. wfs_rel_nofollow() .' '. wfs_gtag( $red, 'follow', '+1 Follow' ) .'><span class="screen-reader-text">'.$red.'</span>'.$social_icons[$red].'</a>';
 
     }
   }
