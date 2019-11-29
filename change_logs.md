@@ -1,10 +1,18 @@
 ********************************
  2.0.0 18/11/2019
 ********************************
-- añadido los con svg incrustrados
-- añadido opciones de personalización
-- añado javascript solo en admin para mostrar resultado en tiempo real
-- añado tambien opcion para personalizar el titulo
+- Añadido los iconos con svg incrustrados
+- Añadido opciones de personalización
+- Añado javascript solo en admin para mostrar resultado en tiempo real
+- Añado tambien opcion para personalizar el titulo
+- Añado una funcion con un array en asset con toda la info de la redes
+- elimino el filtro de wsf_array_share_filter y wsf_array_follow_filter por que ya no existe esa bariable ahora es $social_network quien se contiene toda la informacion
+- añado un filtro ('wsf_array_social_network_filter') para el array $social_network con las url_follow url_share, select_follow, select_share y los iconos
+- añado dos array uno $social_network_share  y otro $social_network_follow  para poder compararlos con el array $social_network y mostrar solo las que procedan
+- oculto los iconos que no esten marcados
+- añado un filtro para las redes sociales share wsf_array_social_network_share_filter
+- añado un filtro para las redes sociales follow wsf_array_social_network_follow_filter
+
 
 
 ********************************
@@ -12,11 +20,10 @@
 ********************************
 - guardar en un array las opciones y sanearlas antes manteniendo la configuracion
 - añadir opcion para los iconos antiguos
-
-- me falta hacerlo para todos los botones 
-- me falta aplicar los estilos mediante un tag en comun para todos
 - tengo que mejorar css para movil en el admin
 
+
+- redirigir al activar el plugin
 
 
 

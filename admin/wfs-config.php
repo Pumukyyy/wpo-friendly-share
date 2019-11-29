@@ -41,11 +41,11 @@ function wfs_settings_init() {
   register_setting( 'wfs_config_section', 'wfs-share-instagram', 'wfs_sanitize_checkbox' );
   register_setting( 'wfs_config_section', 'wfs-share-telegram-txt', 'sanitize_text_field' );
   register_setting( 'wfs_config_section', 'wfs-share-telegram', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-share-background', 'wp_kses_post' );
+
+  register_setting( 'wfs_config_section', 'wfs_share_custom', 'wfs_sanitize_text_or_array_field' ); 
   register_setting( 'wfs_config_section', 'wfs-share-background-none', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-share-color','wp_kses_post');
-  register_setting( 'wfs_config_section', 'wfs-share-border-radius', 'intval'  );
-  register_setting( 'wfs_config_section', 'wfs-share-width', 'intval'  );
+
+
 
 
   register_setting( 'wfs_config_section', 'wfs-follow-custom-label', 'sanitize_text_field' );
@@ -65,12 +65,11 @@ function wfs_settings_init() {
   register_setting( 'wfs_config_section', 'wfs-follow-url-myBusiness', 'esc_url_raw' );
   register_setting( 'wfs_config_section', 'wfs-follow-checkbox-telegram', 'wfs_sanitize_checkbox' );
   register_setting( 'wfs_config_section', 'wfs-follow-url-telegram', 'esc_url_raw' );
-  register_setting( 'wfs_config_section', 'wfs-follow-background', 'wp_kses_post' );
+
+  register_setting( 'wfs_config_section', 'wfs_follow_custom', 'wfs_sanitize_text_or_array_field' );
   register_setting( 'wfs_config_section', 'wfs-follow-background-none', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-follow-color', 'wp_kses_post' );
-  register_setting( 'wfs_config_section', 'wfs-follow-border-radius', 'intval' );
-  register_setting( 'wfs_config_section', 'wfs-follow-width', 'intval' );
-//wp_kses_allowed_html
+
+
   register_setting( 'wfs_config_section', 'wfs-options-before-post', 'wfs_sanitize_checkbox' );
   register_setting( 'wfs_config_section', 'wfs-options-after-post', 'wfs_sanitize_checkbox' );
   register_setting( 'wfs_config_section', 'wfs-options-css', 'wfs_sanitize_checkbox' );
@@ -96,6 +95,23 @@ function wfs_sanitize_checkbox( $value ) {
   } else {
       return 0;
     }
+}
+
+function wfs_sanitize_text_or_array_field($array_or_string) {
+    if( is_string($array_or_string) ){
+        $array_or_string = sanitize_text_field($array_or_string);
+    }elseif( is_array($array_or_string) ){
+        foreach ( $array_or_string as $key => &$value ) {
+            if ( is_array( $value ) ) {
+                $value = wfs_sanitize_text_or_array_field($value);
+            }
+            else {
+                $value = sanitize_text_field( $value );
+            }
+        }
+    }
+
+    return $array_or_string;
 }
 
 

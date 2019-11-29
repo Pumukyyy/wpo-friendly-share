@@ -60,7 +60,7 @@ if ( is_admin() ) {
 	  update_option( 'wfs-options-after-post', 1);
 	}
 
-	register_activation_hook(__FILE__, 'wfs_add_options' );
+	register_activation_hook( __FILE__, 'wfs_add_options' );
 	
 } else {
 

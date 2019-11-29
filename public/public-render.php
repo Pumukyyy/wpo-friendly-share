@@ -64,40 +64,6 @@ function wfs_gtag( $red_social, $event, $titulo = false ) {
 */
 function wfs_share() {
 
-  global $social_icons;
-  $current_url = get_permalink();
-  $current_url            = urlencode( $current_url );
-  $current_title          = urlencode( get_the_title() );
-  $current_thumbnail      = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'large' );
-  $current_thumbnail_code = urlencode($current_thumbnail[0]);
-  $default_txt            = rawurlencode( strip_tags( __( 'Look at this, I think it will interest you', 'wpo-friendly-share' ) ) );
-
-  //Compruebo si hay texto y si no muestro texto por defecto
-  $whatsapp_txt = urlencode( strip_tags( get_option( 'wfs-share-whatsapp-txt' ) ) );
-  if ( empty( $whatsapp_txt ) ) {
-    $whatsapp_txt = $default_txt;
-  }
-  $whatsapp_txt = '*' . $whatsapp_txt . '*';
-
-  // Compruebo si es movil o web para mostrar un enlace diferebte para whatsapp
-  $whatsapp_from = 'api.whatsapp.com';
-  if ( !wp_is_mobile() ) {
-      $whatsapp_from = 'web.whatsapp.com';    
-  }
-
-  $telegram_txt   = rawurlencode( strip_tags( get_option( 'wfs-share-telegram-txt' ) ) );
-  if ( empty( $telegram_txt ) ) {
-    $telegram_txt = $default_txt;
-  }
-  $telegram_txt = '**' . $telegram_txt . '**';
-
-  // Compruebo si es movil o web para mostrar un enlace diferebte para telegram
-  $telegram_from = 't.me/share/url';
-  if ( !wp_is_mobile() ) {
-      $telegram_from = 'web.telegram.org/#/im?tgaddr=tg://msg_url';    
-  }
-
-
   //Compruebo si hay texto en el titulo y si no agrego uno por defecto
   $custom_label = get_option( 'wfs-share-custom-label' );
   if ( empty( $custom_label ) ) {
@@ -106,86 +72,28 @@ function wfs_share() {
    
   }
 
-  // Creo un array con las url de las diferentes redes sociales
-  $redes_share = array(
-    'facebook'    => array(
-      'url'           => 'https://www.facebook.com/sharer/sharer.php?',
-      'parametros'    => 'u=' . $current_url,
-      'seleccionado'  => get_option( 'wfs-share-facebook' ),
-    ),
-    'twitter'     => array(
-      'url'           => 'https://twitter.com/intent/tweet?',
-      'parametros'    => 'text=' . $current_title . '&url=' . $current_url . '&via=' . get_option( 'wfs-share-twitter-name' ),
-      'seleccionado'  => get_option( 'wfs-share-twitter' ),
-    ),
-    'linkedin'    => array(
-      'url'           => 'https://www.linkedin.com/shareArticle?',
-      'parametros'    => 'mini=true&url=' . $current_url . '&title='.$current_title,
-      'seleccionado'  => get_option( 'wfs-share-linkedin' ),
-    ),
-    'buffer'      => array(
-      'url'           => 'https://bufferapp.com/add?',
-      'parametros'    => 'url=' . $current_url . '&amp;text=' . $current_title,
-      'seleccionado'  => get_option( 'wfs-share-buffer' ),
-    ),
-    'pinterest'   => array(
-      'url'           => 'https://pinterest.com/pin/create/button/?',
-      'parametros'    => 'url=' . $current_url . '&media=' . $current_thumbnail_code . '&description='.$current_title,
-      'seleccionado'  => get_option( 'wfs-share-pinterest' ),
-    ),
-    'whatsapp'    => array(
-      'url'           => 'https://' . $whatsapp_from . '/send?',
-      'parametros'    => 'l=es&text=' . $whatsapp_txt . '%0A_' . $current_title . '_%0A' . $current_url,
-      'seleccionado'  => get_option( 'wfs-share-whatsapp' ),
-    ),
-    'telegram'    => array(
-      'url'           => 'https://' . $telegram_from . '?',
-      'parametros'    => urlencode('url=' . $current_url . '&text=' . $telegram_txt),
-      'seleccionado'  => get_option( 'wfs-share-telegram' ),
-    ),
-  );
- 
-  // Creo un filtro para el array de las redes sociales follow con las url y los select
-  if (has_filter('wsf_array_share_filter')) {
-      $redes_share = apply_filters( 'wsf_array_share_filter', $redes_share );
-  }   
-
-  // Obtengo la personalización para share
-  $bg_none = get_option( 'wfs-share-background-none' );
-  $bg_color = esc_attr( get_option( 'wfs-share-background' ) );
-  $bg_color = 'background-color:'.$bg_color.';';
-  $color = esc_attr( get_option( 'wfs-share-color' ) );
-  echo '<style>.wfs-share .social-icon {fill:'.$color.';}</style>';
-
-  $width = esc_attr( get_option( 'wfs-share-width' ) );
-  $width =' width:'.$width.'px;';
-
-  $b_radius = esc_attr( get_option( 'wfs-share-border-radius' ) );
-  $b_radius =' border-radius:'.$b_radius.'%;';
-
-  if( 1 == $bg_none ) {
-   $bg_color = 'background-color:transparent;';
-  }
-
+  list ( $color_title, $size_title, $bg_color, $color, $width, $height, $b_radius ) = customButton( 'share' );
 
   //comienzo el contenido 
-  $wfs_content  = '<div class="wfs-share"><!-- WPO friendly share - START-->';
-  $wfs_content .= '<p class="titulo">';
-  $wfs_content .= esc_attr( $custom_label);       
-  $wfs_content .= '</p>';
-  $wfs_content .= '<div class="content-button">';
+  $wfs_content   = '<style>.wfs-share .social-icon {fill:'.$color.';}.wfs-link-share{'.$bg_color.$b_radius.$width.$height.'}</style>';
+  $wfs_content  .= '<div class="wfs-share"><!-- WPO friendly share - START-->';
+  $wfs_content  .= '<h3 class="titulo" style='.$color_title.$size_title.'">';
+  $wfs_content  .= esc_attr( $custom_label);       
+  $wfs_content  .= '</h3>';
+  $wfs_content  .= '<div class="content-button">';
 
-  foreach( $redes_share as $red => $detalles ) {
-    foreach($detalles as $clave => $valor){
-    }
-      $parametro = $redes_share[$red]['parametros'];
-      $url = $redes_share[$red]['url'];
-      $seleccionado = $redes_share[$red]['seleccionado'];
-      $seleccionados[] = $seleccionado;
+  $social_network = socialNetwork();
+  foreach( $social_network as $red => $detalles ) {
+
+      $parametro       = $social_network[ $red ][ 'parametros' ];
+      $url             = esc_url ($social_network[ $red ]['url_share' ] );
+      $icono           = $social_network[ $red] [ 'icono' ];
+      $seleccionado    = $social_network[ $red ][ 'selec_share' ];
+      $seleccionados[] = $seleccionado;      
 
     if( 1 == $seleccionado ) {
 
-      $wfs_content .= '<a class="wfs-link-share wfs-share-' . $red . '" style="'.$bg_color.$b_radius.$width.'" href="' . esc_url( $url . $parametro) . '" target="_blank" '. wfs_rel_nofollow() .' '. wfs_gtag( $red, 'share', esc_attr( get_the_title() ) ) .'"><span class="screen-reader-text">'.$red.'</span>'.$social_icons[$red].'</a>';
+      $wfs_content .= '<a class="wfs-link-share wfs-share-' . $red . '" href="' . esc_attr( $url . $parametro) . '" target="_blank" '. wfs_rel_nofollow() .' '. wfs_gtag( $red, 'share', esc_attr( get_the_title() ) ) .'"><span class="screen-reader-text">'.$red.'</span>' . $icono . '</a>';
 
     }
   }
@@ -274,74 +182,18 @@ function wfs_add_share_content() {
 add_shortcode( 'wfs_follow', 'wfs_follow' );
   
 function wfs_follow() {
-  global $social_icons;
 
-  $redes_follow = array(
-    'facebook'    => array(
-      'url'           => get_option( 'wfs-follow-url-facebook' ),
-      'seleccionado'  => get_option( 'wfs-follow-checkbox-facebook' ),
-    ),
-    'twitter'     => array(
-      'url'           => get_option( 'wfs-follow-url-twitter' ),
-      'seleccionado'  => get_option( 'wfs-follow-checkbox-twitter' ),
-    ),
-    'linkedin'    => array(
-      'url'           => get_option( 'wfs-follow-url-linkedin' ),
-      'seleccionado'  => get_option( 'wfs-follow-checkbox-linkedin' ),
-    ),
-    'pinterest'   => array(
-      'url'           => get_option( 'wfs-follow-url-pinterest' ),
-      'seleccionado'  => get_option( 'wfs-follow-checkbox-pinterest' ),
-    ),
-    'instagram'   => array(
-      'url'           => get_option( 'wfs-follow-url-instagram' ),
-      'seleccionado'  => get_option( 'wfs-follow-checkbox-instagram' ),
-    ),
-    'youtube'     => array(
-      'url'           => get_option( 'wfs-follow-url-youtube' ),
-      'seleccionado'  => get_option( 'wfs-follow-checkbox-youtube' ),
-    ),
-    'myBusiness'  => array(
-      'url'           => get_option( 'wfs-follow-url-myBusiness' ),
-      'seleccionado'  => get_option( 'wfs-follow-checkbox-myBusiness' ),
-    ),
-    'telegram'    => array(
-      'url'           => get_option( 'wfs-follow-url-telegram' ),
-      'seleccionado'  => get_option( 'wfs-follow-checkbox-telegram' ),
-    ),
-  );
+  list ( $color_title, $size_title, $bg_color, $color, $width, $height, $b_radius ) = customButton( 'follow' );
 
-  // Creo un filtro para el array de las redes sociales follow con las url y los select
-  if (has_filter('wsf_array_follow_filter')) {
-      $redes_follow = apply_filters( 'wsf_array_follow_filter', $redes_follow );
-  }  
-
-  // Obtengo la personalización para follow
-  $bg_none = get_option( 'wfs-follow-background-none' );
-  $bg_color = esc_attr( get_option( 'wfs-follow-background' ) );
-  $bg_color = 'background-color:'.$bg_color.';';
-  $color = esc_attr( get_option( 'wfs-follow-color' ) );
-  echo '<style>.wfs-follow .social-icon {fill:'.$color.';}</style>';
-
-  $width = esc_attr( get_option( 'wfs-follow-width' ) );
-  $width ='width:'.$width.'px;';
-
-  $b_radius = esc_attr( get_option( 'wfs-follow-border-radius' ) );
-  $b_radius ='border-radius:'.$b_radius.'%;';
-
-  if( 1 == $bg_none ) {
-   $bg_color = 'background-color:transparent;';
-  }
-
-
-  $wfs_content  = '<div class="wfs-follow" itemscope itemtype="http://schema.org/Organization"><!-- WPO friendly share - START-->';
+  $wfs_content  = '<style>.wfs-follow .social-icon {fill:'.$color.';}.wfs-link-follow{'.$bg_color.$b_radius.$width.$height.'}</style>';
+  $wfs_content .= '<div class="wfs-follow" itemscope itemtype="http://schema.org/Organization"><!-- WPO friendly share - START-->';
   $wfs_content .= '<link itemprop="url" href="'. esc_url( get_home_url() ) .'">';
   $wfs_content .= '<meta itemprop="name" href="'. esc_attr( get_bloginfo() ) .'">';
 
   /*
   * Custom label
   */
-  $wfs_content .= '<p class="titulo">';
+  $wfs_content .= '<h3 class="titulo" style="'.$color_title.$size_title.'">';
 
   $custom_label = get_option( 'wfs-follow-custom-label' );
 
@@ -352,22 +204,25 @@ function wfs_follow() {
   }
 
   $wfs_content .= esc_attr( $custom_label);  
-  $wfs_content .= '</p>';
+  $wfs_content .= '</h3>';
 
   $wfs_content .= '<div class="content-button">';
 
-  foreach( $redes_follow as $red => $detalles ) {
-    foreach($detalles as $clave => $valor){
-    }
-      $url = $redes_follow[$red]['url'];
-      $seleccionado = $redes_follow[$red]['seleccionado'];
-      $seleccionados[] = $seleccionado;
+  $social_network = socialNetwork();
+
+  foreach( $social_network as $red => $detalles ) {
+
+    $url             = $social_network[ $red ][ 'url_follow' ];
+    $icono           = $social_network[ $red ][ 'icono' ];
+    $seleccionado    = $social_network[ $red ][ 'selec_follow' ];
+    $seleccionados[] = $seleccionado;
 
     if( 1 == $seleccionado ) {
 
-      $wfs_content .= '<a itemprop="sameAs" class="wfs-link-follow wfs-follow-' . $red . '" style="'.$bg_color.$b_radius.$width.'" href="'. esc_url( $url ) .'" target="_blank" '. wfs_rel_nofollow() .' '. wfs_gtag( $red, 'follow', '+1 Follow' ) .'><span class="screen-reader-text">'.$red.'</span>'.$social_icons[$red].'</a>';
+      $wfs_content .= '<a itemprop="sameAs" class="wfs-link-follow wfs-follow-' . $red . '" href="'. esc_url( $url ) .'" target="_blank" '. wfs_rel_nofollow() .' '. wfs_gtag( $red, 'follow', '+1 Follow' ) .'><span class="screen-reader-text">'.$red.'</span>' . $icono . '</a>';
 
     }
+
   }
 
   $wfs_content .= '</div></div><!-- WPO friendly share - END-->';

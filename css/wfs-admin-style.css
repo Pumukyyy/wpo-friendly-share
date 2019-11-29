@@ -1,5 +1,7 @@
-.label-share.content-custom{
+.label-share.content-custom,
+.label-follow.content-custom{
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-between;
 }
 
@@ -8,12 +10,6 @@
   margin-top: 30px;
 }
 
-.config-iconos{
-  width: 50%;
-  display: flex;
-  flex-flow: column;
-  align-content: space-around;
-}
 
 .result-share,
 .result-follow {
@@ -24,15 +20,48 @@
   margin: 10px 4px;
 }
 
-.label-share.content-custom-iconos{
-  width: 50%;
-  margin: 0 15px;
-  text-align: center;
+.config-iconos{
+  width: -moz-calc(100% - 40px);
+  width: -webkit-calc(100% - 40px);
+  width: -o-calc(100% - 40px);
+  width: calc(100% - 40px);
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
+  flex-flow: column;
+  align-content: space-around;
+}
+
+.label-share.content-custom-iconos,
+  .label-follow.content-custom-iconos{
+    width: -moz-calc(100% - 40px);
+    width: -webkit-calc(100% - 40px);
+    width: -o-calc(100% - 40px);
+    width: calc(100% - 40px);
+    margin: 20px 0 0;
+    text-align: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  }
+
+@media only screen and (min-width: 1300px) {
+
+  .config-iconos{
+    width: -moz-calc(35% - 40px);
+    width: -webkit-calc(35% - 40px);
+    width: -o-calc(35% - 40px);
+    width: calc(35% - 40px);
+  }
+
+  .label-share.content-custom-iconos,
+  .label-follow.content-custom-iconos{
+    width: -moz-calc(62% - 40px);
+    width: -webkit-calc(62% - 40px);
+    width: -o-calc(62% - 40px);
+    width: calc(62% - 40px);
+  }
+
 }
 
 .content-iconos{
@@ -49,7 +78,8 @@
   margin: 10px 0;
 }
 
-.reshare{
+.reshare,
+.refollow{
   color: grey;
   text-transform: uppercase;
   font-size:  1.8em;
@@ -82,11 +112,11 @@
 }
 
 .aside-postbox {
-  margin-left: 10px;
-  width: -moz-calc(30% - 10px);
-  width: -webkit-calc(30% - 10px);
-  width: -o-calc(30% - 10px);
-  width: calc(30% - 10px);
+  margin: 20px 0 0;
+  width: -moz-calc(100% - 10px);
+  width: -webkit-calc(100% - 10px);
+  width: -o-calc(100% - 10px);
+  width: calc(100% - 10px);
   background-color: #f2f5f5;
   border: 2px solid #699;
   border-radius: 7px;
@@ -95,10 +125,10 @@
 
 .content-input {
   margin-right: 10px;
-  width: -moz-calc(66% - 10px);
-  width: -webkit-calc(66% - 10px);
-  width: -o-calc(66% - 10px);
-  width: calc(66% - 10px);
+  width: -moz-calc(100% - 10px);
+  width: -webkit-calc(100% - 10px);
+  width: -o-calc(100% - 10px);
+  width: calc(100% - 10px);
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -109,6 +139,25 @@
 .content-label-share {
   width: 100%;
   margin: 15px 0;
+}
+@media only screen and (min-width: 700px) {
+
+  .content-input {
+    width: -moz-calc(66% - 10px);
+    width: -webkit-calc(66% - 10px);
+    width: -o-calc(66% - 10px);
+    width: calc(66% - 10px);
+
+  }
+
+  .aside-postbox {
+    margin-left: 10px;
+    width: -moz-calc(30% - 10px);
+    width: -webkit-calc(30% - 10px);
+    width: -o-calc(30% - 10px);
+    width: calc(30% - 10px);
+  }
+
 }
 
 @media only screen and (min-width: 1300px) {
@@ -143,7 +192,7 @@
 }
 
 .label-share,
-.border {
+.label-follow {
 	position: relative;
 	padding: 26px 20px 20px;
 	border: 1px solid #699;
@@ -156,7 +205,7 @@
 }
 
 .label-p,
-.border-p,
+.label-follow-p,
 .label-share-p {
   position: absolute;
   margin: 0;
