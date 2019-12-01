@@ -2,7 +2,7 @@
 // Si se llama directamente a este archivo, aborta.
 defined( 'ABSPATH' ) or die( '¡Sin trampas!' );
 
-function socialNetwork(){
+function wfs_social_networks(){
 
   $current_url = get_permalink();
 
@@ -41,7 +41,7 @@ function socialNetwork(){
       $telegram_from = 'web.telegram.org/#/im?tgaddr=tg://msg_url';    
   }
 
-  $social_network = array(
+  $social_networks = array(
     'twitter'     => array(
       'url_share'     => 'https://twitter.com/intent/tweet?',
       'parametros'    => 'text=' . $current_title . '&url=' . $current_url . '&via=' . get_option( 'wfs-share-twitter-name' ),
@@ -141,32 +141,44 @@ function socialNetwork(){
   );
 
   if (has_filter('wsf_array_social_network_filter')) {
-      $social_network = apply_filters( 'wsf_array_social_network_filter', $social_network );
+      $social_networks = apply_filters( 'wsf_array_social_network_filter', $social_networks );
   }
-  return $social_network;
+  return $social_networks;
 }
 
 
-function customButton($acction) {        
-$customButton = get_option('wfs_'.$acction.'_custom');
+function wfs_custom_button($acction) {        
+$get_custom_button = get_option('wfs_'.$acction.'_custom');
 // Obtengo la personalización para share
-$color_title = 'color:'.$customButton['color-title'].';';
+if (!isset($get_custom_button['color-title'])) {
+  $color_title = 'color:#808080;';
+}else{
+  $color_title = 'color:'.$get_custom_button['color-title'].';';  
+}
 
-$size_title  = 'font-size:'.$customButton['size-title'].'px;';
+$size_title  = 'font-size:'.$get_custom_button['size-title'].'px;';
 
-$bg_color    = 'background-color:'.$customButton['bg-color'].';';
+if (!isset($get_custom_button['bg-color'])) {
+  $bg_color = 'background-color:#808080;';
+}else {
+  $bg_color = 'background-color:'.$get_custom_button['bg-color'].';';
+}
 
 if( 1 == get_option( 'wfs-'.$acction.'-background-none' ) ) {
  $bg_color = 'background-color:transparent;';
 }
 
-$color       = esc_attr( $customButton['color']);
+if (!isset($get_custom_button['color'])) {
+  $color = '#f4f4f4';
+}else{
+  $color = esc_attr( $get_custom_button['color']);
+}
 
-$width       = 'width:'.esc_attr( $customButton['width'] ).'px;';
+$width       = 'width:'.esc_attr( $get_custom_button['width'] ).'px;';
 
-$height      = 'height:'.esc_attr( $customButton['width'] ).'px;';
+$height      = 'height:'.esc_attr( $get_custom_button['width'] ).'px;';
 
-$b_radius    = 'border-radius:'.esc_attr( $customButton['b-radius'] ).'%;';
+$b_radius    = 'border-radius:'.esc_attr( $get_custom_button['b-radius'] ).'%;';
 
 $custom_button = array(
   $color_title,
@@ -181,14 +193,14 @@ $custom_button = array(
   return $custom_button;
 }
 
-function social_network_share() {  
-  $social_network_share = array( 
+function wfs_social_networks_share() {  
+  $social_networks_share = array( 
     'twitter',
     'facebook',
     'linkedin',
     'buffer',
-    'pinterest'
-    ,'whatsapp',
+    'pinterest',
+    'whatsapp',
     'telegram',
     '',
     '',
@@ -198,14 +210,14 @@ function social_network_share() {
   );
 
   if (has_filter('wsf_array_social_network_share_filter')) {
-      $social_network_share = apply_filters( 'wsf_array_social_network_share_filter', $social_network_share );
+      $social_networks_share = apply_filters( 'wsf_array_social_network_share_filter', $social_networks_share );
   }
 
-  return $social_network_share;
+  return $social_networks_share;
 } 
 
-function social_network_follow() {  
-  $social_network_follow = array( 
+function wfs_social_networks_follow() {  
+  $social_networks_follow = array( 
     'twitter',
     'facebook',
     'linkedin',
@@ -221,8 +233,9 @@ function social_network_follow() {
   );
 
   if (has_filter('wsf_array_social_network_follow_filter')) {
-      $social_network_follow = apply_filters( 'wsf_array_social_network_follow_filter', $social_network_follow );
+      $social_networks_follow = apply_filters( 'wsf_array_social_network_follow_filter', $social_networks_follow );
   }
 
-  return $social_network_follow;
+  return $social_networks_follow;
 }
+

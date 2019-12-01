@@ -78,6 +78,9 @@ function wfs_settings_init() {
   register_setting( 'wfs_config_section', 'wfs-options-ga-gtag','sanitize_text_field' );
   register_setting( 'wfs_config_section', 'wfs-options-delete-all','wfs_sanitize_checkbox' );
 
+  register_setting( 'wfs_config_section', 'wfs_options_custom_share','wfs_sanitize_checkbox' );
+  register_setting( 'wfs_config_section', 'wfs_options_custom_follow','wfs_sanitize_checkbox' );
+
 
 }
 
@@ -154,4 +157,94 @@ function wfs_add_settings_link( $links ) {
   $links[] =  $settings_link;
 
   return $links;
+}
+
+/*
+* Devueleve la clase oculto si no esta seleccionado
+*/
+function wfs_add_class_oculto( $acction ) {
+
+  if ( 0 == get_option( 'wfs_options_custom_' . $acction ) ) {
+    $clase = 'oculto';
+  } else {
+    $clase = '';
+  }
+  
+  echo $clase;
+
+}
+
+
+/*
+* Cambia el texto del boton de personalizacion
+*/
+function wfs_switch_text( $action ) {
+
+  if ( 1 == get_option( 'wfs_options_custom_' . $action ) ) {
+    $texto  = '<span class="mas oculto" id="mas-'.$action.'">'. __( 'Quiero personalizar mis iconos', 'wpo-friendly-share' ) .'</span>';
+    $texto .= '<span class="menos" id="menos-'.$action.'">'. __( 'Quiero los iconos clasicos', 'wpo-friendly-share' ) .'</span>';
+
+  } else {
+    $texto  = '<span class="mas" id="mas-'.$action.'">'. __( 'Quiero personalizar mis iconos', 'wpo-friendly-share' ) .'</span>';
+    $texto .= '<span class="menos oculto" id="menos-'.$action.'">'. __( 'Quiero los iconos clasicos', 'wpo-friendly-share' ) .'</span>';
+  }
+  
+  echo $texto;
+
+}
+
+
+/*
+* Devuelve el resultado de la personalizacion
+*/
+function wfs_custom_result( $action ) {
+
+  $social_networks = wfs_social_networks();
+
+  if ( $action == 'share' ) {
+
+    $social_networks_compare = wfs_social_networks_share();
+
+  }elseif ( $action == 'follow' ) {
+
+    $social_networks_compare = wfs_social_networks_follow();
+
+  }
+
+  // Obtengo la personalización para share
+  list ( $color_title, $size_title, $bg_color, $color, $width, $height, $b_radius ) = wfs_custom_button( $action );
+
+
+  $result  = '<style>.label-'. $action .' .social-icon {fill:'.$color.';}</style>';
+
+  $result .= '<label class="label-'. $action .' content-custom-iconos">';
+ 
+  $result .= '<p class="label-'. $action .'-p">'. __( 'These will be your icons', 'wpo-friendly-share' ). '</p>';
+
+  $result .= '<h3 id="result-title-'. $action .'" style="'.$color_title.$size_title.'" class="result-title-'. $action .'" >' . esc_attr( get_option( 'wfs-'. $action .'-custom-label' ) ) .'</h3>';
+
+  $result .= '<div style="width:100%;">';
+
+  $i = 0;
+  foreach( $social_networks as $network => $data ) {
+
+    $network_compare =  $social_networks_compare[$i];
+    $icon            = $social_networks[$network]['icono'];
+    $seleccionado    = $social_networks[$network]['selec_'.$action ];
+    $seleccionados[] = $seleccionado;
+    $i ++;
+
+    if( 1 == $seleccionado && $network == $network_compare ) {
+
+      $result .= '<span class="result-icon-'. $action .'" style="'.$bg_color.$b_radius.$width.$height.'"><span class="screen-reader-text">'.$network.'</span>'.$icon.'</span >';
+
+    }elseif(  0 == $seleccionado && $network == $network_compare ){
+
+      $result .= '<span class="result-icon-'. $action .'" style="display:none;'.$bg_color.$b_radius.$width.$height.'"><span class="screen-reader-text">'.$network.'</span>'.$icon.'</span >';
+      
+    }
+  }
+  $result .= '</div>';
+  $result .= '</label>';
+  echo $result;
 }

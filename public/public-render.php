@@ -11,8 +11,8 @@ if( 0 == get_option( 'wfs-options-css' ) ) {
   
   function wfs_public_style() {
 
-    wp_register_style( 'wfs-public-style', WFS_URI . 'css/wfs-public-style.css' );
-    wp_enqueue_style( 'wfs-public-style' );
+      wp_register_style( 'wfs-public-style', WFS_URI . 'css/wfs-public-style.css' );
+      wp_enqueue_style( 'wfs-public-style' );
 
   }
 
@@ -72,28 +72,37 @@ function wfs_share() {
    
   }
 
-  list ( $color_title, $size_title, $bg_color, $color, $width, $height, $b_radius ) = customButton( 'share' );
+  if ( 1 == get_option( 'wfs_options_custom_share' ) ) {
+    //comienzo el contenido 
+    list ( $color_title, $size_title, $bg_color, $color, $width, $height, $b_radius ) = wfs_custom_button( 'share' );
+    $wfs_content   = '<style>.wfs-share .social-icon {fill:'.$color.';}.wfs-link-share{'.$bg_color.$b_radius.$width.$height.'background-image:none;}</style>';
+    $wfs_content  .= '<div class="wfs-share"><!-- WPO friendly share - START-->';
+    $wfs_content  .= '<h3 class="titulo" style='.$color_title.$size_title.'">';
+  }else{
 
-  //comienzo el contenido 
-  $wfs_content   = '<style>.wfs-share .social-icon {fill:'.$color.';}.wfs-link-share{'.$bg_color.$b_radius.$width.$height.'}</style>';
-  $wfs_content  .= '<div class="wfs-share"><!-- WPO friendly share - START-->';
-  $wfs_content  .= '<h3 class="titulo" style='.$color_title.$size_title.'">';
+    $wfs_content   = '<div class="wfs-share"><!-- WPO friendly share - START-->';
+    $wfs_content  .= '<h3 class="titulo">';
+
+  }
+  
   $wfs_content  .= esc_attr( $custom_label);       
   $wfs_content  .= '</h3>';
   $wfs_content  .= '<div class="content-button">';
 
-  $social_network = socialNetwork();
-  foreach( $social_network as $red => $detalles ) {
+  $social_networks = wfs_social_networks();
+  foreach( $social_networks as $network => $data ) {
 
-      $parametro       = $social_network[ $red ][ 'parametros' ];
-      $url             = esc_url ($social_network[ $red ]['url_share' ] );
-      $icono           = $social_network[ $red] [ 'icono' ];
-      $seleccionado    = $social_network[ $red ][ 'selec_share' ];
+      $parametro       = $social_networks[ $network ][ 'parametros' ];
+      $url             = esc_url ($social_networks[ $network ]['url_share' ] );
+      if ( 1 == get_option( 'wfs_options_custom_share' ) ) {
+        $icono           = $social_networks[ $network] [ 'icono' ];
+      }
+      $seleccionado    = $social_networks[ $network ][ 'selec_share' ];
       $seleccionados[] = $seleccionado;      
 
     if( 1 == $seleccionado ) {
 
-      $wfs_content .= '<a class="wfs-link-share wfs-share-' . $red . '" href="' . esc_attr( $url . $parametro) . '" target="_blank" '. wfs_rel_nofollow() .' '. wfs_gtag( $red, 'share', esc_attr( get_the_title() ) ) .'"><span class="screen-reader-text">'.$red.'</span>' . $icono . '</a>';
+      $wfs_content .= '<a class="wfs-link-share wfs-share-' . $network . '" href="' . esc_attr( $url . $parametro) . '" target="_blank" '. wfs_rel_nofollow() .' '. wfs_gtag( $network, 'share', esc_attr( get_the_title() ) ) .'"><span class="screen-reader-text">'.$network.'</span>' . $icono . '</a>';
 
     }
   }
@@ -183,9 +192,13 @@ add_shortcode( 'wfs_follow', 'wfs_follow' );
   
 function wfs_follow() {
 
-  list ( $color_title, $size_title, $bg_color, $color, $width, $height, $b_radius ) = customButton( 'follow' );
+  if ( 1 == get_option( 'wfs_options_custom_follow' ) ) {
 
-  $wfs_content  = '<style>.wfs-follow .social-icon {fill:'.$color.';}.wfs-link-follow{'.$bg_color.$b_radius.$width.$height.'}</style>';
+    list ( $color_title, $size_title, $bg_color, $color, $width, $height, $b_radius ) = wfs_custom_button( 'follow' );
+    $wfs_content  = '<style>.wfs-follow .social-icon {fill:'.$color.';}.wfs-link-follow{'.$bg_color.$b_radius.$width.$height.'background-image:none;}</style>';
+  }else{
+    $wfs_content  = '';
+  }
   $wfs_content .= '<div class="wfs-follow" itemscope itemtype="http://schema.org/Organization"><!-- WPO friendly share - START-->';
   $wfs_content .= '<link itemprop="url" href="'. esc_url( get_home_url() ) .'">';
   $wfs_content .= '<meta itemprop="name" href="'. esc_attr( get_bloginfo() ) .'">';
@@ -193,7 +206,11 @@ function wfs_follow() {
   /*
   * Custom label
   */
-  $wfs_content .= '<h3 class="titulo" style="'.$color_title.$size_title.'">';
+  if ( 1 == get_option( 'wfs_options_custom_follow' ) ) { 
+    $wfs_content .= '<h3 class="titulo" style="'.$color_title.$size_title.'">';
+  }else{
+    $wfs_content .= '<h3 class="titulo">';
+  }
 
   $custom_label = get_option( 'wfs-follow-custom-label' );
 
@@ -208,18 +225,22 @@ function wfs_follow() {
 
   $wfs_content .= '<div class="content-button">';
 
-  $social_network = socialNetwork();
+  $social_networks = wfs_social_networks();
 
-  foreach( $social_network as $red => $detalles ) {
+  foreach( $social_networks as $network => $data ) {
 
-    $url             = $social_network[ $red ][ 'url_follow' ];
-    $icono           = $social_network[ $red ][ 'icono' ];
-    $seleccionado    = $social_network[ $red ][ 'selec_follow' ];
+    $url             = $social_networks[ $network ][ 'url_follow' ];
+    
+    if ( 1 == get_option( 'wfs_options_custom_follow' ) ) { 
+     $icono           = $social_networks[ $network ][ 'icono' ];
+    }
+     
+    $seleccionado    = $social_networks[ $network ][ 'selec_follow' ];
     $seleccionados[] = $seleccionado;
 
     if( 1 == $seleccionado ) {
 
-      $wfs_content .= '<a itemprop="sameAs" class="wfs-link-follow wfs-follow-' . $red . '" href="'. esc_url( $url ) .'" target="_blank" '. wfs_rel_nofollow() .' '. wfs_gtag( $red, 'follow', '+1 Follow' ) .'><span class="screen-reader-text">'.$red.'</span>' . $icono . '</a>';
+      $wfs_content .= '<a itemprop="sameAs" class="wfs-link-follow wfs-follow-' . $network . '" href="'. esc_url( $url ) .'" target="_blank" '. wfs_rel_nofollow() .' '. wfs_gtag( $network, 'follow', '+1 Follow' ) .'><span class="screen-reader-text">'.$network.'</span>' . $icono . '</a>';
 
     }
 

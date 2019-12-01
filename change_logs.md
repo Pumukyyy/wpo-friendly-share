@@ -12,6 +12,9 @@
 - oculto los iconos que no esten marcados
 - añado un filtro para las redes sociales share wsf_array_social_network_share_filter
 - añado un filtro para las redes sociales follow wsf_array_social_network_follow_filter
+- añadido estilo por defecto a los iconos
+- añadido opcion para los iconos antiguos
+- mejorado css para movil en el admin
 
 
 
@@ -19,12 +22,10 @@
  proximas incorporaciones
 ********************************
 - guardar en un array las opciones y sanearlas antes manteniendo la configuracion
-- añadir opcion para los iconos antiguos
-- tengo que mejorar css para movil en el admin
-
-
 - redirigir al activar el plugin
 
+- traducir y explicar las nuevas funciones
+- ordenar css del admin
 
 
 

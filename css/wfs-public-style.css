@@ -16,8 +16,11 @@
 .wfs-link-share {
 	text-align: center;
 	margin:0 4px;
+	background-image: url(../img/spriters-wfs.svg);
+  background-repeat: no-repeat;
   display: inline-block;
 }
+
 a, path {
     transition: all 0.15s linear;
 }
@@ -34,10 +37,6 @@ a, path {
   fill-rule:evenodd;
 }
 
-.wfs-link-follow:hover,
-.wfs-link-share:hover {
-  transform: scale(1.3);
-}
 
 .wfs-share,
 .wfs-follow {
@@ -45,21 +44,105 @@ a, path {
   display: inline-block;
 }
 
+.wfs-link-follow:hover,
+.wfs-link-share:hover {
+  transform: scale(1.3);
+}
+
+/**
+* Botones share
+*
+* Estilo para los botones sahre
+*/
+
 .wfs-link-share {
-    width: 24px;
-    height: auto;
-    padding: 4px;
+  width: 27px;
+  height: 27px;
+  background-size: 49px auto;
+
+  /*padding: 4px;
     background: #777673;
-/*  display: flex;
-    align-items: center;
-    justify-content: center;*/
     border-radius: 50%;
     text-decoration: none;
-    transition: transform 0.15s ease-in-out;
+    transition: transform 0.15s ease-in-out;*/
 }
+
+.wfs-share-email {
+  background-position: -11px -12px;
+}
+
+.wfs-share-pinterest {
+  background-position: -11px -61px;
+}
+
+.wfs-share-twitter {
+  background-position: -11px -110px;
+}
+
+ .wfs-share-linkedin {
+  background-position: -11px -159px;
+}
+
+.wfs-share-whatsapp {
+  background-position: -11px -208px;
+}
+
+.wfs-share-facebook {
+  background-position: -11px -257px;
+}
+
+.wfs-share-instagram {
+  background-position: -11px -306px;
+}
+
+.wfs-share-buffer {
+  background-position: -11px -404px;
+}
+
+.wfs-share-telegram {
+  background-position: -11px -502px;
+}
+
+/**
+* Botones follow
+*
+* Estilo para los botones follow
+*/
 
 .wfs-link-follow {
   width: 37px;
   height: 37px;
   background-size: 68px auto;
+}
+
+.wfs-follow-facebook {
+  background-position: -16px -359px;
+}
+
+.wfs-follow-twitter {
+  background-position: -16px -155px;
+}
+
+.wfs-follow-linkedin {
+  background-position: -16px -223px;
+}
+
+.wfs-follow-pinterest {
+  background-position: -16px -87px;
+}
+
+.wfs-follow-instagram {
+  background-position: -16px -427px;
+}
+
+.wfs-follow-youtube {
+  background-position: -16px -495px;
+}
+
+.wfs-follow-myBusiness{
+	background-position: -16px -631px;
+}
+
+.wfs-follow-telegram{
+  background-position: -16px -699px;
 }

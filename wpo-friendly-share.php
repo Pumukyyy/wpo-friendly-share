@@ -58,6 +58,7 @@ if ( is_admin() ) {
 
 	function wfs_add_options() {
 	  update_option( 'wfs-options-after-post', 1);
+	    
 	}
 
 	register_activation_hook( __FILE__, 'wfs_add_options' );
