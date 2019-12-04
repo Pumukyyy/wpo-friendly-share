@@ -29,7 +29,7 @@ function wfs_settings_init() {
   
   //nevas opciones
   register_setting( 'wfs_config_section', 'wfs_share_check', 'wfs_sanitize_array_check' );
-  register_setting( 'wfs_config_section', 'wfs_share_txt', 'sanitize_text_field' );
+  register_setting( 'wfs_config_section', 'wfs_share_txt', 'wfs_sanitize_text_or_array_field' );
   register_setting( 'wfs_config_section', 'wfs_share_custom', 'wfs_sanitize_text_or_array_field' ); 
 
   register_setting( 'wfs_config_section', 'wfs_follow_url','esc_url_raw' );

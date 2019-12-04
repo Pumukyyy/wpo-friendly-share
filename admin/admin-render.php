@@ -25,7 +25,8 @@ function wfs_admin_style($hook) {
 function wfs_admin_render() {
   $wfs_share_custom  = get_option( 'wfs_share_custom');
   $wfs_follow_custom = get_option( 'wfs_follow_custom');
-  $wfs_share_check  = get_option( 'wfs_share_check');
+  $wfs_share_check   = get_option( 'wfs_share_check');
+  $wfs_share_txt     = get_option( 'wfs_share_txt');
   print_r($wfs_share_check);
   
   ?>
@@ -39,14 +40,14 @@ function wfs_admin_render() {
           <div class="content-label-share">
             <label class="label-share">
               <p class="label-p"><?php  _e( 'Custom share button title', 'wpo-friendly-share' ); ?></p>
-              <input type="text" id="titleShare" class="input-share" name="wfs-share-custom-label" oninput="viewCustomShare();" value="<?php echo esc_attr( get_option( 'wfs-share-custom-label' ) ); ?>" />
+              <input type="text" id="titleShare" class="input-share" name="wfs_share_txt[s-custom-label]" oninput="viewCustomShare();" value="<?php echo esc_attr( $wfs_share_txt['s-custom-label'] ); ?>" />
             </label>
           </div>
           <!-- Twitter -->
           <div class="content-label-share">
             <label class="label-share">
               <p class="label-share-p"><?php  _e( 'Twitter username (without @)', 'wpo-friendly-share' ); ?></p>
-              <input class="input-share" type="text" name="wfs-share-twitter-name" value="<?php echo esc_attr( get_option( 'wfs-share-twitter-name' ) ); ?>" />
+              <input class="input-share" type="text" name="wfs_share_txt[s-twitter-name]" value="<?php echo esc_attr( $wfs_share_txt['s-twitter-name'] ); ?>" />
             </label>
           </div>
 
@@ -54,7 +55,7 @@ function wfs_admin_render() {
           <div class="content-label-share">
             <label class="label-share">
               <p class="label-share-p"><?php  _e( 'Tex to share through Whatsapp', 'wpo-friendly-share' ); ?></p>
-              <input class="input-share" type="text" name="wfs-share-whatsapp-txt" value="<?php echo esc_attr( get_option( 'wfs-share-whatsapp-txt' ) ); ?>" />
+              <input class="input-share" type="text" name="wfs_share_txt[s-whatsapp-txt]" value="<?php echo esc_attr( $wfs_share_txt['s-whatsapp-txt'] ); ?>" />
             </label>
           </div>
 
@@ -62,7 +63,7 @@ function wfs_admin_render() {
           <div class="content-label-share">
             <label class="label-share">
               <p class="label-share-p"><?php  _e( 'Tex to share through Telegram', 'wpo-friendly-share' ); ?></p>
-              <input class="input-share" type="text" name="wfs-share-telegram-txt" value="<?php echo esc_attr( get_option( 'wfs-share-telegram-txt' ) ); ?>" />
+              <input class="input-share" type="text" name="wfs_share_txt[s-telegram-txt]" value="<?php echo esc_attr( $wfs_share_txt['s-telegram-txt'] ); ?>" />
             </label>
           </div>
 
@@ -99,21 +100,21 @@ function wfs_admin_render() {
             <!-- Pinterest -->
             <label class="checkbox-share">
               <span class="wfs-icon-social wfs-icon-pinterest"></span>
-              <input type="checkbox" class="select-share" name="wfs-share-pinterest" oninput="viewCustomShare();" value="1" <?php checked( 1, get_option( 'wfs-share-pinterest' ), true ); ?> />
+              <input type="checkbox" class="select-share" name="wfs_share_check[s-check-pinterest]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_share_check['s-check-pinterest'], true ); ?> />
               Pinterest
             </label>
 
             <!-- Whatsapp -->
             <label class="checkbox-share">
               <span class="wfs-icon-social wfs-icon-whatsapp"></span>
-              <input type="checkbox" class="select-share" name="wfs-share-whatsapp" oninput="viewCustomShare();" value="1" <?php checked( 1, get_option( 'wfs-share-whatsapp' ), true ); ?> />
+              <input type="checkbox" class="select-share" name="wfs_share_check[s-check-whatsapp]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_share_check['s-check-whatsapp'], true ); ?> />
               Whatsapp
             </label>
 
             <!-- Telegram -->
             <label class="checkbox-share">
               <span class="wfs-icon-social wfs-icon-telegram"></span>
-              <input type="checkbox" class="select-share" name="wfs-share-telegram" oninput="viewCustomShare();" value="1" <?php checked( 1, get_option( 'wfs-share-telegram' ), true ); ?> />
+              <input type="checkbox" class="select-share" name="wfs_share_check[s-check-telegram]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_share_check['s-check-telegram'], true ); ?> />
               Telegram
             </label>
           </div>
@@ -166,7 +167,7 @@ function wfs_admin_render() {
                  <span class="checkbox-custom">
                   <label>
                       <?php  _e( 'No quiero color de fondo', 'wpo-friendly-share' );?>
-                      <input type="checkbox" id="sinBgShare" name="wfs-share-background-none" oninput="viewCustomShare();" value="1" <?php checked( 1, get_option( 'wfs-share-background-none' ), true ); ?> />
+                      <input type="checkbox" id="sinBgShare" name="wfs_share_check[s-check-bg-none]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_share_check['s-check-bg-none'], true ); ?> />
                   </label>
                 </span> <?php  ?>
 
