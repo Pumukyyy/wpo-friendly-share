@@ -14,6 +14,11 @@ function wfs_remove_options() {
   delete_option( 'wfs-share-whatsapp' );
   delete_option( 'wfs-share-email' );
   delete_option( 'wfs-share-instagram' );
+  delete_option( 'wfs-share-whatsapp-txt' );
+  delete_option( 'wfs-share-telegram-txt' );
+  delete_option( 'wfs-share-telegram' );
+  delete_option( 'wfs_share_custom' );
+  delete_option( 'wfs-share-background-none' );
 
   delete_option( 'wfs-follow-custom-label' );
   delete_option( 'wfs-follow-checkbox-facebook' );
@@ -30,6 +35,10 @@ function wfs_remove_options() {
   delete_option( 'wfs-follow-url-pinterest' );
   delete_option( 'wfs-follow-checkbox-myBusiness' );
   delete_option( 'wfs-follow-url-myBusiness' );
+  delete_option( 'wfs-follow-checkbox-telegram' );
+  delete_option( 'wfs-follow-url-telegram' );
+  delete_option( 'wfs_follow_custom' );
+  delete_option( 'wfs-follow-background-none' );
 
   delete_option( 'wfs-options-before-post' );
   delete_option( 'wfs-options-after-post' );
@@ -38,5 +47,9 @@ function wfs_remove_options() {
   delete_option( 'wfs-options-analytics' );
   delete_option( 'wfs-options-ga-gtag' );
   delete_option( 'wfs-options-delete-all' );
+  delete_option( 'wfs_options_custom_share' );
+  delete_option( 'wfs_options_custom_follow' );
 
 }
+
+

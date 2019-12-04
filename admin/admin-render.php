@@ -25,6 +25,9 @@ function wfs_admin_style($hook) {
 function wfs_admin_render() {
   $wfs_share_custom  = get_option( 'wfs_share_custom');
   $wfs_follow_custom = get_option( 'wfs_follow_custom');
+  $wfs_share_check  = get_option( 'wfs_share_check');
+  print_r($wfs_share_check);
+  
   ?>
     <div class="postbox">
       <h2 class="postbox-h2"><?php  _e( 'Buttons to share on social networks', 'wpo-friendly-share' ); ?></h2>
@@ -66,30 +69,32 @@ function wfs_admin_render() {
           <div class="content-iconos">
             <label class="checkbox-share">
               <span class="wfs-icon-social wfs-icon-twitter"></span>
-              <input type="checkbox" class="select-share" name="wfs-share-twitter" oninput="viewCustomShare();" value="1" <?php checked( 1, get_option( 'wfs-share-twitter' ), true ); ?> />
+              <input type="checkbox" class="select-share" name="wfs_share_check[s-check-twitter]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_share_check['s-check-twitter'], true ); ?> />
               Twitter
             </label>
 
             <!-- Facebook -->
             <label class="checkbox-share">
               <span class="wfs-icon-social wfs-icon-facebook"></span>
-              <input type="checkbox" class="select-share" name="wfs-share-facebook" oninput="viewCustomShare();" value="1" <?php checked( 1, get_option( 'wfs-share-facebook' ), true ); ?> />
+              <input type="checkbox" class="select-share" name="wfs_share_check[s-check-facebook]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_share_check['s-check-facebook'], true ); ?> />
               Facebook
             </label>
 
             <!-- Linkedin -->
             <label class="checkbox-share">
               <span class="wfs-icon-social wfs-icon-linkedin"></span> 
-              <input type="checkbox" class="select-share" name="wfs-share-linkedin" oninput="viewCustomShare();" value="1" <?php checked( 1, get_option( 'wfs-share-linkedin' ), true ); ?> />
+              <input type="checkbox" class="select-share" name="wfs_share_check[s-check-linkedin]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_share_check['s-check-linkedin'], true ); ?> />
               Linkedin
             </label>
 
             <!-- Buffer -->
             <label class="checkbox-share">
               <span class="wfs-icon-social wfs-icon-buffer"></span>
-              <input type="checkbox" class="select-share" name="wfs-share-buffer" oninput="viewCustomShare();" value="1" <?php checked( 1, get_option( 'wfs-share-buffer' ), true ); ?> /> 
+              <input type="checkbox" class="select-share" name="wfs_share_check[s-check-buffer]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_share_check['s-check-buffer'], true ); ?> /> 
               Buffer    
             </label>
+
+<!-- <?php //if (chequeda)checked( 1, $wfs_share_check['s-check-buffer'], true ); ?> -->
 
             <!-- Pinterest -->
             <label class="checkbox-share">

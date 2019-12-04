@@ -26,60 +26,21 @@ function wfs_settings_init() {
 		'wfs_admin_render',  //$callback, requerido  (funcion que haga echo del contenido)
 		'wfs_config_section'//$page requerido
 	);
-
-
-	register_setting( 'wfs_config_section', 'wfs-share-custom-label', 'sanitize_text_field' );
-  register_setting( 'wfs_config_section', 'wfs-share-facebook', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-share-twitter-name', 'sanitize_text_field' );
-  register_setting( 'wfs_config_section', 'wfs-share-twitter', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-share-linkedin', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-share-buffer', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-share-pinterest', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-share-whatsapp', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-share-whatsapp-txt', 'sanitize_text_field' );
-  register_setting( 'wfs_config_section', 'wfs-share-email', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-share-instagram', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-share-telegram-txt', 'sanitize_text_field' );
-  register_setting( 'wfs_config_section', 'wfs-share-telegram', 'wfs_sanitize_checkbox' );
-
+  
+  //nevas opciones
+  register_setting( 'wfs_config_section', 'wfs_share_check', 'wfs_sanitize_array_check' );
+  register_setting( 'wfs_config_section', 'wfs_share_txt', 'sanitize_text_field' );
   register_setting( 'wfs_config_section', 'wfs_share_custom', 'wfs_sanitize_text_or_array_field' ); 
-  register_setting( 'wfs_config_section', 'wfs-share-background-none', 'wfs_sanitize_checkbox' );
 
-
-
-
+  register_setting( 'wfs_config_section', 'wfs_follow_url','esc_url_raw' );
+  register_setting( 'wfs_config_section', 'wfs_follow_check','wfs_sanitize_array_check' );
   register_setting( 'wfs_config_section', 'wfs-follow-custom-label', 'sanitize_text_field' );
-  register_setting( 'wfs_config_section', 'wfs-follow-checkbox-facebook', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-follow-url-facebook', 'esc_url_raw' );
-  register_setting( 'wfs_config_section', 'wfs-follow-checkbox-twitter', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-follow-url-twitter', 'esc_url_raw' );
-  register_setting( 'wfs_config_section', 'wfs-follow-checkbox-linkedin', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-follow-url-linkedin', 'esc_url_raw' );
-  register_setting( 'wfs_config_section', 'wfs-follow-checkbox-instagram', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-follow-url-instagram', 'esc_url_raw' );
-  register_setting( 'wfs_config_section', 'wfs-follow-checkbox-youtube', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-follow-url-youtube', 'esc_url_raw' );
-  register_setting( 'wfs_config_section', 'wfs-follow-checkbox-pinterest', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-follow-url-pinterest', 'esc_url_raw' );
-  register_setting( 'wfs_config_section', 'wfs-follow-checkbox-myBusiness', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-follow-url-myBusiness', 'esc_url_raw' );
-  register_setting( 'wfs_config_section', 'wfs-follow-checkbox-telegram', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-follow-url-telegram', 'esc_url_raw' );
-
   register_setting( 'wfs_config_section', 'wfs_follow_custom', 'wfs_sanitize_text_or_array_field' );
-  register_setting( 'wfs_config_section', 'wfs-follow-background-none', 'wfs_sanitize_checkbox' );
 
 
-  register_setting( 'wfs_config_section', 'wfs-options-before-post', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-options-after-post', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-options-css', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-options-rel-nofollow', 'wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs-options-analytics','wfs_sanitize_checkbox' );
   register_setting( 'wfs_config_section', 'wfs-options-ga-gtag','sanitize_text_field' );
-  register_setting( 'wfs_config_section', 'wfs-options-delete-all','wfs_sanitize_checkbox' );
-
-  register_setting( 'wfs_config_section', 'wfs_options_custom_share','wfs_sanitize_checkbox' );
-  register_setting( 'wfs_config_section', 'wfs_options_custom_follow','wfs_sanitize_checkbox' );
+  register_setting( 'wfs_config_section', 'wfs_options_check', 'wfs_sanitize_array_check' );
+////////
 
 
 }
@@ -98,6 +59,29 @@ function wfs_sanitize_checkbox( $value ) {
   } else {
       return 0;
     }
+}
+
+function wfs_sanitize_array_check($array_check) {
+
+  if( is_array($array_check) ){
+
+    foreach ( $array_check as $key => &$value ) {
+
+      if( isset( $value ) ) {
+
+        $value = 1;
+
+      } else {
+
+          $value = 0;
+
+        }
+    }
+      
+  }
+
+  return $array_check;
+
 }
 
 function wfs_sanitize_text_or_array_field($array_or_string) {
