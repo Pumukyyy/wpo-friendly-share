@@ -25,9 +25,11 @@ function wfs_admin_style($hook) {
 function wfs_admin_render() {
   $wfs_share_custom  = get_option( 'wfs_share_custom');
   $wfs_follow_custom = get_option( 'wfs_follow_custom');
-  $wfs_share_check   = get_option( 'wfs_share_check');
+  $wfs_s_check   = get_option( 'wfs_s_check');
   $wfs_share_txt     = get_option( 'wfs_share_txt');
-  print_r($wfs_share_check);
+  print_r($wfs_s_check);
+  //list($share, $follow ) = wfs_defaults_options();
+  //print_r($share);
   
   ?>
     <div class="postbox">
@@ -70,51 +72,49 @@ function wfs_admin_render() {
           <div class="content-iconos">
             <label class="checkbox-share">
               <span class="wfs-icon-social wfs-icon-twitter"></span>
-              <input type="checkbox" class="select-share" name="wfs_share_check[s-check-twitter]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_share_check['s-check-twitter'], true ); ?> />
+              <input type="checkbox" class="select-share" name="wfs_s_check[s-check-twitter]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_s_check['s-check-twitter'], true ); ?> />
               Twitter
             </label>
 
             <!-- Facebook -->
             <label class="checkbox-share">
               <span class="wfs-icon-social wfs-icon-facebook"></span>
-              <input type="checkbox" class="select-share" name="wfs_share_check[s-check-facebook]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_share_check['s-check-facebook'], true ); ?> />
+              <input type="checkbox" class="select-share" name="wfs_s_check[s-check-facebook]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_s_check['s-check-facebook'], true ); ?> />
               Facebook
             </label>
 
             <!-- Linkedin -->
             <label class="checkbox-share">
               <span class="wfs-icon-social wfs-icon-linkedin"></span> 
-              <input type="checkbox" class="select-share" name="wfs_share_check[s-check-linkedin]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_share_check['s-check-linkedin'], true ); ?> />
+              <input type="checkbox" class="select-share" name="wfs_s_check[s-check-linkedin]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_s_check['s-check-linkedin'], true ); ?> />
               Linkedin
             </label>
 
             <!-- Buffer -->
             <label class="checkbox-share">
               <span class="wfs-icon-social wfs-icon-buffer"></span>
-              <input type="checkbox" class="select-share" name="wfs_share_check[s-check-buffer]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_share_check['s-check-buffer'], true ); ?> /> 
+              <input type="checkbox" class="select-share" name="wfs_s_check[s-check-buffer]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_s_check['s-check-buffer'], true ); ?> /> 
               Buffer    
             </label>
-
-<!-- <?php //if (chequeda)checked( 1, $wfs_share_check['s-check-buffer'], true ); ?> -->
 
             <!-- Pinterest -->
             <label class="checkbox-share">
               <span class="wfs-icon-social wfs-icon-pinterest"></span>
-              <input type="checkbox" class="select-share" name="wfs_share_check[s-check-pinterest]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_share_check['s-check-pinterest'], true ); ?> />
+              <input type="checkbox" class="select-share" name="wfs_s_check[s-check-pinterest]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_s_check['s-check-pinterest'], true ); ?> />
               Pinterest
             </label>
 
             <!-- Whatsapp -->
             <label class="checkbox-share">
               <span class="wfs-icon-social wfs-icon-whatsapp"></span>
-              <input type="checkbox" class="select-share" name="wfs_share_check[s-check-whatsapp]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_share_check['s-check-whatsapp'], true ); ?> />
+              <input type="checkbox" class="select-share" name="wfs_s_check[s-check-whatsapp]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_s_check['s-check-whatsapp'], true ); ?> />
               Whatsapp
             </label>
 
             <!-- Telegram -->
             <label class="checkbox-share">
               <span class="wfs-icon-social wfs-icon-telegram"></span>
-              <input type="checkbox" class="select-share" name="wfs_share_check[s-check-telegram]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_share_check['s-check-telegram'], true ); ?> />
+              <input type="checkbox" class="select-share" name="wfs_s_check[s-check-telegram]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_s_check['s-check-telegram'], true ); ?> />
               Telegram
             </label>
           </div>
@@ -123,7 +123,7 @@ function wfs_admin_render() {
           <span class="checkbox-ajustes">
             <label>         
                 <?php  _e( 'I want it to be show above the post', 'wpo-friendly-share' ); ?>
-                <input type="checkbox" name="wfs-options-before-post" value="1" <?php checked( 1, get_option( 'wfs-options-before-post' ), true ); ?> />
+                <input type="checkbox" name="wfs_s_check[before-post]" value="1" <?php checked( 1, $wfs_s_check['before-post'], true ); ?> />
             </label>
           </span>
           
@@ -131,7 +131,7 @@ function wfs_admin_render() {
           <span class="checkbox-ajustes">
             <label>
                 <?php  _e( 'I want it to be show below the post', 'wpo-friendly-share' ); ?>
-                <input type="checkbox" name="wfs-options-after-post" value="1" <?php checked( 1, get_option( 'wfs-options-after-post' ), true ); ?> />
+                <input type="checkbox" name="wfs_s_check[after-post]" value="1" <?php checked( 1, $wfs_s_check['after-post'], true ); ?> />
             </label>
           </span>
 
@@ -167,7 +167,7 @@ function wfs_admin_render() {
                  <span class="checkbox-custom">
                   <label>
                       <?php  _e( 'No quiero color de fondo', 'wpo-friendly-share' );?>
-                      <input type="checkbox" id="sinBgShare" name="wfs_share_check[s-check-bg-none]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_share_check['s-check-bg-none'], true ); ?> />
+                      <input type="checkbox" id="sinBgShare" name="wfs_s_check[s-check-bg-none]" oninput="viewCustomShare();" value="1" <?php checked( 1, $wfs_s_check['s-check-bg-none'], true ); ?> />
                   </label>
                 </span> <?php  ?>
 
@@ -476,14 +476,14 @@ function wfs_admin_render() {
             <span class="checkbox-ajustes">
               <label>
                 &nbsp;&nbsp;&nbsp;
-                  <input type="radio" name="wfs-options-ga-gtag" value="gtag" <?php checked( 'gtag', get_option( 'wfs-options-ga-gtag' ), true ); ?> >
+                  <input type="radio" name="wfs_opt_ga_gtag" value="gtag" <?php checked( 'gtag', get_option( 'wfs_opt_ga_gtag' ), true ); ?> >
                   gtag
               </label>
             </span>
             <span class="checkbox-ajustes">
               <label>
                 &nbsp;&nbsp;&nbsp;
-                  <input type="radio" name="wfs-options-ga-gtag" value="ga" <?php checked( 'ga', get_option( 'wfs-options-ga-gtag' ), true ); ?> >
+                  <input type="radio" name="wfs_opt_ga_gtag" value="ga" <?php checked( 'ga', get_option( 'wfs_opt_ga_gtag' ), true ); ?> >
                   ga
               </label>
             </span>

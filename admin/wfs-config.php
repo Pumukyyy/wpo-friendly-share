@@ -27,19 +27,22 @@ function wfs_settings_init() {
 		'wfs_config_section'//$page requerido
 	);
   
-  //nevas opciones
-  register_setting( 'wfs_config_section', 'wfs_share_check', 'wfs_sanitize_array_check' );
+  //nevas opciones pero sin terminar, quizas ponga o quite mas 
+
+  register_setting( 'wfs_config_section', 'wfs_s_check', 'wfs_sanitize_array_check' );
   register_setting( 'wfs_config_section', 'wfs_share_txt', 'wfs_sanitize_text_or_array_field' );
   register_setting( 'wfs_config_section', 'wfs_share_custom', 'wfs_sanitize_text_or_array_field' ); 
 
   register_setting( 'wfs_config_section', 'wfs_follow_url','esc_url_raw' );
-  register_setting( 'wfs_config_section', 'wfs_follow_check','wfs_sanitize_array_check' );
+  register_setting( 'wfs_config_section', 'wfs_f_check','wfs_sanitize_array_check' );
   register_setting( 'wfs_config_section', 'wfs-follow-custom-label', 'sanitize_text_field' );
   register_setting( 'wfs_config_section', 'wfs_follow_custom', 'wfs_sanitize_text_or_array_field' );
 
 
-  register_setting( 'wfs_config_section', 'wfs-options-ga-gtag','sanitize_text_field' );
-  register_setting( 'wfs_config_section', 'wfs_options_check', 'wfs_sanitize_array_check' );
+  register_setting( 'wfs_config_section', 'wfs_opt_ga_gtag','sanitize_text_field' );
+  register_setting( 'wfs_config_section', 'wfs_opt_check', 'wfs_sanitize_array_check' );
+
+
 ////////
 
 
@@ -61,7 +64,7 @@ function wfs_sanitize_checkbox( $value ) {
     }
 }
 
-function wfs_sanitize_array_check($array_check) {
+/*function wfs_sanitize_array_check($array_check) {
 
   if( is_array($array_check) ){
 
@@ -82,7 +85,63 @@ function wfs_sanitize_array_check($array_check) {
 
   return $array_check;
 
+}*/
+
+
+//*****************************************////
+//update_option( 'wfs_share_check_defaults', $defaults );
+
+function wfs_defaults_options(){
+
+  $s_check = array( 
+      's-check-twitter'   => 0,
+      's-check-facebook'  => 0,
+      's-check-linkedin'  => 0,
+      's-check-buffer'    => 0,
+      's-check-pinterest' => 0,
+      's-check-whatsapp'  => 0,
+      's-check-telegram'  => 0,
+      'before-post'       => 0,
+      'after-post'        => 1,
+      's-check-bg-none'   => 0,
+    );
+
+  $f_check = array( 
+      'f-check-facebook'   => 0,
+      'f-check-twitter'    => 0,
+      'f-check-linkedin'   => 0,
+      'f-check-instagram'  => 0,
+      'f-check-youtube'    => 0,
+      'f-check-pinterest'  => 0,
+      'f-check-myBusiness' => 0,
+      'f-check-telegram'   => 0,
+      'f-check-bg-none'    => 0,
+    );
+return array($s_check, $f_check);
+
 }
+
+
+function wfs_sanitize_array_check( $array_check ) {
+  list($s_check, $f_check ) = wfs_defaults_options();
+    $new_args = (array) $s_check;
+
+    foreach ( $array_check as $key => $value ) {
+        if ( is_array( $value ) && isset( $new_args[ $key ] ) ) {
+            $new_args[ $key ] = wfs_sanitize_array_check( $value, $new_args[ $key ] );
+        }
+        else {
+            $new_args[ $key ] = $value;
+        }
+    }
+
+    return $new_args;
+}
+
+
+
+
+/*********************************************************/
 
 function wfs_sanitize_text_or_array_field($array_or_string) {
     if( is_string($array_or_string) ){
