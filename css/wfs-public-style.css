@@ -1,7 +1,7 @@
 .titulo {
   font-size:1em;
   font-weight:700;
-  margin:8px 0;
+  margin:0 0 8px;
   text-align: center;
   text-transform: uppercase;
 }
@@ -10,6 +10,7 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+
 }
 
 .wfs-link-follow,
@@ -40,7 +41,7 @@ a, path {
 
 .wfs-share,
 .wfs-follow {
-  margin: 20px 0 25px 0;
+  margin: 10px 0;
   display: inline-block;
 }
 

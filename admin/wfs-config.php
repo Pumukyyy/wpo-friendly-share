@@ -29,135 +29,166 @@ function wfs_settings_init() {
   
   //nevas opciones pero sin terminar, quizas ponga o quite mas 
 
-  register_setting( 'wfs_config_section', 'wfs_s_check', 'wfs_sanitize_array_check' );
-  register_setting( 'wfs_config_section', 'wfs_share_txt', 'wfs_sanitize_text_or_array_field' );
-  register_setting( 'wfs_config_section', 'wfs_share_custom', 'wfs_sanitize_text_or_array_field' ); 
+  register_setting( 'wfs_config_section', 'wfs_s_check', 'wfs_sanitize_array_s_check' );
+  register_setting( 'wfs_config_section', 'wfs_s_txt', 'wfs_sanitize_array_text' );
+  register_setting( 'wfs_config_section', 'wfs_s_custom', 'wfs_sanitize_array_text' ); 
 
-  register_setting( 'wfs_config_section', 'wfs_follow_url','esc_url_raw' );
-  register_setting( 'wfs_config_section', 'wfs_f_check','wfs_sanitize_array_check' );
-  register_setting( 'wfs_config_section', 'wfs-follow-custom-label', 'sanitize_text_field' );
-  register_setting( 'wfs_config_section', 'wfs_follow_custom', 'wfs_sanitize_text_or_array_field' );
+  register_setting( 'wfs_config_section', 'wfs_f_url','wfs_sanitize_array_url' );
+  register_setting( 'wfs_config_section', 'wfs_f_check','wfs_sanitize_array_f_check' );
+  register_setting( 'wfs_config_section', 'wfs-f-custom-label', 'sanitize_text_field' );
+  register_setting( 'wfs_config_section', 'wfs_f_custom', 'wfs_sanitize_array_text' );
 
 
   register_setting( 'wfs_config_section', 'wfs_opt_ga_gtag','sanitize_text_field' );
-  register_setting( 'wfs_config_section', 'wfs_opt_check', 'wfs_sanitize_array_check' );
-
-
-////////
-
+  register_setting( 'wfs_config_section', 'wfs_opt_check', 'wfs_sanitize_array_opt_check' );
 
 }
 
 
-/*
-* Saneo checkbox  
-*/
-function wfs_sanitize_checkbox( $value ) {
-
-  // Si hay algún valor, el checbox fue seleccionado
-  if( ! empty( $value ) ) {
-
-    return 1;
-
-  } else {
-      return 0;
-    }
-}
-
-/*function wfs_sanitize_array_check($array_check) {
-
-  if( is_array($array_check) ){
-
-    foreach ( $array_check as $key => &$value ) {
-
-      if( isset( $value ) ) {
-
-        $value = 1;
-
-      } else {
-
-          $value = 0;
-
-        }
-    }
-      
-  }
-
-  return $array_check;
-
-}*/
-
-
-//*****************************************////
-//update_option( 'wfs_share_check_defaults', $defaults );
-
-function wfs_defaults_options(){
+function wfs_compare_array_check(){
 
   $s_check = array( 
-      's-check-twitter'   => 0,
-      's-check-facebook'  => 0,
-      's-check-linkedin'  => 0,
-      's-check-buffer'    => 0,
-      's-check-pinterest' => 0,
-      's-check-whatsapp'  => 0,
-      's-check-telegram'  => 0,
-      'before-post'       => 0,
-      'after-post'        => 1,
-      's-check-bg-none'   => 0,
-    );
-
+    's-check-twitter'   => 0,
+    's-check-facebook'  => 0,
+    's-check-linkedin'  => 0,
+    's-check-buffer'    => 0,
+    's-check-pinterest' => 0,
+    's-check-whatsapp'  => 0,
+    's-check-telegram'  => 0,
+    's-before-post'     => 0,
+    's-after-post'      => 0,
+    'check-custom-s'    => 0,
+    's-check-bg-none'   => 0,
+  );
+ 
   $f_check = array( 
-      'f-check-facebook'   => 0,
-      'f-check-twitter'    => 0,
-      'f-check-linkedin'   => 0,
-      'f-check-instagram'  => 0,
-      'f-check-youtube'    => 0,
-      'f-check-pinterest'  => 0,
-      'f-check-myBusiness' => 0,
-      'f-check-telegram'   => 0,
-      'f-check-bg-none'    => 0,
-    );
-return array($s_check, $f_check);
+    'f-check-twitter'    => 0,
+    'f-check-facebook'   => 0,
+    'f-check-linkedin'   => 0,
+    'f-check-pinterest'  => 0,
+    'f-check-telegram'   => 0,
+    'f-check-instagram'  => 0,
+    'f-check-youtube'    => 0,
+    'f-check-myBusiness' => 0,
+    'check-custom-f'     => 0,
+    'f-check-bg-none'    => 0,
+  );
+
+  $opt_check = array(
+    'css'                 => 0, 
+    'rel-nofollow'        => 0,
+    'analytics'           => 0,
+    'delete-all'          => 0,
+  );
+
+  return array($s_check, $f_check, $opt_check);
 
 }
 
 
-function wfs_sanitize_array_check( $array_check ) {
-  list($s_check, $f_check ) = wfs_defaults_options();
-    $new_args = (array) $s_check;
+function wfs_sanitize_array_s_check( $array_check ) {
+
+  list($s_check, $f_check, $opt_check ) = wfs_compare_array_check();
 
     foreach ( $array_check as $key => $value ) {
-        if ( is_array( $value ) && isset( $new_args[ $key ] ) ) {
-            $new_args[ $key ] = wfs_sanitize_array_check( $value, $new_args[ $key ] );
-        }
-        else {
-            $new_args[ $key ] = $value;
+
+        if ( is_array( $value ) && isset( $s_check[ $key ] ) ) {
+
+            $s_check[ $key ] = wfs_sanitize_array_s_check( $value, $s_check[ $key ] );
+
+        } else {
+
+            $s_check[ $key ] = $value;
+
         }
     }
 
-    return $new_args;
+    return $s_check;
+
 }
 
+function wfs_sanitize_array_f_check( $array_check ) {
 
+  list($s_check, $f_check, $opt_check ) = wfs_compare_array_check();
+
+    foreach ( $array_check as $key => $value ) {
+
+        if ( is_array( $value ) && isset( $f_check[ $key ] ) ) {
+
+            $f_check[ $key ] = wfs_sanitize_array_f_check( $value, $f_check[ $key ] );
+
+        } else {
+
+            $f_check[ $key ] = $value;
+        }
+    }
+
+    return $f_check;
+
+}
+
+function wfs_sanitize_array_opt_check( $array_check ) {
+
+  list($s_check, $f_check, $opt_check ) = wfs_compare_array_check();
+
+    foreach ( $array_check as $key => $value ) {
+
+        if ( is_array( $value ) && isset( $opt_check [ $key ] ) ) {
+
+            $opt_check [ $key ] = wfs_sanitize_array_opt_check( $value, $opt_check [ $key ] );
+
+        } else {
+
+            $opt_check [ $key ] = $value;
+
+        }
+    }
+
+    return $opt_check ;
+
+}
 
 
 /*********************************************************/
 
-function wfs_sanitize_text_or_array_field($array_or_string) {
-    if( is_string($array_or_string) ){
-        $array_or_string = sanitize_text_field($array_or_string);
-    }elseif( is_array($array_or_string) ){
-        foreach ( $array_or_string as $key => &$value ) {
+function wfs_sanitize_array_text( $array_text ) {
+
+    if( is_array( $array_text ) ) {
+
+        foreach ( $array_text as $key => &$value ) {
+
             if ( is_array( $value ) ) {
-                $value = wfs_sanitize_text_or_array_field($value);
-            }
-            else {
+
+                $value = wfs_sanitize_array_text($value);
+
+            } else {
+
                 $value = sanitize_text_field( $value );
             }
         }
     }
 
-    return $array_or_string;
+    return $array_text;
+}
+
+function wfs_sanitize_array_url( $array_url ) {
+
+  if( is_array( $array_url ) ) {
+
+      foreach ( $array_url as $key => &$value ) {
+
+          if ( is_array( $value ) ) {
+
+              $value = wfs_sanitize_array_url($value);
+
+          } else {
+
+              $value = esc_url_raw( $value );
+          }
+      }
+  }
+
+    return $array_url;
 }
 
 
@@ -165,9 +196,11 @@ function wfs_sanitize_text_or_array_field($array_or_string) {
 * Formulario para guardar las opciones
 */
 function wfs_options_page() {
+
    if ( !current_user_can( 'manage_options' ) ) {
         return;
     }
+
   ?>
     <div class="wrap">
         <h1 style="position:relative;padding-right:88px;display:inline-block;">
@@ -196,7 +229,7 @@ add_filter( 'plugin_action_links_'.WFS_BASE, 'wfs_add_settings_link' );
 
 function wfs_add_settings_link( $links ) {
 
-  $settings_link = '<a href="' . esc_url( admin_url( 'admin.php?page=wpo-friendly-share') ) . '">' . __( 'Setting', 'wpo-friendly-share' ) . '</a>';
+  $settings_link = '<a href="' . esc_url( admin_url( 'admin.php?page=wpo-friendly-share') ) . '">' . __( 'Settings', 'wpo-friendly-share' ) . '</a>';
   $links[] =  $settings_link;
 
   return $links;
@@ -205,11 +238,25 @@ function wfs_add_settings_link( $links ) {
 /*
 * Devueleve la clase oculto si no esta seleccionado
 */
-function wfs_add_class_oculto( $acction ) {
+function wfs_add_class_oculto( $action ) {
 
-  if ( 0 == get_option( 'wfs_options_custom_' . $acction ) ) {
+  if ( $action == 'share' ) {
+
+    $action = 's';
+
+  }elseif ( $action == 'follow' ) {
+
+    $action = 'f';
+  }
+
+  $custom_activated = get_option( 'wfs_'.$action.'_check' ); 
+
+  if ( 0 == $custom_activated['check-custom-' . $action ] ) {
+
     $clase = 'oculto';
+
   } else {
+
     $clase = '';
   }
   
@@ -217,19 +264,31 @@ function wfs_add_class_oculto( $acction ) {
 
 }
 
-
 /*
 * Cambia el texto del boton de personalizacion
 */
 function wfs_switch_text( $action ) {
 
-  if ( 1 == get_option( 'wfs_options_custom_' . $action ) ) {
-    $texto  = '<span class="mas oculto" id="mas-'.$action.'">'. __( 'Quiero personalizar mis iconos', 'wpo-friendly-share' ) .'</span>';
-    $texto .= '<span class="menos" id="menos-'.$action.'">'. __( 'Quiero los iconos clasicos', 'wpo-friendly-share' ) .'</span>';
+  if ( $action == 'share' ) {
+
+    $action = 's';
+
+  }elseif ( $action == 'follow' ) {
+
+    $action = 'f';
+  }
+
+  $switch_text = get_option( 'wfs_'.$action.'_check' ); 
+
+  if ( 1 == $switch_text['check-custom-' . $action ]  ) {
+
+    $texto  = '<span class="mas oculto" id="mas-'.$action.'">'. __( 'I want to customize my icons', 'wpo-friendly-share' ) .'</span>';
+    $texto .= '<span class="menos" id="menos-'.$action.'">'. __( 'I want the classic icons', 'wpo-friendly-share' ) .'</span>';
 
   } else {
-    $texto  = '<span class="mas" id="mas-'.$action.'">'. __( 'Quiero personalizar mis iconos', 'wpo-friendly-share' ) .'</span>';
-    $texto .= '<span class="menos oculto" id="menos-'.$action.'">'. __( 'Quiero los iconos clasicos', 'wpo-friendly-share' ) .'</span>';
+
+    $texto  = '<span class="mas" id="mas-'.$action.'">'. __( 'I want to customize my icons', 'wpo-friendly-share' ) .'</span>';
+    $texto .= '<span class="menos oculto" id="menos-'.$action.'">'. __( 'I want the classic icons', 'wpo-friendly-share' ) .'</span>';
   }
   
   echo $texto;
@@ -247,16 +306,21 @@ function wfs_custom_result( $action ) {
   if ( $action == 'share' ) {
 
     $social_networks_compare = wfs_social_networks_share();
+    $custom_label = get_option( 'wfs_s_txt');
+    $custom_label = $custom_label['s-custom-label'];
 
   }elseif ( $action == 'follow' ) {
 
     $social_networks_compare = wfs_social_networks_follow();
+    $custom_label = get_option( 'wfs-f-custom-label' );
 
   }
+
 
   // Obtengo la personalización para share
   list ( $color_title, $size_title, $bg_color, $color, $width, $height, $b_radius ) = wfs_custom_button( $action );
 
+  
 
   $result  = '<style>.label-'. $action .' .social-icon {fill:'.$color.';}</style>';
 
@@ -264,14 +328,14 @@ function wfs_custom_result( $action ) {
  
   $result .= '<p class="label-'. $action .'-p">'. __( 'These will be your icons', 'wpo-friendly-share' ). '</p>';
 
-  $result .= '<h3 id="result-title-'. $action .'" style="'.$color_title.$size_title.'" class="result-title-'. $action .'" >' . esc_attr( get_option( 'wfs-'. $action .'-custom-label' ) ) .'</h3>';
+  $result .= '<h3 id="result-title-'. $action .'" style="'.$color_title.$size_title.'" class="result-title-'. $action .'" >' . esc_attr( $custom_label ) .'</h3>';
 
   $result .= '<div style="width:100%;">';
 
   $i = 0;
   foreach( $social_networks as $network => $data ) {
 
-    $network_compare =  $social_networks_compare[$i];
+    $network_compare = $social_networks_compare[$i];
     $icon            = $social_networks[$network]['icono'];
     $seleccionado    = $social_networks[$network]['selec_'.$action ];
     $seleccionados[] = $seleccionado;
@@ -291,3 +355,22 @@ function wfs_custom_result( $action ) {
   $result .= '</label>';
   echo $result;
 }
+
+
+
+
+function wfs_updated_complete( $upgrader_object, $options ) {
+ // The path to our plugin's main file
+ $our_plugin = plugin_basename( __FILE__ );
+ // If an update has taken place and the updated type is plugins and the plugins element exists
+ if( $options['action'] == 'update' && $options['type'] == 'plugin' && isset( $options['plugins'] ) ) {
+  // Iterate through the plugins being updated and check if ours is there
+  foreach( $options['plugins'] as $plugin ) {
+   if( $plugin == $our_plugin ) {
+    // Set a transient to record that our plugin has just been updated
+    set_transient( 'wfs_updated', 1 );
+   }
+  }
+ }
+}
+add_action( 'upgrader_process_complete', 'wfs_updated_complete', 10, 2 );

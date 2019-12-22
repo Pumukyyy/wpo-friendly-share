@@ -1,4 +1,4 @@
-
+//funcion que controla las opciones de customizacion 
 function viewCustomShare(){    
 
   var titleShare         = document.getElementById('titleShare').value;
@@ -37,6 +37,7 @@ function viewCustomShare(){
 
 }
 
+//funcion que controla las opciones de customizacion 
 function viewCustomFollow(){
 
   var titleFollow         = document.getElementById('titleFollow').value;   
@@ -74,6 +75,8 @@ function viewCustomFollow(){
 }
 
 //document.getElementById("optionsCustomShare").addEventListener("click", optionsCustomS);
+
+//funcion para ocultar o mostrar las opciones de customizacion y cambiar el texto del boton
 function optionsCustomS() {
 
 var optionsCustomShare  = document.querySelector('#optionsCustomShare'); 
@@ -81,16 +84,17 @@ var entryCustomShare    = document.querySelector("#entryCustomShare");
 
  if( optionsCustomShare.checked == false ){
       entryCustomShare.classList.add("oculto");
-      document.querySelector('#menos-share').classList.add("oculto");
-      document.querySelector('#mas-share').classList.remove("oculto");
+      document.querySelector('#menos-s').classList.add("oculto");
+      document.querySelector('#mas-s').classList.remove("oculto");
     }else{
       entryCustomShare.classList.remove("oculto");
-      document.querySelector('#mas-share').classList.add("oculto");
-      document.querySelector('#menos-share').classList.remove("oculto");
+      document.querySelector('#mas-s').classList.add("oculto");
+      document.querySelector('#menos-s').classList.remove("oculto");
   }
 
 }
 
+//funcion para ocultar o mostrar las opciones de customizacion y cambiar el texto del boton
 function optionsCustomF() {
 
   var optionsCustomFollow  = document.querySelector('#optionsCustomFollow'); 
@@ -98,12 +102,12 @@ function optionsCustomF() {
 
    if( optionsCustomFollow.checked == false ){
         entryCustomFollow.classList.add("oculto");
-        document.querySelector('#menos-follow').classList.add("oculto");
-        document.querySelector('#mas-follow').classList.remove("oculto");
+        document.querySelector('#menos-f').classList.add("oculto");
+        document.querySelector('#mas-f').classList.remove("oculto");
       }else{
         entryCustomFollow.classList.remove("oculto");
-        document.querySelector('#mas-follow').classList.add("oculto");
-        document.querySelector('#menos-follow').classList.remove("oculto");
+        document.querySelector('#mas-f').classList.add("oculto");
+        document.querySelector('#menos-f').classList.remove("oculto");
     }
 
 }

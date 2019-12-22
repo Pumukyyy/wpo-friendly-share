@@ -177,6 +177,22 @@
   border-bottom: 1px solid lightgrey;
 }
 
+.input-url::-webkit-input-placeholder {
+   color: #b5b5b5 !important;
+}
+ 
+.input-url:-moz-placeholder {
+   color: #b5b5b5 !important;
+}
+ 
+.input-url::-moz-placeholder { 
+   color: #b5b5b5 !important;
+}
+ 
+.input-url:-ms-input-placeholder { 
+   color: #b5b5b5 !important;
+}
+
 .label-url,
 .label-share,
 .checkbox-share,
@@ -239,6 +255,11 @@
   display: flex;
   flex-flow: column;
   align-content: space-around;
+}
+
+input[type="color"],
+input[type="range"]{
+margin: 5px 1px;
 }
 
 .checkbox-custom{

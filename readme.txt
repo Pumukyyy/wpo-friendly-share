@@ -8,52 +8,54 @@ Requires PHP: 5.2.4 or later
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Simple buttons to share or be followed on social networks, lightweight and friendly for WPO and SEO
+Stylized and lightweight social buttons to share or redirect to your social profiles, friendly to WPO and SEO
 
 == Description ==
-# WPO Friendly Share 
+# WPO Friendly Share
 
-- The simplest and lightest option of having beautiful buttons from the main social networks to share content from your website or to direct your readers to the profiles or pages of your social networks.
-  
-- The following social networks are currently available: Facebook, Linkedin, Instagram, Google My Business, Twitter, Pinterest, YouTube, Telegram, Whatsapp and Buffer but we are still working to incorporate our networks, if you have any suggestion write us in the support forum.
+- The simplest and lightest option of having some buttons of the main social networks to share content on your website or to redirect your readers to the profiles or pages of your social networks.
 
-- Buttons that generate the link to share or be followed in the main social networks without using very light and really fast javascript
+- Stylized and adapted to the design of your website, we have added a new cotrol panel in which you can configure the color, size, background color, rounded corners, title color and much more!
 
-- Without complications, you do not need just configuration, to show follow buttons just select which social networks to share and go!
+- The following social networks are currently available: Facebook, Linkedin, Instagram, Google My Business, Twitter, Pinterest, YouTube, Telegram, Whatsapp and Buffer, but we are still working to incorporate our networks, if you have any suggestions write us in the forum support .
 
-- SEO friendly, use Schema.org structured data marking to put Google, Bing, etc. into context ...
+- Buttons that generate the link to share or redirect your readers to the profiles or pages of your social networks. Without using javascript, it is very light and really fast (some javascript is used only in the administration panel to show the result of the customization)
 
-- If you whant it links to your social networks you have to put the url of your profiles in the configuration of the complement
+- Without complications, it requires a minimum configuration to show the buttons and share on social networks, select which ones to show to share and will be ready to work.
 
-- Translation ready, fully translatable to your preferred language, feel free to translate this plugin into your language at https://translate.wordpress.org/projects/wp-plugins/wpo-friendly-share
+- SEO friendly, use Schema.org structured data markup to give context and like Google, Bing, etc.
 
-## - If you like the plugin leave us a review to help us keep growing
+- If you want to link to your social networks, you must specify the URL of your profiles in the plugin settings and mark it to show them
+
+- Ready translation, fully translatable to your preferred language, feel free to translate this add-in to your language at https://translate.wordpress.org/projects/wp-plugins/wpo-friendly-share
+
+## - If you like the complement, leave us a comment to help us keep growing
 
 
 == Installation ==
 
-**1** Upload the add-in files to the '/ wp-content / plugins / wpo-friendly-share /' directory, or install the add-in via the WordPress add-ons screen directly.
+** 1 ** Upload the add-in files to the '/ wp-content / plugins / wpo-friendly-share /' directory, or install the add-in via the WordPress add-ons screen directly.
 
-**2** Activate the plugin through the \ 'Add-ons \' screen in WordPress
+** 2 ** Activate the plugin through the \ 'Add-ons \' screen in WordPress
 
-**3** Use the Settings screen -> Settings -> WPO friendly share to configure the plug-in
+** 3 ** Use the Settings -> Settings -> WPO Friendly Sharing screen to configure the plug-in
 
-== Frequently Asked Questions ==
+== Frequently asked questions ==
 
 = - How do I add the buttons to share on social networks in the theme template? =
-Add this code in the place of the template that you want the buttons to appear `<? Php if (function_exists ('wfs_share')) {echo do_shortcode ('[wfs_share]') ; ?> `
+Add this code in the template place where you want to show it `<? Php if (function_exists ('wfs_share')) {echo do_shortcode ('[wfs_share]'); ?> `
 
 = - How can I add the buttons to share on social networks with a short code? =
-Add this short code `[wfs_share]` wherever you want it to appear
+Add this shortcode `[wfs_share]` where you want to show them
 
-= - How do I add the buttons to follow me on social media in the theme template? =
-Add this code in the place of the template that you want the buttons <<? Php if (function_exists ('wfs_follow')) {echo do_shortcode ('[wfs_follow]'); ?> `
+= - How do I add the buttons in the theme template so they can follow me on social media? =
+Add this code in the template place where you want to show it <<? Php if (function_exists ('wfs_follow')) {echo do_shortcode ('[wfs_follow]'); ?> `
 
-= - How can I add the buttons to follow me on the networks with a short code? =
-Add this short code `[wfs_follow]` wherever you want it to appear
+= - How can I add the buttons so they can follow me on networks with a short code? =
+Add this shortcode `[wfs_follow]` where you want to show them
 
-= - Why does nothing appear if I already added it with short code or in the template? =
-First there must be some button selected to appear
+= - Why doesn't anything appear if I already added it with short code or in the template? =
+First there must be some button selected to be displayed in the post
 
 
 == Screenshots ==
