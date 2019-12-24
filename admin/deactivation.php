@@ -52,14 +52,11 @@ function wfs_remove_previous_options() {
 function wfs_remove_options() {
 
   delete_option( 'wfs_s_check' );
-  delete_option( 'wfs_s_txt' );
-  delete_option( 'wfs_s_custom' ); 
+  delete_option( 'wfs_s_txt' ); 
 
   delete_option( 'wfs_f_url' );
   delete_option( 'wfs_f_check' );
   delete_option( 'wfs-f-custom-label' );
-  delete_option( 'wfs_f_custom' );
-
 
   delete_option( 'wfs_opt_ga_gtag' );
   delete_option( 'wfs_opt_check' );

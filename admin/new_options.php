@@ -25,8 +25,6 @@ function wfs_change_options_to_array() {
 		's-check-telegram'  => get_option( 'wfs-share-telegram' ),
 		's-before-post'     => get_option( 'wfs-options-before-post' ),
 		's-after-post'      => get_option( 'wfs-options-after-post' ),
-		'check-custom-s'    => 0,
-		's-check-bg-none'   => 0,
 	);
 	update_option( 'wfs_s_check', $wfs_s_check );
 
@@ -59,8 +57,6 @@ function wfs_change_options_to_array() {
 	  'f-check-instagram'  => get_option( 'wfs-follow-checkbox-instagram' ),
 	  'f-check-youtube'    => get_option( 'wfs-follow-checkbox-youtube' ),
 	  'f-check-myBusiness' => get_option( 'wfs-follow-checkbox-myBusiness' ),
-	  'check-custom-f'     => 0,
-	  'f-check-bg-none'    => 0,
 	);
   update_option( 'wfs_f_check', $wfs_f_check );
 
@@ -91,6 +87,6 @@ if( 'old' == get_option( 'wfs_pluign_version', false ) ) {
     
 }
 
-if( '2.0.0' == get_option( 'wfs_pluign_version', false ) ) {
+if( '1.2.0' == get_option( 'wfs_pluign_version', false ) ) {
  		wfs_remove_previous_options();
 }

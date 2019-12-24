@@ -31,12 +31,10 @@ function wfs_settings_init() {
 
   register_setting( 'wfs_config_section', 'wfs_s_check', 'wfs_sanitize_array_s_check' );
   register_setting( 'wfs_config_section', 'wfs_s_txt', 'wfs_sanitize_array_text' );
-  register_setting( 'wfs_config_section', 'wfs_s_custom', 'wfs_sanitize_array_text' ); 
 
   register_setting( 'wfs_config_section', 'wfs_f_url','wfs_sanitize_array_url' );
   register_setting( 'wfs_config_section', 'wfs_f_check','wfs_sanitize_array_f_check' );
   register_setting( 'wfs_config_section', 'wfs-f-custom-label', 'sanitize_text_field' );
-  register_setting( 'wfs_config_section', 'wfs_f_custom', 'wfs_sanitize_array_text' );
 
 
   register_setting( 'wfs_config_section', 'wfs_opt_ga_gtag','sanitize_text_field' );
@@ -57,8 +55,6 @@ function wfs_compare_array_check(){
     's-check-telegram'  => 0,
     's-before-post'     => 0,
     's-after-post'      => 0,
-    'check-custom-s'    => 0,
-    's-check-bg-none'   => 0,
   );
  
   $f_check = array( 
@@ -70,8 +66,6 @@ function wfs_compare_array_check(){
     'f-check-instagram'  => 0,
     'f-check-youtube'    => 0,
     'f-check-myBusiness' => 0,
-    'check-custom-f'     => 0,
-    'f-check-bg-none'    => 0,
   );
 
   $opt_check = array(
@@ -205,7 +199,7 @@ function wfs_options_page() {
     <div class="wrap">
         <h1 style="position:relative;padding-right:88px;display:inline-block;">
         	<?php  _e( 'Social buttons optimized in loading speed by', 'wpo-friendly-share' ); ?>
-        	<a target="_blank" rel="noopener noreferrer" href="https://pmkchapaypintura.com/">
+        	<a target="_blank" rel="noopener noreferrer" href="https://github.com/Pumukyyy">
             	<span class= "wfs-icon-pmk"></span> 
             </a>
         </h1>
@@ -234,129 +228,6 @@ function wfs_add_settings_link( $links ) {
 
   return $links;
 }
-
-/*
-* Devueleve la clase oculto si no esta seleccionado
-*/
-function wfs_add_class_oculto( $action ) {
-
-  if ( $action == 'share' ) {
-
-    $action = 's';
-
-  }elseif ( $action == 'follow' ) {
-
-    $action = 'f';
-  }
-
-  $custom_activated = get_option( 'wfs_'.$action.'_check' ); 
-
-  if ( 0 == $custom_activated['check-custom-' . $action ] ) {
-
-    $clase = 'oculto';
-
-  } else {
-
-    $clase = '';
-  }
-  
-  echo $clase;
-
-}
-
-/*
-* Cambia el texto del boton de personalizacion
-*/
-function wfs_switch_text( $action ) {
-
-  if ( $action == 'share' ) {
-
-    $action = 's';
-
-  }elseif ( $action == 'follow' ) {
-
-    $action = 'f';
-  }
-
-  $switch_text = get_option( 'wfs_'.$action.'_check' ); 
-
-  if ( 1 == $switch_text['check-custom-' . $action ]  ) {
-
-    $texto  = '<span class="mas oculto" id="mas-'.$action.'">'. __( 'I want to customize my icons', 'wpo-friendly-share' ) .'</span>';
-    $texto .= '<span class="menos" id="menos-'.$action.'">'. __( 'I want the classic icons', 'wpo-friendly-share' ) .'</span>';
-
-  } else {
-
-    $texto  = '<span class="mas" id="mas-'.$action.'">'. __( 'I want to customize my icons', 'wpo-friendly-share' ) .'</span>';
-    $texto .= '<span class="menos oculto" id="menos-'.$action.'">'. __( 'I want the classic icons', 'wpo-friendly-share' ) .'</span>';
-  }
-  
-  echo $texto;
-
-}
-
-
-/*
-* Devuelve el resultado de la personalizacion
-*/
-function wfs_custom_result( $action ) {
-
-  $social_networks = wfs_social_networks();
-
-  if ( $action == 'share' ) {
-
-    $social_networks_compare = wfs_social_networks_share();
-    $custom_label = get_option( 'wfs_s_txt');
-    $custom_label = $custom_label['s-custom-label'];
-
-  }elseif ( $action == 'follow' ) {
-
-    $social_networks_compare = wfs_social_networks_follow();
-    $custom_label = get_option( 'wfs-f-custom-label' );
-
-  }
-
-
-  // Obtengo la personalización para share
-  list ( $color_title, $size_title, $bg_color, $color, $width, $height, $b_radius ) = wfs_custom_button( $action );
-
-  
-
-  $result  = '<style>.label-'. $action .' .social-icon {fill:'.$color.';}</style>';
-
-  $result .= '<label class="label-'. $action .' content-custom-iconos">';
- 
-  $result .= '<p class="label-'. $action .'-p">'. __( 'These will be your icons', 'wpo-friendly-share' ). '</p>';
-
-  $result .= '<h3 id="result-title-'. $action .'" style="'.$color_title.$size_title.'" class="result-title-'. $action .'" >' . esc_attr( $custom_label ) .'</h3>';
-
-  $result .= '<div style="width:100%;">';
-
-  $i = 0;
-  foreach( $social_networks as $network => $data ) {
-
-    $network_compare = $social_networks_compare[$i];
-    $icon            = $social_networks[$network]['icono'];
-    $seleccionado    = $social_networks[$network]['selec_'.$action ];
-    $seleccionados[] = $seleccionado;
-    $i ++;
-
-    if( 1 == $seleccionado && $network == $network_compare ) {
-
-      $result .= '<span class="result-icon-'. $action .'" style="'.$bg_color.$b_radius.$width.$height.'"><span class="screen-reader-text">'.$network.'</span>'.$icon.'</span >';
-
-    }elseif(  0 == $seleccionado && $network == $network_compare ){
-
-      $result .= '<span class="result-icon-'. $action .'" style="display:none;'.$bg_color.$b_radius.$width.$height.'"><span class="screen-reader-text">'.$network.'</span>'.$icon.'</span >';
-      
-    }
-  }
-  $result .= '</div>';
-  $result .= '</label>';
-  echo $result;
-}
-
-
 
 
 function wfs_updated_complete( $upgrader_object, $options ) {

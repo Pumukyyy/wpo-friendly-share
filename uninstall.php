@@ -43,21 +43,21 @@ function wfs_delete_plugin() {
   delete_option( 'wfs-follow-url-youtube' );
   delete_option( 'wfs-follow-url-myBusiness' );
 
-// opciones nuevas
   delete_option( 'wfs-options-css' );
   delete_option( 'wfs-options-rel-nofollow' );
   delete_option( 'wfs-options-analytics' );
   delete_option( 'wfs-options-ga-gtag' );
   delete_option( 'wfs-options-delete-all' );
 
+// opciones nuevas
   delete_option( 'wfs_s_check' );
   delete_option( 'wfs_s_txt' );
-  delete_option( 'wfs_s_custom' ); 
+
 
   delete_option( 'wfs_f_url' );
   delete_option( 'wfs_f_check' );
   delete_option( 'wfs-f-custom-label' );
-  delete_option( 'wfs_f_custom' );
+
 
 
   delete_option( 'wfs_opt_ga_gtag' );

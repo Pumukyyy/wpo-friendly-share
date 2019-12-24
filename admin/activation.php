@@ -20,37 +20,11 @@ function wfs_add_default_options(){
   $s_after_post = array( 's-after-post' => 1 );
   $s_check = array_replace( $s_check, $s_after_post );
 
-  $f_after_post = array( 'f-check-bg-none' => 1 );
-  $f_check = array_replace( $f_check, $f_after_post );
-
-  
   update_option( 'wfs_s_txt', $s_txt );
   update_option( 'wfs_s_check', $s_check );
 
-  $s_custom = array(
-    'color-title' => '#808080',
-    'size-title'  => '16',
-    'bg-color'    => '#808080',
-    'color'       => '#f4f4f4',
-    'b-radius'    => '50',
-    'width'       => '27',
-  );
-
-  update_option( 'wfs_s_custom', $s_custom );
-
   update_option( 'wfs-f-custom-label', __( 'Follow me on the social networks', 'wpo-friendly-share' ) );
   update_option( 'wfs_f_check', $f_check );
-
-  $f_custom = array( 
-    'color-title' => '#646464',
-    'size-title'  => '24',
-    'bg-color'    => '#c0c0c0',
-    'color'       => '#646464',
-    'b-radius'    => '7',
-    'width'       => '37', 
-  );
-
-  update_option( 'wfs_f_custom', $f_custom );
   
   update_option( 'wfs_opt_check', $opt_check );
 
@@ -69,7 +43,7 @@ function wfs_add_default_options(){
 //  if ( get_transient ('wfs_activated') ) { 
 //   echo '<div class = "notice notice-success">'. __ ('Gracias por instalar este favuloso complemento!!!', 'wpo-friendly-share'). '</div>'; 
 //   // Eliminar el transitorio para que no sigamos mostrando el mensaje de activación 
-//   //delete_transient ('wfs_activated'); 
+//   delete_transient ('wfs_activated'); 
 //  } 
 // } 
 // add_action ('admin_notices', 'wfs_display_install_notice');

@@ -74,39 +74,23 @@ function wfs_share() {
   //Compruebo si hay texto en el titulo y si no agrego uno por defecto
   $custom_label = $wfs_s_txt['s-custom-label'];
 
-  $wfs_s_check = get_option( 'wfs_s_check');
-  if ( 1 == $wfs_s_check['check-custom-s'] ) {
-    //comienzo el contenido 
-    list ( $color_title, $size_title, $bg_color, $color, $width, $height, $b_radius ) = wfs_custom_button( 'share' );
-    $wfs_content   = '<style>.wfs-share .social-icon {fill:'.$color.';}.wfs-link-share{'.$bg_color.$b_radius.$width.$height.'background-image:none;padding: 2.8pt;}</style>';
-    $wfs_content  .= '<div class="wfs-share"><!-- WPO friendly share - START-->';
-    $wfs_content  .= '<h3 class="titulo" style="'.$color_title.$size_title.'">';
-  }else{
-
-    $wfs_content   = '<div class="wfs-share"><!-- WPO friendly share - START-->';
-    $wfs_content  .= '<h3 class="titulo">';
-
-  }
-  
+  $wfs_content   = '<div class="wfs-share"><!-- WPO friendly share - START-->';
+  $wfs_content  .= '<h3 class="titulo">';
   $wfs_content  .= esc_attr( $custom_label);       
   $wfs_content  .= '</h3>';
   $wfs_content  .= '<div class="content-button">';
 
   $social_networks = wfs_social_networks();
-  $wfs_s_custom  = get_option( 'wfs_s_custom');
   foreach( $social_networks as $network => $data ) {
 
       $parametro       = $social_networks[ $network ][ 'parametros' ];
       $url             = esc_url ($social_networks[ $network ]['url_share' ] );
-      if ( 1 == $wfs_s_check['check-custom-s'] ) {
-        $icono           = $social_networks[ $network] [ 'icono' ];
-      }
       $seleccionado    = $social_networks[ $network ][ 'selec_share' ];
       $seleccionados[] = $seleccionado;      
 
     if( 1 == $seleccionado ) {
 
-      $wfs_content .= '<a class="wfs-link-share wfs-share-' . $network . '" href="' . esc_attr( $url . $parametro) . '" target="_blank" '. wfs_rel_nofollow() .' '. wfs_gtag( $network, 'share', esc_attr( get_the_title() ) ) .'"><span class="screen-reader-text">'.$network.'</span>' . $icono . '</a>';
+      $wfs_content .= '<a class="wfs-link-share wfs-share-' . $network . '" href="' . esc_attr( $url . $parametro) . '" target="_blank" '. wfs_rel_nofollow() .' '. wfs_gtag( $network, 'share', esc_attr( get_the_title() ) ) .'"><span class="screen-reader-text">'.$network.'</span></a>';
 
     }
   }
@@ -197,26 +181,15 @@ add_shortcode( 'wfs_follow', 'wfs_follow' );
   
 function wfs_follow() {
 
-  $wfs_f_check = get_option( 'wfs_f_check'); 
-  if ( 1 == $wfs_f_check['check-custom-f'] ) {
-
-    list ( $color_title, $size_title, $bg_color, $color, $width, $height, $b_radius ) = wfs_custom_button( 'follow' );
-    $wfs_content  = '<style>.wfs-follow .social-icon {fill:'.$color.';}.wfs-link-follow{'.$bg_color.$b_radius.$width.$height.'background-image:none;}</style>';
-  }else{
-    $wfs_content  = '';
-  }
-  $wfs_content .= '<div class="wfs-follow" itemscope itemtype="http://schema.org/Organization"><!-- WPO friendly share - START-->';
+  $wfs_content  = '<div class="wfs-follow" itemscope itemtype="http://schema.org/Organization"><!-- WPO friendly share - START-->';
   $wfs_content .= '<link itemprop="url" href="'. esc_url( get_home_url() ) .'">';
   $wfs_content .= '<meta itemprop="name" href="'. esc_attr( get_bloginfo() ) .'">';
 
   /*
   * Custom label
   */
-  if ( 1 == $wfs_f_check['check-custom-f'] ) { 
-    $wfs_content .= '<h3 class="titulo" style="'.$color_title.$size_title.'">';
-  }else{
-    $wfs_content .= '<h3 class="titulo">';
-  }
+  $wfs_content .= '<h3 class="titulo">';
+  
 
   $custom_label = get_option( 'wfs-f-custom-label' );
 
@@ -226,22 +199,17 @@ function wfs_follow() {
   $wfs_content .= '<div class="content-button">';
 
   $social_networks = wfs_social_networks();
-  $icono = '';
 
   foreach( $social_networks as $network => $data ) {
 
     $url = $social_networks[ $network ][ 'url_follow' ];
-    
-    if ( 1 == $wfs_f_check['check-custom-f'] ) { 
-     $icono = $social_networks[ $network ][ 'icono' ];
-    }
      
     $seleccionado    = $social_networks[ $network ][ 'selec_follow' ];
     $seleccionados[] = $seleccionado;
 
     if( 1 == $seleccionado ) {
 
-      $wfs_content .= '<a itemprop="sameAs" class="wfs-link-follow wfs-follow-' . $network . '" href="'. esc_url( $url ) .'" target="_blank" '. wfs_rel_nofollow() .' '. wfs_gtag( $network, 'follow', '+1 Follow' ) .'><span class="screen-reader-text">'.$network.'</span>' . $icono . '</a>';
+      $wfs_content .= '<a itemprop="sameAs" class="wfs-link-follow wfs-follow-' . $network . '" href="'. esc_url( $url ) .'" target="_blank" '. wfs_rel_nofollow() .' '. wfs_gtag( $network, 'follow', '+1 Follow' ) .'><span class="screen-reader-text">'.$network.'</span></a>';
 
     }
 

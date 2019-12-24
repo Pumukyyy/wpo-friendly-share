@@ -154,64 +154,6 @@ function wfs_social_networks(){
   return $social_networks;
 }
 
-
-function wfs_custom_button($action) { 
-  if ( $action == 'share' ) {
-
-    $action = 's';
-
-  }elseif ( $action == 'follow' ) {
-
-    $action = 'f';
-  }
-
-$get_custom_button = get_option('wfs_'.$action.'_custom');
-// Obtengo la personalización para share
-if (!isset($get_custom_button['color-title'])) {
-  $color_title = 'color:#808080;';
-}else{
-  $color_title = 'color:'.$get_custom_button['color-title'].';';  
-}
-
-$size_title  = 'font-size:'.$get_custom_button['size-title'].'px;';
-
-if (!isset($get_custom_button['bg-color'])) {
-  $bg_color = 'background-color:#808080;';
-}else {
-  $bg_color = 'background-color:'.$get_custom_button['bg-color'].';';
-}
-
-$option_bg  = get_option( 'wfs_'.$action.'_check');
-
-if( 1 == $option_bg[ $action .'-check-bg-none' ] ) {
- $bg_color = 'background-color:transparent;';
-}
-
-if (!isset($get_custom_button['color'])) {
-  $color = '#f4f4f4';
-}else{
-  $color = esc_attr( $get_custom_button['color']);
-}
-
-$width       = 'width:'.esc_attr( $get_custom_button['width'] ).'px;';
-
-$height      = 'height:'.esc_attr( $get_custom_button['width'] ).'px;';
-
-$b_radius    = 'border-radius:'.esc_attr( $get_custom_button['b-radius'] ).'%;';
-
-$custom_button = array(
-  $color_title,
-  $size_title,
-  $bg_color,
-  $color,
-  $width,
-  $height,
-  $b_radius,
-);
-
-  return $custom_button;
-}
-
 function wfs_social_networks_share() {  
   $social_networks_share = array( 
     'twitter',

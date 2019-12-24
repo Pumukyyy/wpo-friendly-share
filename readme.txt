@@ -15,11 +15,9 @@ Stylized and lightweight social buttons to share or redirect to your social prof
 
 - The simplest and lightest option of having some buttons of the main social networks to share content on your website or to redirect your readers to the profiles or pages of your social networks.
 
-- Stylized and adapted to the design of your website, we have added a new cotrol panel in which you can configure the color, size, background color, rounded corners, title color and much more!
-
 - The following social networks are currently available: Facebook, Linkedin, Instagram, Google My Business, Twitter, Pinterest, YouTube, Telegram, Whatsapp and Buffer, but we are still working to incorporate our networks, if you have any suggestions write us in the forum support .
 
-- Buttons that generate the link to share or redirect your readers to the profiles or pages of your social networks. Without using javascript, it is very light and really fast (some javascript is used only in the administration panel to show the result of the customization)
+- Buttons that generate the link to share or redirect your readers to the profiles or pages of your social networks. Without using javascript, it is very light and really fast
 
 - Without complications, it requires a minimum configuration to show the buttons and share on social networks, select which ones to show to share and will be ready to work.
 
