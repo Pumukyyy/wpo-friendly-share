@@ -27,10 +27,11 @@ function wfs_add_default_options(){
   update_option( 'wfs_f_check', $f_check );
   
   update_option( 'wfs_opt_check', $opt_check );
-
-  set_transient( 'wfs_activated', 1 );
   
+}
 
+function wfs_activated_text() {
+  set_transient( 'wfs_activated', 1 );
 }
 
 
@@ -38,13 +39,14 @@ function wfs_add_default_options(){
  * Mostrar un aviso a cualquiera que haya instalado el complemento por primera vez 
  * Este aviso no debería mostrarse a nadie que haya actualizado este complemento 
  */ 
-// function wfs_display_install_notice () { 
-//  // Verifique el transitorio para ver si acabamos de activó el complemento 
-//  if ( get_transient ('wfs_activated') ) { 
-//   echo '<div class = "notice notice-success">'. __ ('Gracias por instalar este favuloso complemento!!!', 'wpo-friendly-share'). '</div>'; 
-//   // Eliminar el transitorio para que no sigamos mostrando el mensaje de activación 
-//   delete_transient ('wfs_activated'); 
-//  } 
-// } 
-// add_action ('admin_notices', 'wfs_display_install_notice');
-
+function wfs_display_install_notice() { 
+ // Verifique el transitorio para ver si acabamos de activó el complemento 
+ if ( get_transient ('wfs_activated') ) { 
+  echo '<div class = "notice notice-success is-dismissible"><p>';
+  printf( __( 'Thank you for installing WPO Friendly Share!!! Enter the <a href="%s">settings</a> to finish configuring the plugin', 'wpo-friendly-share' ),  esc_url( admin_url( 'admin.php?page=wpo-friendly-share') ) );
+  echo '</p></div>'; 
+  // Eliminar el transitorio para que no sigamos mostrando el mensaje de activación 
+  delete_transient ('wfs_activated'); 
+ } 
+} 
+add_action ('admin_notices', 'wfs_display_install_notice');

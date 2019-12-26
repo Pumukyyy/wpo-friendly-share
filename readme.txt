@@ -3,7 +3,7 @@ Contributors: pumukyyy
 TTags: translation ready, botones para compartir, share, follow, share button, follow button, social buttons, Share on Facebook, Share on Linkedin, Share on Instagram, Share on Google My Business, Share on Twitter, Share on Pinterest, Share on Youtube, Share on Telegram, Share on Whatsapp, Share on Buffer
 Requires at least: 4.0
 Tested up to: 5.3
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 Requires PHP: 5.2.4 or later
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -52,8 +52,8 @@ Add this code in the template place where you want to show it <<? Php if (functi
 = - How can I add the buttons so they can follow me on networks with a short code? =
 Add this shortcode `[wfs_follow]` where you want to show them
 
-= - Why doesn't anything appear if I already added it with short code or in the template? =
-First there must be some button selected to be displayed in the post
+= - Why is nothing displayed if I already added it with short code or via php in the template? =
+First there must be some button selected to show in the post
 
 
 == Screenshots ==
@@ -63,6 +63,21 @@ First there must be some button selected to be displayed in the post
 4. Ajustes de desactivacion
 
 == Changelog ==
+
+##1.2.0
+
+- Removed the filter from wsf_array_share_filter and wsf_array_follow_filter because that bariable is no longer there is now $ social_network who contains all the information
+
+- Added a filter ('wsf_array_social_network_filter') for the $ social_network array with url_follow url_share, select_follow, select_share and icons
+
+- Added two array one $ social_network_share and another $ social_network_follow to compare them with the $ social_network array and show only those that apply
+
+- Added a filter for social networks share wsf_array_social_network_share_filter
+
+- Added a filter for social networks follow wsf_array_social_network_follow_filter
+
+- Improved css for mobile in the admin
+
 1.0.5
 
 - Updated translations

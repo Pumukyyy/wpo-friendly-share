@@ -46,14 +46,15 @@ define( 'WFS_BASE', plugin_basename( __FILE__ ) );
 */
 if ( is_admin() ) {
 
+	require_once( WFS_PATH . 'admin/activation.php' );
+
+	register_activation_hook( __FILE__, 'wfs_add_default_options' );
+	register_activation_hook( __FILE__, 'wfs_activated_text' );
 
 	require_once( WFS_PATH . 'admin/wfs-config.php' );
 	
 	require_once( WFS_PATH . 'admin/admin-render.php' );
 
-	require_once( WFS_PATH . 'admin/activation.php' );
-
-	register_activation_hook( __FILE__, 'wfs_add_default_options' );
 
 	require_once( WFS_PATH . 'admin/deactivation.php' );
 
@@ -79,3 +80,5 @@ function wfs_load_textdomain() {
     load_plugin_textdomain( 'wpo-friendly-share', FALSE, basename( dirname( __FILE__ ) ) . '/languages/' );
 }
 add_action( 'plugins_loaded', 'wfs_load_textdomain' );
+
+

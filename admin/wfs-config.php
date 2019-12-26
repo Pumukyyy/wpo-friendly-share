@@ -228,20 +228,3 @@ function wfs_add_settings_link( $links ) {
 
   return $links;
 }
-
-
-function wfs_updated_complete( $upgrader_object, $options ) {
- // The path to our plugin's main file
- $our_plugin = plugin_basename( __FILE__ );
- // If an update has taken place and the updated type is plugins and the plugins element exists
- if( $options['action'] == 'update' && $options['type'] == 'plugin' && isset( $options['plugins'] ) ) {
-  // Iterate through the plugins being updated and check if ours is there
-  foreach( $options['plugins'] as $plugin ) {
-   if( $plugin == $our_plugin ) {
-    // Set a transient to record that our plugin has just been updated
-    set_transient( 'wfs_updated', 1 );
-   }
-  }
- }
-}
-add_action( 'upgrader_process_complete', 'wfs_updated_complete', 10, 2 );
